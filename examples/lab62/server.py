@@ -24,11 +24,13 @@ from __future__ import print_function
 
 import re
 
-try:
-    from SocketServer as StreamRequestHandler, TCPServer
-except ImportError:  # Python 3
-    from socketserver as StreamRequestHandler, TCPServer
+#try:
+#    import SocketServer as StreamRequestHandler, TCPServer
+#except ImportError:  # Python 3
+#    import socketserver as StreamRequestHandler, TCPServer
 
+#import SocketServer as StreamRequestHandler
+import SocketServer
 from actor import LIP
 
 #: MLLP encoding chars
@@ -54,7 +56,7 @@ class MLLProtocol(object):
             message = matched.groups()[0]
         return message
 
-class MLLPServer(StreamRequestHandler):
+class MLLPServer(SocketServer.StreamRequestHandler):
     """
     Simplistic implementation of a TCP server implementing the MLLP protocol
 
@@ -79,7 +81,7 @@ class MLLPServer(StreamRequestHandler):
                 line = ''
 
 if __name__ == "__main__":
-    HOST, PORT = "localhost", 6000
+    HOST, PORT = "localhost", 3050
 
-    server = TCPServer((HOST, PORT), MLLPServer)
+    server = SocketServer.TCPServer((HOST, PORT), MLLPServer)
     server.serve_forever()

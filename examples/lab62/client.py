@@ -49,6 +49,6 @@ def query(host, port, patient_id):
         sock.close()
 
 if __name__ == '__main__':
-    host, port = 'localhost', 6000
+    host, port = 'localhost', 3050
     patient_id = '100002'
     query(host, port, patient_id)
