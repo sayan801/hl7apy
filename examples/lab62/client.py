@@ -50,5 +50,6 @@ def query(host, port, patient_id):
 
 if __name__ == '__main__':
     host, port = 'localhost', 3050
+    #host, port = '52.24.116.254', 3601
     patient_id = '100002'
     query(host, port, patient_id)

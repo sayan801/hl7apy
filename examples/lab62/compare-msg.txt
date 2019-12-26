@@ -1,0 +1,10 @@
+# Received at OpenPixPdq
+
+ MSH|^~\&|LB module||LIP module||20170308172655||QBP^SLI^QBP_Q11|23f8efb63ec247439d0c8a69
+ RCP|I||RSpecimen Labeling Instructions^IHE_LABTF|02372df66f894c4f8eff40dfff9111af|100002
+ 
+# Received at HAPI Server.py 
+
+ MSH|^~\\&|LB module||LIP module||20170308173000||QBP^SLI^QBP_Q11|515a8e5126a2457083049078ec2140f6||2.5\r
+ QPD|SLI^Specimen Labeling Instructions^IHE_LABTF|c44434bce90840e6b19edd9320af5f96|100002\r
+ RCP|I||R
