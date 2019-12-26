@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--  
+    Copyright © 1996-2006 by DeltaWare Systems Inc. 
+
+    The GNU General Public License (GPL)
+    This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the 
+    Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 
+    59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+
+
+<workflows testDataFile="TestData.xml">
+    <workflow id="w_CP-UC3-PS1-NEW" description="Workflow CP-UC4-SS3(Undo - Add Allergy)">
+ 
+        <reference filename="..\SubWorkFlows\SubWorkFlow_Find_Candidate.xml">
+            <paramList name="FindCandidate">
+                <param name="by-family-name" value="true"/>
+                <param name="patient-description" value="Patient 1"/>
+            </paramList>
+            <replace from="TESTNAME" to="CP-UC4-SS3(Undo - Add Allergy) Find Candidate"/>
+        </reference>
+
+        <reference filename="..\SubWorkFlows\SubWorkFlow_Patient_Profile.xml">
+            <paramList name="QueryList">
+                <param name="profile-description" value="Staged Profile"/>
+                <param name="profile-sequence" value="(Generated)"/>
+                <param name="author-description" value="Pharmacist 1"/>
+                <param name="location-description" value="Pharmacy 1"/>
+                <param name="patient-description" value="Patient 1"/>
+            </paramList>
+            <replace from="TESTNAME" to="CP-UC4-SS3(Undo - Add Allergy) Patient Profile"/>
+        </reference>
+
+        <reference filename="..\SubWorkFlows\SubWorkFlow_Add_Allergy.xml">
+            <paramList name="ProfileData">
+                <param name="ResponseType" value="accept"/>
+                <param name="profile-description" value="Staged Profile"/>
+                <param name="profile-sequence" value="Undo - Add Allergy v2"/>
+                <param name="patient-description" value="Patient 1"/>
+                <param name="allergy-description" value="Allergy 2 - Peanuts"/>
+            </paramList>
+        </reference>
+        
+        <reference filename="..\SubWorkFlows\SubWorkFlow_Generic_Undo.xml">
+            <paramList name="ProfileData">
+                <param name="ResponseType" value="accept"/>
+                <param name="profile-description" value="Staged Profile"/>
+                <param name="profile-sequence" value="Undo - Add Allergy v2"/>
+                <param name="patient-description" value="Patient 1"/>
+                <param name="undo-Item-description" value="Allergy 2 - Peanuts"/>
+                <param name="author-description" value="Pharmacist 1"/>
+                <param name="location-description" value="Pharmacy 1"/>
+            </paramList>
+        </reference>
+        
+        
+        
+<!--        <message description="Pharmacist Records New Allergy">
+            <request description="Add Allergy Intolerance Request">
+                <Simulator RemoteServerAddr="http://dis_Server/">
+                    <construction>
+                        <rule type="transform" description="Add Allergy Intolerance Request message" filename="..\WorkFlow_Lib\Allergy/AllergyAddRequest.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC4-SS3(Undo - Add Allergy)"/>
+                                <param name="profile-sequence" value="v2"/>
+                                <param name="allergy-description" value="Allergy 2 - Peanuts"/>
+                            </paramList>
+                        </rule>
+                        <rule type="setVariable" description="Control Act Extension" name="ControlActExtension" xpath="ns:REPC_IN000012CA/ns:controlActEvent[1]/ns:id[1]/@extension" ns="urn:hl7-org:v3"/> 
+                        <rule type="setVariable" description="Control Act Root" name="ControlActRoot" xpath="ns:REPC_IN000012CA/ns:controlActEvent[1]/ns:id[1]/@root" ns="urn:hl7-org:v3"/> 
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\REPC_IN000012CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="DIS Restriction Validate">
+                        <rule type="transform" description="Transmission wrapper Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\Allergy_Payload_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Request Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC4-SS3(Undo - Add Allergy)"/>
+                                <param name="profile-sequence" value="v2"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </messageProxy>
+            </request>
+            <response description="Add Allergy Intolerance Response">
+                <Simulator RemoteServerAddr="">
+                    <construction>
+                        <rule type="transform" description="Add Allergy Intolerance Response Message" filename="..\WorkFlow_Lib\Allergy/AllergyAddAcceptedResponse.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC4-SS3(Undo - Add Allergy)"/>
+                                <param name="profile-sequence" value="v2"/>
+                                <param name="allergy-description" value="Allergy 2 - Peanuts"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\REPC_IN000013CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Validate Format">
+                        <rule type="transform" description="CR transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CeRx_transmission_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="CeRx control wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CeRx_controlAct_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Response Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\AddOrUpdate_Response_AcceptOrReject_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Response Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl"/>
+                    </construction>
+                </messageProxy>
+            </response>
+        </message>
+-->
+<!--        <message description="Pharmacist Request Undo of Added Allergy">
+            <request description="Undo Request">
+                <Simulator RemoteServerAddr="http://dis_Server/">
+                    <construction>
+                        <rule type="transform" description="Undo Request message" filename="..\WorkFlow_Lib\Undo/UndoRequest.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC4-SS3(Undo - Add Allergy)"/>
+                                <param name="profile-sequence" value="v2"/>
+                                <param name="undo-Item-description" value="Allergy 2 - Peanuts"/>
+                                <param name="author-description" value="Pharmacist 1"/>
+                                <param name="location-description" value="Pharmacy 1"/>
+                            </paramList>
+                        </rule>
+                        <rule type="putVariable" description="Control Act Extension" name="ControlActExtension" xpath="ns:COMT_IN600001CA/ns:controlActEvent[1]/ns:subject[1]/ns:actEvent[1]/ns:id[1]/@extension" ns="urn:hl7-org:v3"/> 
+                        <rule type="putVariable" description="Control Act Root" name="ControlActRoot" xpath="ns:COMT_IN600001CA/ns:controlActEvent[1]/ns:subject[1]/ns:actEvent[1]/ns:id[1]/@root" ns="urn:hl7-org:v3"/> 
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\COMT_IN600001CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="DIS Restriction Validate">
+                        <rule type="transform" description="Transmission wrapper Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\Undo_Payload_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Request Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC4-SS3(Undo - Add Allergy)"/>
+                                <param name="profile-sequence" value="v2"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </messageProxy>
+            </request>
+            <response description="Undo Response">
+                <Simulator RemoteServerAddr="">
+                    <construction>
+                        <rule type="transform" description="Undo Response Message" filename="..\WorkFlow_Lib\Undo/UndoAcceptedResponse.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC4-SS3(Undo - Add Allergy)"/>
+                                <param name="profile-sequence" value="v2"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\COMT_IN600002CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Validate Format">
+                        <rule type="transform" description="CR transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CeRx_transmission_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="CeRx control wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CeRx_controlAct_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\Undo_Payload_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Response Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\AddOrUpdate_Response_AcceptOrReject_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Response Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl"/>
+                    </construction>
+                </messageProxy>
+            </response>
+        </message>
+-->    
+    </workflow>
+</workflows>

@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xs:schema xmlns="urn:hl7-org:v3" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:mif="urn:hl7-org:v3/mif"
+           targetNamespace="urn:hl7-org:v3"
+           elementFormDefault="qualified">
+   <xs:annotation>
+      <xs:documentation>Source Information
+     Rendered by: RoseTree 3.0.10
+     Rendered on: 
+This document was rendered into XML using software provided to HL7 by Beeler Consulting LLC.
+ PubDB to MIF Transform: $RCSfile: PubDbXmlToMIF.xsl,v $ $Revision: 1.9 $ $Date: 2006/01/23 23:52:56 $
+  Fix names transform: $Id: FixMifNames.xsl,v 1.7 2006/01/23 23:59:36 lmckenzi Exp $
+  HTML to MIF Markup transform: $Id: HtmlToMIFMarkup.xsl,v 1.3 2006/01/23 23:50:14 lmckenzi Exp $
+  Base transform: $Id: ConvertBase.xsl,v 1.3 2006/01/24 00:00:00 lmckenzi Exp $
+  Package Id Conversion: $Id: TransformPackageIds.xsl,v 1.4 2006/01/24 00:00:00 lmckenzi Exp $
+ Generated using schema builder version: 2.0 and DynamicMifToXSD.xsl version: 1.4
+ Dynamic MIF to Schema Transform: $Id: DynamicMifToXsd.xsl,v 1.10 2006/01/24 00:00:00 lmckenzi Exp $
+  Static MIF to Schema Transform: $Id: StaticMifToXsd.xsl,v 1.26 2006/01/23 23:56:47 lmckenzi Exp $
+  Package Id Conversion: $Id: TransformPackageIds.xsl,v 1.4 2006/01/24 00:00:00 lmckenzi Exp $</xs:documentation>
+      <xs:appinfo>
+         <mif:hl7Interaction name="020220"
+                             title="Medication Dispense &amp; Supply Event Complete Confirmation Ward Stock">
+            <mif:businessName name="Record supply event (ward stock) request accept"/>
+            <mif:packageLocation root="DEFN" section="HM" subSection="PO" domain="RX" artifact="IN" realm="CA"
+                                 id="020220"/>
+            <mif:annotations>
+               <mif:description>Indicates the requested bulk supply of a medication to a facility has been recorded.</mif:description>
+            </mif:annotations>
+            <mif:callAction root="DEFN" section="HM" subSection="PO" domain="RX" artifact="TE" realm="CA"
+                            id="020010"/>
+            <mif:parameterTypeModel root="DEFN" section="IM" subSection="MC" domain="CI" artifact="MT-deprecated"
+                                    realm="CA"
+                                    id="000100">
+               <mif:supplierBindingArgument templateParameterName="ControlActProcess" root="DEFN" section="IM"
+                                            subSection="MC"
+                                            domain="AI"
+                                            artifact="MT-deprecated"
+                                            realm="CA"
+                                            id="700210"
+                                            traversalName="controlActEvent">
+                  <mif:supplierBindingArgument templateParameterName="Act" root="DEFN" section="HM" subSection="PO"
+                                               domain="RX"
+                                               artifact="MT-deprecated"
+                                               realm="CA"
+                                               id="020030"
+                                               traversalName="supplyEvent"/>
+               </mif:supplierBindingArgument>
+            </mif:parameterTypeModel>
+         </mif:hl7Interaction>
+      </xs:appinfo>
+   </xs:annotation>
+   <xs:include schemaLocation="infrastructureRoot.xsd"/>
+   <xs:include schemaLocation="MCCI_MT000100CA.xsd"/>
+   <xs:include schemaLocation="MCAI_MT700210CA.xsd"/>
+   <xs:include schemaLocation="PORX_MT020030CA.xsd"/>
+   <xs:element name="PORX_IN020220CA">
+      <xs:complexType>
+         <xs:complexContent>
+            <xs:extension base="PORX_IN020220CA.MCCI_MT000100CA.Message">
+               <xs:attribute name="ITSVersion" type="xs:string" use="required" fixed="XML_1.0"/>
+            </xs:extension>
+         </xs:complexContent>
+      </xs:complexType>
+   </xs:element>
+   <xs:complexType name="PORX_IN020220CA.MCCI_MT000100CA.Message">
+      <xs:annotation>
+         <xs:appinfo>
+            <mif:class name="Message" isAbstract="false">
+               <mif:businessName name="HL7 Message"/>
+               <mif:derivationSupplier staticModelDerivationId="1" className="Message"/>
+               <mif:graphicRepresentation presentation="HL7">
+                  <mif:graphElement shapeId="Sheet.23" containerDiagramName="Main" shapeTemplate="OtherClass"
+                                    isWidthAutoSize="true"
+                                    isHeightAutoSize="true">
+                     <mif:position x="0.010" y="1.281"/>
+                     <mif:size width="3.417" height="1.989"/>
+                  </mif:graphElement>
+               </mif:graphicRepresentation>
+               <mif:annotations>
+                  <mif:definition>
+                     <mif:text>
+                        <mif:p>The root class of all messages.</mif:p>
+                     </mif:text>
+                  </mif:definition>
+                  <mif:rationale>
+                     <mif:text>
+                        <mif:p>Conveys information about the interaction and how it is to be processed</mif:p>
+                     </mif:text>
+                  </mif:rationale>
+               </mif:annotations>
+            </mif:class>
+         </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:group ref="InfrastructureRootElements"/>
+         <xs:element name="id" type="II" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:attribute name="id" sortKey="1" minimumMultiplicity="1" maximumMultiplicity="1"
+                                 conformance="R"
+                                 isMandatory="true"
+                                 isStructural="false">
+                     <mif:businessName name="A:Message Identifier"/>
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text>
+                              <mif:p>A unique identifier for the message.</mif:p>
+                           </mif:text>
+                        </mif:definition>
+                        <mif:rationale>
+                           <mif:text>
+                              <mif:p>Allows detection of duplicate messages, and allows tying acknowledgments to the message they are acknowledging. The attribute is therefore mandatory.</mif:p>
+                           </mif:text>
+                        </mif:rationale>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Message" attributeName="id"/>
+                     <mif:type name="II"/>
+                  </mif:attribute>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="creationTime" type="TS" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:attribute name="creationTime" sortKey="2" minimumMultiplicity="1" maximumMultiplicity="1"
+                                 conformance="R"
+                                 isMandatory="true"
+                                 isStructural="false">
+                     <mif:businessName name="G:Message Timestamp"/>
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text>
+                              <mif:p>Indicates the time this particular message instance was constructed.</mif:p>
+                           </mif:text>
+                        </mif:definition>
+                        <mif:rationale>
+                           <mif:text>
+                              <mif:p>Allows identification of how current the information in a message is. Also provides a baseline for identifying the time-zone of other times within the message. As a result, the attribute is mandatory.</mif:p>
+                           </mif:text>
+                        </mif:rationale>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Message" attributeName="creationTime"/>
+                     <mif:type name="TS.FULLDATETIME"/>
+                  </mif:attribute>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="securityText" type="ST" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:attribute name="securityText" sortKey="3" minimumMultiplicity="0" maximumMultiplicity="1"
+                                 isMandatory="false"
+                                 maximumLength="2000"
+                                 isStructural="false">
+                     <mif:businessName name="H:Security Token"/>
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text>
+                              <mif:p>A locally-defined field used to maintain a session, identify a user, and/or perform some other function related to authenticating the message source.</mif:p>
+                           </mif:text>
+                        </mif:definition>
+                        <mif:rationale>
+                           <mif:text>
+                              <mif:p>Allows jurisdictions and applications to communicate authentication and session information. The attribute is optional because not all jurisdictions will require this capability.</mif:p>
+                           </mif:text>
+                        </mif:rationale>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Message" attributeName="securityText"/>
+                     <mif:type name="ST"/>
+                  </mif:attribute>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="versionCode" type="CS" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:attribute name="versionCode" sortKey="4" minimumMultiplicity="1" maximumMultiplicity="1"
+                                 conformance="R"
+                                 isMandatory="true"
+                                 isStructural="false">
+                     <mif:businessName name="C: HL7 Standard Version"/>
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text>
+                              <mif:p>Indicates the version of the messaging standard being referenced.</mif:p>
+                           </mif:text>
+                        </mif:definition>
+                        <mif:rationale>
+                           <mif:text>
+                              <mif:p>Needed to know how to validate message definition, CMET definition, vocabulary and other information and is therefore mandatory.</mif:p>
+                           </mif:text>
+                        </mif:rationale>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Message" attributeName="versionCode"/>
+                     <mif:type name="CS"/>
+                     <mif:supplierDomainSpecification codingStrength="CNE" domainName="HL7StandardVersionCode"/>
+                  </mif:attribute>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="interactionId" type="II" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:attribute name="interactionId" sortKey="5" minimumMultiplicity="1"
+                                 maximumMultiplicity="1"
+                                 conformance="R"
+                                 isMandatory="true"
+                                 isStructural="false">
+                     <mif:businessName name="B:Interaction Type"/>
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text>
+                              <mif:p>Indicates the interaction conveyed by this message.</mif:p>
+                           </mif:text>
+                        </mif:definition>
+                        <mif:rationale>
+                           <mif:text>
+                              <mif:p>Identifies what the receiving application should do, and how the message should be validated. The attribute is therefore mandatory.</mif:p>
+                           </mif:text>
+                        </mif:rationale>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Message" attributeName="interactionId"/>
+                     <mif:type name="II"/>
+                  </mif:attribute>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="profileId" type="II" minOccurs="0" maxOccurs="10">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:attribute name="profileId" sortKey="6" minimumMultiplicity="0" maximumMultiplicity="10"
+                                 conformance="R"
+                                 isMandatory="false"
+                                 isStructural="false">
+                     <mif:businessName name="F:Conformance Profile Identifiers"/>
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text>
+                              <mif:p>Identifies the conformance profile(s) this message complies with.</mif:p>
+                           </mif:text>
+                        </mif:definition>
+                        <mif:rationale>
+                           <mif:text>
+                              <mif:p>Indicates any additional validation that may be appropriate. Also influences what extensions can be processed.</mif:p>
+                           </mif:text>
+                        </mif:rationale>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Message" attributeName="profileId"/>
+                     <mif:type name="SET">
+                        <mif:supplierBindingArgumentDatatype name="II"/>
+                     </mif:type>
+                  </mif:attribute>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="processingCode" type="CS" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:attribute name="processingCode" sortKey="7" minimumMultiplicity="1"
+                                 maximumMultiplicity="1"
+                                 conformance="R"
+                                 isMandatory="true"
+                                 isStructural="false">
+                     <mif:businessName name="D:Processing Code"/>
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text>
+                              <mif:p>Indicates whether this message is intended to be processed as production, test or debug message.</mif:p>
+                           </mif:text>
+                        </mif:definition>
+                        <mif:rationale>
+                           <mif:text>
+                              <mif:p>Indicates how the message should be handled and is therefore mandatory.</mif:p>
+                           </mif:text>
+                        </mif:rationale>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Message" attributeName="processingCode"/>
+                     <mif:type name="CS"/>
+                     <mif:supplierDomainSpecification codingStrength="CNE" domainName="ProcessingID"/>
+                  </mif:attribute>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="processingModeCode" type="CS" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:attribute name="processingModeCode" sortKey="8" minimumMultiplicity="1"
+                                 maximumMultiplicity="1"
+                                 conformance="R"
+                                 isMandatory="true"
+                                 fixedValue="T"
+                                 isStructural="false">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Message"
+                                             attributeName="processingModeCode"/>
+                     <mif:type name="CS"/>
+                     <mif:supplierDomainSpecification codingStrength="CNE" domainName="ProcessingMode" mnemonic="T"/>
+                  </mif:attribute>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="acceptAckCode" type="CS" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:attribute name="acceptAckCode" sortKey="9" minimumMultiplicity="1"
+                                 maximumMultiplicity="1"
+                                 conformance="R"
+                                 isMandatory="true"
+                                 isStructural="false">
+                     <mif:businessName name="E:Desired Acknowledgment Type"/>
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text>
+                              <mif:p>Indicates how the message is expected to be acknowledged.</mif:p>
+                           </mif:text>
+                        </mif:definition>
+                        <mif:rationale>
+                           <mif:text>
+                              <mif:p>Provides support for immediate, deferred and polling mode and distinguishes which mode is desired. The attribute is therefore mandatory.</mif:p>
+                           </mif:text>
+                        </mif:rationale>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Message" attributeName="acceptAckCode"/>
+                     <mif:type name="CS"/>
+                     <mif:supplierDomainSpecification codingStrength="CNE" domainName="AcknowledgementCondition"/>
+                  </mif:attribute>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="receiver" type="MCCI_MT000100CA.Receiver" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:targetConnection name="receiver" minimumMultiplicity="1" maximumMultiplicity="1" conformance="R"
+                                        isMandatory="true"
+                                        sortKey="AZ">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Transmission"
+                                             associationEndName="communicationFunction"/>
+                     <mif:participantClass>
+                        <mif:reference name="Receiver"/>
+                     </mif:participantClass>
+                  </mif:targetConnection>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="respondTo" type="MCCI_MT000100CA.RespondTo" nillable="true" minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:targetConnection name="respondTo" minimumMultiplicity="0" maximumMultiplicity="1"
+                                        isMandatory="false"
+                                        sortKey="AZ">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Transmission"
+                                             associationEndName="communicationFunction"/>
+                     <mif:participantClass>
+                        <mif:reference name="RespondTo"/>
+                     </mif:participantClass>
+                  </mif:targetConnection>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="sender" type="MCCI_MT000100CA.Sender" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:targetConnection name="sender" minimumMultiplicity="1" maximumMultiplicity="1" conformance="R"
+                                        isMandatory="true"
+                                        sortKey="AZ">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Transmission"
+                                             associationEndName="communicationFunction"/>
+                     <mif:participantClass>
+                        <mif:reference name="Sender"/>
+                     </mif:participantClass>
+                  </mif:targetConnection>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="attentionLine" type="MCCI_MT000100CA.AttentionLine" nillable="true"
+                     minOccurs="0"
+                     maxOccurs="5">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:targetConnection name="attentionLine" minimumMultiplicity="0" maximumMultiplicity="5"
+                                        isMandatory="false"
+                                        sortKey="BZ">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Transmission"
+                                             associationEndName="attentionLine"/>
+                     <mif:participantClass>
+                        <mif:reference name="AttentionLine"/>
+                     </mif:participantClass>
+                  </mif:targetConnection>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="controlActEvent" type="PORX_IN020220CA.MCAI_MT700210CA.ControlActEvent"
+                     nillable="true"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:targetConnection name="controlActProcess" minimumMultiplicity="0" maximumMultiplicity="1"
+                                        conformance="R"
+                                        isMandatory="false"
+                                        sortKey="Z">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Message" associationEndName="controlAct"/>
+                     <mif:participantClass>
+                        <mif:reference name="ControlActProcess"/>
+                     </mif:participantClass>
+                  </mif:targetConnection>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="InfrastructureRootAttributes"/>
+   </xs:complexType>
+   <xs:complexType name="PORX_IN020220CA.MCAI_MT700210CA.ControlActEvent">
+      <xs:annotation>
+         <xs:appinfo>
+            <mif:class name="ControlActEvent" isAbstract="false">
+               <mif:businessName name="Trigger Event"/>
+               <mif:derivationSupplier staticModelDerivationId="1" className="ControlAct"/>
+               <mif:graphicRepresentation presentation="HL7">
+                  <mif:graphElement shapeId="Sheet.168" containerDiagramName="Main" shapeTemplate="Act"
+                                    isWidthAutoSize="true"
+                                    isHeightAutoSize="false">
+                     <mif:position x="4.364" y="0.010"/>
+                     <mif:size width="3.492" height="6.524"/>
+                  </mif:graphElement>
+               </mif:graphicRepresentation>
+               <mif:annotations>
+                  <mif:definition>
+                     <mif:text>
+                        <mif:p>Identifies the action that resulted in this message being sent.</mif:p>
+                     </mif:text>
+                  </mif:definition>
+                  <mif:usageNotes>
+                     <mif:text>
+                        <mif:p>There may be constraints on the</mif:p>
+                        <mif:p>usage of the effectiveTime and reasonCode attributes in the definition of the interaction or the trigger events which are conveyed with this wrapper.</mif:p>
+                     </mif:text>
+                  </mif:usageNotes>
+                  <mif:rationale>
+                     <mif:text>
+                        <mif:p>Key to understanding what action a message represents.</mif:p>
+                     </mif:text>
+                  </mif:rationale>
+               </mif:annotations>
+            </mif:class>
+         </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:group ref="InfrastructureRootElements"/>
+         <xs:element name="id" type="II" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:attribute name="id" sortKey="3" minimumMultiplicity="1" maximumMultiplicity="1"
+                                 conformance="R"
+                                 isMandatory="true"
+                                 isStructural="false">
+                     <mif:businessName name="B:Event Identifier"/>
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text>
+                              <mif:p>A unique identifier for this particular event assigned by the system in which the event occurred.</mif:p>
+                           </mif:text>
+                        </mif:definition>
+                        <mif:rationale>
+                           <mif:text>
+                              <mif:p>Allows the event to be referenced (for undos) and also indicates whether multiple interactions were caused by the same triggering event. The attribute is therefore mandatory.</mif:p>
+                           </mif:text>
+                        </mif:rationale>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="ControlAct" attributeName="id"/>
+                     <mif:type name="II"/>
+                  </mif:attribute>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="code" type="CV" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:attribute name="code" sortKey="4" minimumMultiplicity="1" maximumMultiplicity="1"
+                                 conformance="R"
+                                 isMandatory="true"
+                                 isStructural="false">
+                     <mif:businessName name="A:Event Type"/>
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text>
+                              <mif:p>Identifies the trigger event that occurred.</mif:p>
+                           </mif:text>
+                        </mif:definition>
+                        <mif:rationale>
+                           <mif:text>
+                              <mif:p>This is mandatory because it is essential to understanding the meaning of the event.</mif:p>
+                           </mif:text>
+                        </mif:rationale>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="ControlAct" attributeName="code"/>
+                     <mif:type name="CV"/>
+                     <mif:supplierDomainSpecification codingStrength="CNE" domainName="HL7TriggerEventCode"/>
+                  </mif:attribute>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="statusCode" type="CS" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:attribute name="statusCode" sortKey="5" minimumMultiplicity="1" maximumMultiplicity="1"
+                                 conformance="R"
+                                 isMandatory="true"
+                                 fixedValue="completed"
+                                 isStructural="false">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="ControlAct" attributeName="statusCode"/>
+                     <mif:type name="CS"/>
+                     <mif:supplierDomainSpecification codingStrength="CNE" domainName="ActStatus" mnemonic="completed"/>
+                  </mif:attribute>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="effectiveTime" type="IVL_TS" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:attribute name="effectiveTime" sortKey="6" minimumMultiplicity="0"
+                                 maximumMultiplicity="1"
+                                 conformance="R"
+                                 isMandatory="false"
+                                 isStructural="false">
+                     <mif:businessName name="C:Event Effective Period"/>
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text>
+                              <mif:p>Indicates the time the change should begin (and occasionally when it should end). If not specified, assumption is that the event occurred at the same time the message was constructed.</mif:p>
+                           </mif:text>
+                        </mif:definition>
+                        <mif:rationale>
+                           <mif:text>
+                              <mif:p>The time a change becomes effective may differ from the time the event is recorded. (I.e. it may be in the future or the past). For changes such as 'suspend', an intended end date may also be indicated.</mif:p>
+                           </mif:text>
+                        </mif:rationale>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="ControlAct"
+                                             attributeName="effectiveTime"/>
+                     <mif:type name="IVL">
+                        <mif:supplierBindingArgumentDatatype name="TS.FULLDATE"/>
+                     </mif:type>
+                  </mif:attribute>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="reasonCode" type="CV" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:attribute name="reasonCode" sortKey="7" minimumMultiplicity="0" maximumMultiplicity="1"
+                                 conformance="R"
+                                 isMandatory="false"
+                                 isStructural="false">
+                     <mif:businessName name="E:Event Reason"/>
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text>
+                              <mif:p>Identifies why this specific query, modification request, or modification occurred.</mif:p>
+                           </mif:text>
+                        </mif:definition>
+                        <mif:rationale>
+                           <mif:text>
+                              <mif:p>Allows identifying a reason for a specific action, such as 'reason for hold'. Also allows identifying reason for accessing information for a query.</mif:p>
+                           </mif:text>
+                        </mif:rationale>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="ControlAct" attributeName="reasonCode"/>
+                     <mif:type name="CV"/>
+                     <mif:supplierDomainSpecification codingStrength="CNE" domainName="ControlActReason"/>
+                  </mif:attribute>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="responsibleParty" type="MCAI_MT700210CA.ResponsibleParty" nillable="true"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:targetConnection name="responsibleParty" minimumMultiplicity="0" maximumMultiplicity="1"
+                                        conformance="R"
+                                        isMandatory="false"
+                                        sortKey="AC________">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Act" associationEndName="participation"/>
+                     <mif:participantClass>
+                        <mif:reference name="ResponsibleParty"/>
+                     </mif:participantClass>
+                  </mif:targetConnection>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="author" type="MCAI_MT700210CA.Author" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:targetConnection name="author" minimumMultiplicity="1" maximumMultiplicity="1" conformance="R"
+                                        isMandatory="true"
+                                        sortKey="AEA_______">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Act" associationEndName="participation"/>
+                     <mif:participantClass>
+                        <mif:reference name="Author"/>
+                     </mif:participantClass>
+                  </mif:targetConnection>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="dataEnterer" type="MCAI_MT700210CA.DataEnterer" nillable="true"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:targetConnection name="dataEnterer" minimumMultiplicity="0" maximumMultiplicity="1"
+                                        conformance="R"
+                                        isMandatory="false"
+                                        sortKey="AEBB______">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Act" associationEndName="participation"/>
+                     <mif:participantClass>
+                        <mif:reference name="DataEnterer"/>
+                     </mif:participantClass>
+                  </mif:targetConnection>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="location" type="MCAI_MT700210CA.Location" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:targetConnection name="location" minimumMultiplicity="1" maximumMultiplicity="1" conformance="R"
+                                        isMandatory="true"
+                                        sortKey="AJ________">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Act" associationEndName="participation"/>
+                     <mif:participantClass>
+                        <mif:reference name="Location"/>
+                     </mif:participantClass>
+                  </mif:targetConnection>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="dataEntryLocation" type="MCAI_MT700210CA.DataEntryLocation"
+                     nillable="true"
+                     minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:targetConnection name="dataEntryLocation" minimumMultiplicity="0" maximumMultiplicity="1"
+                                        conformance="R"
+                                        isMandatory="false"
+                                        sortKey="AJD_______">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Act" associationEndName="participation"/>
+                     <mif:participantClass>
+                        <mif:reference name="DataEntryLocation"/>
+                     </mif:participantClass>
+                  </mif:targetConnection>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="subject" type="PORX_IN020220CA.MCAI_MT700210CA.Subject2" minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:targetConnection name="subject" minimumMultiplicity="1" maximumMultiplicity="1" conformance="R"
+                                        isMandatory="true"
+                                        sortKey="BDB_______">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Act"
+                                             associationEndName="outboundRelationship"/>
+                     <mif:participantClass>
+                        <mif:reference name="Subject2"/>
+                     </mif:participantClass>
+                  </mif:targetConnection>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="subjectOf1" type="MCAI_MT700210CA.Subject" nillable="true" minOccurs="0"
+                     maxOccurs="50">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:targetConnection name="subjectOf1" minimumMultiplicity="0" maximumMultiplicity="50"
+                                        conformance="R"
+                                        isMandatory="false"
+                                        sortKey="CDB_______">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Act"
+                                             associationEndName="inboundRelationship"/>
+                     <mif:participantClass>
+                        <mif:reference name="Subject"/>
+                     </mif:participantClass>
+                  </mif:targetConnection>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+         <xs:element name="subjectOf2" type="MCAI_MT700210CA.Subject3" nillable="true" minOccurs="0"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:targetConnection name="subjectOf2" minimumMultiplicity="0" maximumMultiplicity="1"
+                                        conformance="R"
+                                        isMandatory="false"
+                                        sortKey="CDB_______">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="Act"
+                                             associationEndName="inboundRelationship"/>
+                     <mif:participantClass>
+                        <mif:reference name="Subject3"/>
+                     </mif:participantClass>
+                  </mif:targetConnection>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="InfrastructureRootAttributes"/>
+      <xs:attribute name="classCode" type="ActClass" use="optional" fixed="CACT"/>
+      <xs:attribute name="moodCode" type="ActMood" use="optional" fixed="EVN"/>
+   </xs:complexType>
+   <xs:complexType name="PORX_IN020220CA.MCAI_MT700210CA.Subject2">
+      <xs:annotation>
+         <xs:appinfo>
+            <mif:class name="Subject2" isAbstract="false">
+               <mif:businessName name="f:refers to"/>
+               <mif:derivationSupplier staticModelDerivationId="1" className="ActRelationship"/>
+               <mif:graphicRepresentation presentation="HL7">
+                  <mif:graphElement shapeId="Sheet.126" containerDiagramName="Main" shapeTemplate="ActRelationship"
+                                    textWrappingWidth="66.0"
+                                    nodeOrientation="Right">
+                     <mif:position x="7.856" y="4.004"/>
+                     <mif:size width="2.417" height="0.703"/>
+                  </mif:graphElement>
+               </mif:graphicRepresentation>
+               <mif:annotations>
+                  <mif:definition>
+                     <mif:text>
+                        <mif:p>Indicates the item(s) being acted upon by this trigger event.</mif:p>
+                     </mif:text>
+                  </mif:definition>
+                  <mif:usageNotes>
+                     <mif:text>
+                        <mif:p>If there are multiple subject items, the changes to all of them must be either accepted or rejected as a single action. I.e. One trigger event = 1 unit of work.</mif:p>
+                     </mif:text>
+                  </mif:usageNotes>
+                  <mif:rationale>
+                     <mif:text>
+                        <mif:p>Provides information about the thing being created or modified.</mif:p>
+                     </mif:text>
+                  </mif:rationale>
+               </mif:annotations>
+            </mif:class>
+         </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+         <xs:group ref="InfrastructureRootElements"/>
+         <xs:element name="supplyEvent" type="PORX_MT020030CA.SupplyEvent" minOccurs="1"
+                     maxOccurs="1">
+            <xs:annotation>
+               <xs:appinfo>
+                  <mif:targetConnection name="act" minimumMultiplicity="1" maximumMultiplicity="1" conformance="R"
+                                        isMandatory="true"
+                                        sortKey="BZ">
+                     <mif:annotations>
+                        <mif:definition>
+                           <mif:text/>
+                        </mif:definition>
+                     </mif:annotations>
+                     <mif:derivationSupplier staticModelDerivationId="1" className="ActRelationship"
+                                             associationEndName="target"/>
+                     <mif:participantClass>
+                        <mif:reference name="Act"/>
+                     </mif:participantClass>
+                  </mif:targetConnection>
+               </xs:appinfo>
+            </xs:annotation>
+         </xs:element>
+      </xs:sequence>
+      <xs:attributeGroup ref="InfrastructureRootAttributes"/>
+      <xs:attribute name="typeCode" type="ActRelationshipType" use="optional" fixed="SUBJ"/>
+      <xs:attribute name="contextControlCode" type="ContextControl" use="optional" fixed="ON"/>
+      <xs:attribute name="contextConductionInd" type="bl" use="required"/>
+   </xs:complexType>
+</xs:schema>

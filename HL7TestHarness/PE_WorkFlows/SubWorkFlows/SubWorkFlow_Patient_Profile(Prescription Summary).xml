@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--  
+    Copyright © 1996-2006 by DeltaWare Systems Inc. 
+
+    The GNU General Public License (GPL)
+    This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the 
+    Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 
+    59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+
+<workflows testDataFile="TestData.xml">
+    <workflow id="w_TESTNAME" description="Provider Retrives Patients Prescription Summary">
+        <message description="Provider Retrives Patients Prescription Summary" group-non-sequential="PatientProfile" root-element-name="PORX_IN060290CA">
+            <request description="Prescription Summary Query Request">
+                <Simulator RemoteServerAddr="http://DIS_Server/">
+                    <construction>
+                        <rule type="transform" description="Prescription Summary Query Request Message" filename="..\WorkFlow_Lib\PatientProfiles\MedicalPrescriptionProfileSummaryQueryRequest.xsl">
+                            <paramList name="QueryList">
+                                <param name="profile-description"/>
+                                <param name="profile-sequence"/>
+                                <param name="patient-description"/>
+                                <param name="msg-effective-time"/>
+                                <param name="author-description"/>
+                                <param name="supervisor-description"/>
+                                <param name="location-description"/>
+                                <param name="ParticipationMode"/>
+                                <param name="author-time"/>
+                                <param name="query-id"/>
+                                
+                                <param name="administrationEffectiveStartDate"/>
+                                <param name="administrationEffectiveEndDate"/>
+                                <param name="eventEffectiveStartDate"/>
+                                <param name="eventEffectiveEndDate"/>
+                                <param name="mostRecentDrug"/>
+                                <param name="issueFilterCode"/>
+                                <param name="dispenseIndicator"/>                                
+                                
+                            </paramList>
+                        </rule>
+                        <!--<rule type="putVariable" description="Prescription Record ID" name="QueryRecordID" xpath="descendant-or-self::ns:parameterList/ns:prescriptionOrderNumber/ns:value/@extension" ns="urn:hl7-org:v3"/>-->
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\PORX_IN060290CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Format Validate">
+                        <rule type="transform" description="Transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="QueryByParameter format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_queryByParameter_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Request Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList name="QueryList">
+                                <param name="profile-description"/>
+                                <param name="profile-sequence"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </messageProxy>
+            </request>
+            <response description="Prescription Summary Query Response ">
+                <Simulator RemoteServerAddr="">
+                    <construction>
+                        <rule type="transform" description="Prescription Summary Query Response Message" filename="..\WorkFlow_Lib\PatientProfiles\MedicalPrescriptionProfileSummaryQueryResponse.xsl">
+                            <paramList name="QueryList">
+                                <param name="profile-description"/>
+                                <param name="profile-sequence"/>
+                                <param name="query-id"/>
+                                <param name="query-status"/>
+                                <param name="IssueList-description"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate" root-element-name="PORX_IN060300CA">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\PORX_IN060300CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="System Error Response Check" root-element-name="MCCI_IN000002UV01">
+                        <rule type="transform" description="Issue Content Validation" filename="..\WorkFlow_Lib\Common\validation\SystemError_Text.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt">
+                            <paramList name="QueryList">
+                                <param name="SystemErrorsExpected"/>
+                                <param name="SystemErrorText"/>
+                            </paramList>
+                        </rule>
+                    </validation>
+                    <validation description="Validate Format">
+                        <rule type="transform" description="Transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CeRx_transmission_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="CeRx control wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CeRx_controlAct_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Prescription Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\Prescription_Payload_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Response Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\AcceptOrReject_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt">
+                            <paramList name="QueryList">
+                                <param name="ResponseType"/>
+                            </paramList>
+                        </rule>
+                        <rule type="transform" description="Record Count validation" filename="..\WorkFlow_Lib\Common\Validation\Query_Response_Count_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt">
+                            <paramList name="QueryList">
+                                <param name="minCount"/>
+                                <param name="maxCount"/>
+                            </paramList>
+                        </rule>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Request Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList name="QueryList">
+                                <param name="profile-description"/>
+                                <param name="profile-sequence"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </messageProxy>
+            </response>
+        </message>
+    </workflow>
+</workflows>

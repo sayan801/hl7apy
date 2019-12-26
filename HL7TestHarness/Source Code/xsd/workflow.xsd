@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Module Header
+
+  $Header: /cvsroot/hl7-testharness/Source\040Code/xsd/workflow.xsd,v 1.1.1.1 2006/11/24 18:16:50 deltaware Exp $
+
+  Copyright © 1996-2006 by DeltaWare Systems Inc. 
+
+  Company:          DeltaWare Systems Inc.
+                    90 University Avenue, Suite 300
+                    Charlottetown
+                    Prince Edward Island
+                    C1A 4K9
+                    Phone   (902) 368-8122
+                    FAX     (902) 628-4660
+                    E-Mail  dsi@deltaware.com
+
+  Development:      DeltaWare Systems Inc.
+                    90 University Avenue, Suite 300
+                    Charlottetown
+                    Prince Edward Island
+                    C1A 4K9
+                    Phone   (902) 368-8122
+                    FAX     (902) 628-4660
+                    E-Mail  dsi@deltaware.com
+
+The GNU General Public License (GPL)
+
+This program is free software; you can redistribute it and/or modify it 
+under the terms of the GNU General Public License as published by the 
+Free Software Foundation; either version 2 of the License, or (at your
+option) any later version.
+This program is distributed in the hope that it will be useful, but 
+WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc., 
+59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+  Project:          HL7 Test Harness
+  Programmer:       Matthew Wicks
+  Created:          March 17, 2006
+
+  History:
+  Action      Who     Date            Comments
+  <<Action>>  xxx     yyyy-mm-dd      <<Comments here>>
+
+
+  Application notes:
+  <<Place notes on usages, known problems, etc>>
+
+  $Log: workflow.xsd,v $
+  Revision 1.1.1.1  2006/11/24 18:16:50  deltaware
+  Init check in of HL7 Test Harness, version 2.0.3.9. For releases before this version please contact deltaware systems.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <!-- SUBMISSIONS are used when converting CPHA to NeCST messages, this is not part of the normal workflow file -->
+  <xs:element name="SUBMISSIONS">
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:any processContents="skip" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="workflows">
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="document" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="workflow" type="workflow" maxOccurs="unbounded" minOccurs="0" />
+        <xs:element name="reference" type="reference" maxOccurs="unbounded" minOccurs="0" />
+      </xs:choice>
+      <xs:attribute name="testDataFile" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="workflow">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="document" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="message" type="message" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="reference" type="reference" maxOccurs="unbounded" minOccurs="0" />
+    </xs:choice>
+    <xs:attribute name="description" use="required" />
+    <xs:attribute name="id" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="reference">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="paramList" type="paramList" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="validationList" type="validationList" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="IgnoreRuleResultList" type="IgnoreRuleResultList" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="replace" type="replace" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="attribute" type="attribute" minOccurs="0" maxOccurs="unbounded" />
+    </xs:choice>
+    <xs:attribute name="filename" use="required" />
+  </xs:complexType>
+  <xs:complexType name="paramList">
+    <xs:sequence>
+      <xs:element name="param" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="name" use="required" />
+          <xs:attribute name="value" use="required" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="name" />
+  </xs:complexType>
+  <xs:complexType name="validationList">
+    <xs:sequence>
+      <xs:element name="validation" type="validation" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IgnoreRuleResultList">
+    <xs:sequence>
+      <xs:element name="rule" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="name" />
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="replace">
+    <xs:attribute name="from" use="required" />
+    <xs:attribute name="to" use="required" />
+  </xs:complexType>
+  <xs:complexType name="attribute">
+    <xs:attribute name="xpath" use="required" />
+    <xs:attribute name="name" use="required" />
+    <xs:attribute name="value" use="required" />
+    <xs:attribute name="force" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="message">
+    <xs:sequence>
+      <xs:element name="request" type="request" minOccurs="1" maxOccurs="1" />
+      <xs:element name="response" type="response" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="description" use="required" />
+    <xs:attribute name="root-element-name" use="optional" />
+    <xs:attribute name="group-non-sequential" use="optional" />
+    <xs:attribute name="globally-non-sequential" use="optional" type="xs:boolean" />
+    <xs:attribute name="optional" use="optional" type="xs:boolean" />
+    <xs:attribute name="repeatable" use="optional" type="xs:boolean" />
+  </xs:complexType>
+  <xs:complexType name="request">
+    <xs:sequence>
+      <xs:element name="Simulator" type="Simulator" minOccurs="0" maxOccurs="1" />
+      <xs:element name="messageProxy" type="messageProxy" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="description" use="required" />
+    <xs:attribute name="simulator" />
+  </xs:complexType>
+  <xs:complexType name="response">
+    <xs:sequence>
+      <xs:element name="Simulator" type="Simulator" minOccurs="0" maxOccurs="1" />
+      <xs:element name="messageProxy" type="messageProxy" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="description" use="required" />
+  </xs:complexType>
+  <xs:complexType name="Simulator">
+    <xs:sequence>
+      <xs:element name="construction" type="construction" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="RemoteServerAddr" use="required" type="xs:anyURI" />
+  </xs:complexType>
+  <xs:complexType name="messageProxy">
+    <xs:sequence>
+      <xs:element name="validation" type="validation" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="construction" type="construction" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validation">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="unbounded" name="rule" type="validation-rule" />
+    </xs:sequence>
+    <xs:attribute name="description" use="required" />
+    <xs:attribute name="root-element-name" use="optional" />
+    <xs:attribute name="msg-description" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="construction">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="unbounded" name="rule" type="construction-rule" />
+    </xs:sequence>
+    <xs:attribute name="description" />
+    <xs:attribute name="soapactionheader" />
+  </xs:complexType>
+  <xs:complexType name="construction-rule">
+    <xs:sequence>
+      <xs:element name="paramList" type="paramList" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="description" use="required" />
+    <xs:attribute name="filename" use="optional" />
+    <xs:attribute name="name" use="optional" />
+    <xs:attribute name="ns" use="optional" />
+    <xs:attribute name="xpath" use="optional" />
+    <xs:attribute name="type" use="required" type="construction-rule-type" />
+    <xs:attribute name="ignore" use="optional" type="xs:boolean" />
+  </xs:complexType>
+  <xs:simpleType name="construction-rule-type">
+    <xs:restriction base="xs:NCName">
+      <xs:pattern value="static|transform|putVariable|setVariable|testDataLoad" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="validation-rule">
+    <xs:sequence>
+      <xs:element name="paramList" type="paramList" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="description" use="required" />
+    <xs:attribute name="expectedfile" />
+    <xs:attribute name="filename" use="required" />
+    <xs:attribute name="type" use="required" type="validation-rule-type" />
+    <xs:attribute name="ignore" use="optional" type="xs:boolean" />
+  </xs:complexType>
+  <xs:simpleType name="validation-rule-type">
+    <xs:restriction base="xs:NCName">
+      <xs:pattern value="transform|schema" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

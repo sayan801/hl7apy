@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OIDs>
+    <DIN root="2.16.840.1.113883.5.1105" description="Canadian Drug Identification Number"/>
+    <ICD9CM root="2.16.840.1.113883.11.15931" description="ICD9CM diagnosis codes"/>
+    <AHFS root="2.16.840.1.113883.6.234"  description="American Hospital Formulary System (AHFS)"/>
+    <OPINION root="2.16.840.1.113883.5.1102"  description="Online Product Identification Number Index of Nova Scotia (OPINIONs)"/>
+    <AIC root="2.16.840.1.113883.5.1103"  description="Active Ingredient Code"/>
+    <AIGC root="2.16.840.1.113883.5.1104"  description="Active Ingredient Group (AIG) Code"/>
+    <NPN root="2.16.840.1.113883.5.1107"  description="Natural Product Number (NPN)"/>
+    <SNOMED root="2.16.840.1.113883.6.96" description="SNOMED Clinical Terms (CT)"/>
+    <AIGN root="2.16.840.1.113883.5.1106"  description="Active Ingredient Group (AIG) Number"/>
+    <ICD10CA root="2.16.840.1.113883.11.19436" description="ICD10CA - icd10 Canadian Codes - diagnosis codes and reaction codes"/>
+    <LOINC root="2.16.840.1.113883.6.1"  description="Logical Observation Identifiers Names and Codes (LOINC) - used for Allergy Tests, and Observation Type codes"/>
+    <ATC root="2.16.840.1.113883.6.73"  description="Anatomical Therapeutic Chemical (ATC) classification"/>
+    <ENCODEFM root="2.16.840.1.113883.5.1108"  description="Encode-FM"/>
+    <ACTCODE root="2.16.840.1.113883.5.4"  description="HL7 v3 ActCode - need this for allergies as allergy type can be either ActCode vocab or SNOMED - we support ActCode."/>
+    <ENTITYCODE root="2.16.840.1.113883.5.1060"  description="HL7v3 EntityCode - need this for allergies for expressing the allergen (NonDrugAgentEntity) as the alternative is SNOMED which we are not supporting."/>
+    <DIS_MESSAGE_ID root="2.16.124.9.101.1.1.1"  description="Unique DIS Message Identifier"/>
+    <DIS_ADJUDICATED_INVOICE_GROUP_ID root="3.16.124.9.101.1.1.2"  description="Adjudicated Invoice Group Identiifer"/>
+    <DIS_DISPENSE_ID root="2.16.124.9.101.1.1.3" description="DIS Assigned Dispense Identifier"/>
+    <DIS_PRESCRIPTION_ID root="2.16.124.9.101.1.1.4"  description="DIS Assigned Prescription Identifier"/>
+    <DIS_PATIENT_CONSENT_ID root="2.16.124.9.101.1.1.5"  description="Patient Consent Event Identifier"/>
+    <DIS_OBSERVATION_ID root="2.16.124.9.101.1.1.6"  description="Observation Identifier (e.g.  Height, weight.)"/>
+    <DIS_SPECIAL_AUTH_ID root="2.16.124.9.101.1.1.7"  description="Special Authorization Identifier"/>
+    <DIS_OTHER_ACTIVE_MED_ID root="2.16.124.9.101.1.1.8"  description="Other Active Medication Identifier"/>
+    <DIS_IMMUNIZATION_ID root="2.16.124.9.101.1.1.9"  description="Immunization Identifier"/>
+    <DIS_ALLERGY_ID root="2.16.124.9.101.1.1.10"  description="Allergy Identifier"/>
+    <DIS_MEDICAL_CONDITION_ID root="2.16.124.9.101.1.1.11"  description="Medical Condition Identifier"/>
+    <DIS_PATIENT_NOTE_ID root="2.16.124.9.101.1.1.12"  description="Patient Note Identifier"/>
+    <DIS_REACTION_ID root="2.16.124.9.101.1.1.13"  description="Reaction Identifier"/>
+    <DIS_MONOGRAPH_ID root="2.16.124.9.101.1.1.14"  description="FDB Drug Monograph Identifier"/>
+    <DIS_CONTROL_ACT_ID root="2.16.124.9.101.1.1.15"  description="DIS Control Act Id"/>
+    <DIS_MEDICATION_DOCUMENT_ID root="2.16.124.9.101.1.1.16"  description="FDB Document Identifier"/>
+    <PORTAL_MESSAGE_ID root="2.16.124.9.101.1.8.1"  description="Unique Portal Message Identifier"/>
+    <PORTAL_INVOICE_REQUEST_ID root="2.16.124.9.101.1.8.2"  description="Portal Payment Request Identifier"/>
+    <PORTAL_QUERY_ID root="2.16.124.9.101.1.8.3"  description="Portal Query Message Identifier"/>
+    <PORTAL_PARAMETER_LIST_ID root="2.16.124.9.101.1.8.4"  description="Portal Parameter List Identifier"/>
+    <PORTAL_CONTROL_ACT_ID root="2.16.124.9.101.1.8.5"  description="Portal Control Act Identifier"/>
+    <PORTAL_DISPENSE_ID root="2.16.124.9.101.1.8.6"  description="Portal Dispense Identifier"/>
+    <PE_PHN root="1.1" description="PEI PHN"/>
+    <NB_PHN root="1.2" description="New Brunswick PIN"/>
+    <NS_PHN root="1.3" description="Nova Scotia MSI"/>
+    <NF_PHN root="1.4" description="Newfoundland PIN"/>
+    <QB_PHN root="1.5" description="Quebec PIN"/>
+    <ON_PHN root="1.6" description="Ontario PIN"/>
+    <MB_PHN root="1.7"  description="Manitoba PHIN"/>
+    <SK_PHN root="1.8" description="Sask. PIN"/>
+    <AB_PHN root="1.9"  description="Alberta ULI"/>
+    <BC_PHN root="1.10" description="British Columbia PHN"/>
+    <NU_PHN root="1.11"  description="Nunavut Health Number"/>
+    <NT_PHN root="1.12"  description="North West Territory PIN"/>
+    <YT_PHN root="1.13"  description="Yukon PIN"/>
+    <DEPT_HEALTH_PHARMACY_ID root="1.14"  description="PEI Dept of Health Pharmacy Identifier"/>
+    <DEPT_HEALTH_BILLING_NUMBER root="1.15"  description="PEI Dept of Health Prescriber Billing Number Identifier"/>
+    <DEPT_HEALTH_PHARMACIST_ID root="1.16"  description="PEI Dept of Health Pharmacist Identification Number"/>
+    <DEPT_HEALTH_FACILITY_ID root="1.17" description="PEI Dept of Health Health Care Facility Identifier"/>
+    <PEI_MED_SOCIETY root="1.18"  description="PEI Medical Society License Number"/>
+    <PEI_PHARMACIST_BOARD_ID root="1.19"  description="Prince Edward Island Pharmacy Board Pharmacist License Number"/>
+    <DEPT_HEALTH root="2.16.124.9.101.1"  description="PEI Dept of Health"/>
+    <DIS_APPLICATION root="2.16.124.9.101.1.1"  description="PEI Dept of Health Drug Information System Application Identifier"/>
+    <DEPT_HEALTH_PROGRAM_ID root="2.16.124.9.101.1.2"  description="PEI Dept of Health Provincial Drug Program Identifier"/>
+    <PORTAL_APPLICATION root="2.16.124.9.101.1.8"  description="PEI Dept of Health Portal System Application Identifier"/>
+    <DIS_ALLERGY_TEST_ID root="1.1.1.1"  description="Allergy tests"/>
+    <DIS_INTERACTION_ID root="2.16.840.1.113883.1.6" />
+    <HIC root="1.1.1.2" description="HIC Canadian Drug Identification Number"/>
+    <DIS_PROF_SERVICE_ID root="2.16.124.9.101.1.1.18" description="Professional Service"/>
+</OIDs>

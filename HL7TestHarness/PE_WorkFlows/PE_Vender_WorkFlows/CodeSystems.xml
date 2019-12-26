@@ -1,0 +1,1929 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Data>
+    <codeSystems>
+        <codeProfService>
+            <code code="*" codeSystem="CCI"/>
+            <code code="PA"/>
+            <code code="MA"/>
+            <code code="MR"/>
+            <code code="PME"/>
+            <code code="PMM"/>
+            <code code="PTP"/>
+            <code code="SCC"/>
+            <code code="WDP"/>
+            <code code="SMC"/>
+            <code code="PDE"/>
+            <code code="RSCH"/>
+        </codeProfService>
+        <acceptAckCode>
+            <code code="ER"/>
+            <code code="NE"/>
+        </acceptAckCode>
+        <administrativeGenderCode>
+            <code code="M"/>
+            <code code="F"/>
+            <code code="UN"/>
+        </administrativeGenderCode>
+        <InteractionType>
+            <code code="DRUG"/>
+            <code code="IMMUNIZ"/>
+        </InteractionType>
+        <statusCode>
+            <code code="active"/>
+            <code code="completed"/>
+            <code code="normal"/>
+            <code code="aborted"/>
+            <code code="cancelled"/>
+            <code code="held"/>
+            <code code="new"/>
+            <code code="suspended"/>
+            <code code="nullified"/>
+            <code code="obsolete"/>
+        </statusCode>
+        <statusCodeCompleted>
+            <code code="completed"/>
+        </statusCodeCompleted>
+        <statusCodeActive>
+            <code code="active"/>
+        </statusCodeActive>
+        <statusCodeNullified>
+            <code code="nullified"/>
+        </statusCodeNullified>
+        <statusCodeMedicalCondition>
+            <code code="active"/>
+            <code code="completed"/>
+        </statusCodeMedicalCondition>
+        <statusCodePrescription>
+            <code code="new"/>
+            <code code="active"/>
+        </statusCodePrescription>
+        <statusCodeDrugDetails>
+            <code code="term"/>
+            <code code="active"/>
+        </statusCodeDrugDetails>
+        <NeCSTQueryAckStatusCode>
+            <code code="deliveredResponse"/>
+        </NeCSTQueryAckStatusCode>
+        <priorityCode>
+            <code code="I"/>
+            <code code="E"/>
+            <code code="W"/>
+        </priorityCode>
+        <ObservationIntoleranceType>
+            <code code="FALG" codeSystem="ACTCODE"/>
+            <code code="OINT" codeSystem="ACTCODE"/>
+            <code code="ALG" codeSystem="ACTCODE"/>
+            <code code="DALG" codeSystem="ACTCODE"/>
+            <code code="DINT" codeSystem="ACTCODE"/>
+            <code code="DALG" codeSystem="ACTCODE"/>
+            <code code="DNAINT" codeSystem="ACTCODE"/>
+            <code code="EINT" codeSystem="ACTCODE"/>
+            <code code="EALG" codeSystem="ACTCODE"/>
+            <code code="ENAINT" codeSystem="ACTCODE"/>
+            <code code="FINT" codeSystem="ACTCODE"/>
+            <code code="FNAINT" codeSystem="ACTCODE"/>
+            <code code="NAINT" codeSystem="ACTCODE"/>
+            <code code="DNAINT" codeSystem="ACTCODE"/>
+            <code code="ENAINT" codeSystem="ACTCODE"/>
+            <code code="FNAINT" codeSystem="ACTCODE"/>
+        </ObservationIntoleranceType>
+        <uncertaintyCode>
+            <code code="N"/>
+            <code code="U"/>
+        </uncertaintyCode>
+        <IntoleranceValue>
+            <!-- 
+                ClinicalDrug
+                NonDrugAgentEntity 
+            -->
+            <code code="*" codeSystem="HIC"/>
+            <code code="*" codeSystem="ACTCODE"/>
+            <code code="*" codeSystem="ENTITYCODE"/>
+            <code code="NDA01" codeSystem="ENTITYCODE"/>
+            <code code="NDA02" codeSystem="ENTITYCODE"/>
+            <code code="NDA03" codeSystem="ENTITYCODE"/>
+            <code code="NDA04" codeSystem="ENTITYCODE"/>
+            <code code="NDA05" codeSystem="ENTITYCODE"/>
+            <code code="NDA06" codeSystem="ENTITYCODE"/>
+            <code code="NDA07" codeSystem="ENTITYCODE"/>
+            <code code="NDA08" codeSystem="ENTITYCODE"/>
+            <code code="NDA09" codeSystem="ENTITYCODE"/>
+            <code code="NDA10" codeSystem="ENTITYCODE"/>
+            <code code="NDA11" codeSystem="ENTITYCODE"/>
+            <code code="NDA12" codeSystem="ENTITYCODE"/>
+            <code code="NDA13" codeSystem="ENTITYCODE"/>
+            <code code="NDA14" codeSystem="ENTITYCODE"/>
+            <code code="NDA15" codeSystem="ENTITYCODE"/>
+            <code code="NDA16" codeSystem="ENTITYCODE"/>
+            <code code="NDA17" codeSystem="ENTITYCODE"/>
+        </IntoleranceValue>
+        <PersonalRelationshipRoleType>
+            <code code="NBOR"/>
+            <code code="FRND"/>
+            <code code="SPS"/>
+            <code code="FAMMEMB"/>
+            <code code="IMED"/>
+            <code code="CHILD"/>
+            <code code="PRN"/>
+            <code code="SIB"/>
+            <code code="SIGOTHR"/>
+            <code code="DOMPART"/>
+            <code code="EXT"/>
+        </PersonalRelationshipRoleType>
+        <reactionValue>
+            <!-- TODO: add correct code set. -->
+            <code code="*" codeSystem="ICD10CA"/>
+            <!--       <code code="Severe reaction"/> -->
+        </reactionValue>
+        <severityObservation>
+            <code code="L"/>
+            <code code="M"/>
+            <code code="H"/>
+            <code code="UN"/>
+        </severityObservation>
+        <medication>
+            <code code="*" codeSystem="DIN"/>
+            <code code="*" codeSystem="GCN_SEQNO"/>
+            <code code="*" codeSystem="HIC"/>
+        </medication>
+        <dispense_medication>
+            <code code="*" codeSystem="DIN"/>
+        </dispense_medication>
+        <ExposureAgentEntityType>
+            <![CDATA[ test --> ]]>
+            <!-- allergy code -->
+            <code code="*" codeSystem="HIC"/>
+            <code code="*" codeSystem="DIN"/>
+            <code code="NDA01" codeSystem="ENTITYCODE"/>
+            <code code="NDA02" codeSystem="ENTITYCODE"/>
+            <code code="NDA03" codeSystem="ENTITYCODE"/>
+            <code code="NDA04" codeSystem="ENTITYCODE"/>
+            <code code="NDA05" codeSystem="ENTITYCODE"/>
+            <code code="NDA06" codeSystem="ENTITYCODE"/>
+            <code code="NDA07" codeSystem="ENTITYCODE"/>
+            <code code="NDA08" codeSystem="ENTITYCODE"/>
+            <code code="NDA09" codeSystem="ENTITYCODE"/>
+            <code code="NDA10" codeSystem="ENTITYCODE"/>
+            <code code="NDA11" codeSystem="ENTITYCODE"/>
+            <code code="NDA12" codeSystem="ENTITYCODE"/>
+            <code code="NDA13" codeSystem="ENTITYCODE"/>
+            <code code="NDA14" codeSystem="ENTITYCODE"/>
+            <code code="NDA15" codeSystem="ENTITYCODE"/>
+            <code code="NDA16" codeSystem="ENTITYCODE"/>
+            <code code="NDA17" codeSystem="ENTITYCODE"/>
+        </ExposureAgentEntityType>
+        <ObservationAllergyTestType>
+            <code code="*" codeSystem="LOINC"/>
+        </ObservationAllergyTestType>
+        <AllergyTestValue>
+            <code code="A0"/>
+            <code code="A1"/>
+            <code code="A2"/>
+            <code code="A3"/>
+            <code code="A4"/>
+        </AllergyTestValue>
+        <languageCode>
+            <code code="EN"/>
+            <code code="FR"/>
+            <code code="en"/>
+            <code code="fr"/>
+        </languageCode>
+        <ActDetectedIssueCode>
+            <code code="*" codeSystem="ACTCODE"/>
+            <code code="NAT" codeSystem="ACTCODE"/>
+            <code code="VALIDAT" codeSystem="ACTCODE"/>
+            <code code="KEY204" codeSystem="ACTCODE"/>
+            <code code="KEY205" codeSystem="ACTCODE"/>
+            <code code="Illegal" codeSystem="ACTCODE"/>
+            <code code="MISSMAND" codeSystem="ACTCODE"/>
+            <code code="MISSCOND" codeSystem="ACTCODE"/>
+            <code code="FORMAT" codeSystem="ACTCODE"/>
+            <code code="LEN_RANGE" codeSystem="ACTCODE"/>
+            <code code="LEN_SHORT" codeSystem="ACTCODE"/>
+            <code code="LEN_LONG" codeSystem="ACTCODE"/>
+            <code code="CODE_INVAL" codeSystem="ACTCODE"/>
+            <code code="CODE_DEPREC" codeSystem="ACTCODE"/>
+            <code code="NODUPS" codeSystem="ACTCODE"/>
+            <code code="REP_RANGE" codeSystem="ACTCODE"/>
+            <code code="MINOCCURS" codeSystem="ACTCODE"/>
+            <code code="MAXOCCURS" codeSystem="ACTCODE"/>
+            <code code="BUS" codeSystem="ACTCODE"/>
+            <code code="FOOD" codeSystem="ACTCODE"/>
+            <code code="TPROD" codeSystem="ACTCODE"/>
+            <code code="DRG" codeSystem="ACTCODE"/>
+            <code code="NHP" codeSystem="ACTCODE"/>
+            <code code="NONRX" codeSystem="ACTCODE"/>
+            <code code="OBSA" codeSystem="ACTCODE"/>
+            <code code="AGE" codeSystem="ACTCODE"/>
+            <code code="DOSEHINDA" codeSystem="ACTCODE"/>
+            <code code="DOSELINDA" codeSystem="ACTCODE"/>
+            <code code="COND" codeSystem="ACTCODE"/>
+            <code code="DOSEHINDSA" codeSystem="ACTCODE"/>
+            <code code="DOSELINDSA" codeSystem="ACTCODE"/>
+            <code code="DOSEHINDW" codeSystem="ACTCODE"/>
+            <code code="DOSELINDW" codeSystem="ACTCODE"/>
+            <code code="LACT" codeSystem="ACTCODE"/>
+            <code code="PREG" codeSystem="ACTCODE"/>
+            <code code="GEN" codeSystem="ACTCODE"/>
+            <code code="GEND" codeSystem="ACTCODE"/>
+            <code code="LAB" codeSystem="ACTCODE"/>
+            <code code="REACT" codeSystem="ACTCODE"/>
+            <code code="ALGY" codeSystem="ACTCODE"/>
+            <code code="INT" codeSystem="ACTCODE"/>
+            <code code="RREACT" codeSystem="ACTCODE"/>
+            <code code="RALG" codeSystem="ACTCODE"/>
+            <code code="RAR" codeSystem="ACTCODE"/>
+            <code code="RINT" codeSystem="ACTCODE"/>
+            <code code="CREACT" codeSystem="ACTCODE"/>
+            <code code="ENDLATE" codeSystem="ACTCODE"/>
+            <code code="STRTLATE" codeSystem="ACTCODE"/>
+            <code code="COMPLY" codeSystem="ACTCODE"/>
+            <code code="DUPTHPY" codeSystem="ACTCODE"/>
+            <code code="DUPTHPCLS" codeSystem="ACTCODE"/>
+            <code code="DUPTHPGEN" codeSystem="ACTCODE"/>
+            <code code="FRAUD" codeSystem="ACTCODE"/>
+            <code code="ABUSE" codeSystem="ACTCODE"/>
+            <code code="PLYDOC" codeSystem="ACTCODE"/>
+            <code code="PLYPHRM" codeSystem="ACTCODE"/>
+            <code code="DOSE" codeSystem="ACTCODE"/>
+            <code code="DOSEDUR" codeSystem="ACTCODE"/>
+            <code code="DOSEDURH" codeSystem="ACTCODE"/>
+            <code code="DOSEDURHIND" codeSystem="ACTCODE"/>
+            <code code="DOSEDURL" codeSystem="ACTCODE"/>
+            <code code="DOSEDURLIND" codeSystem="ACTCODE"/>
+            <code code="DOSEH" codeSystem="ACTCODE"/>
+            <code code="DOSEHIND" codeSystem="ACTCODE"/>
+            <code code="DOSEHINDA" codeSystem="ACTCODE"/>
+            <code code="DOSEHINDSA" codeSystem="ACTCODE"/>
+            <code code="DOSEHINDW" codeSystem="ACTCODE"/>
+            <code code="DOSEIVL" codeSystem="ACTCODE"/>
+            <code code="DOSEIVLIND" codeSystem="ACTCODE"/>
+            <code code="DOSEL" codeSystem="ACTCODE"/>
+            <code code="DOSELIND" codeSystem="ACTCODE"/>
+            <code code="DOSELINDA" codeSystem="ACTCODE"/>
+            <code code="DOSELINDSA" codeSystem="ACTCODE"/>
+            <code code="DOSELINDW" codeSystem="ACTCODE"/>
+            <code code="DOSECOND" codeSystem="ACTCODE"/>
+            <code code="TOOLATE" codeSystem="ACTCODE"/>
+            <code code="TOOSOON" codeSystem="ACTCODE"/>
+            <code code="PREVINEF" codeSystem="ACTCODE"/>
+            <code code="PATPREF" codeSystem="ACTCODE"/>
+            <code code="PATPREFALT" codeSystem="ACTCODE"/>
+            <code code="FULFIL" codeSystem="ACTCODE"/>
+            <code code="NOTACTN" codeSystem="ACTCODE"/>
+            <code code="NOTEQUIV" codeSystem="ACTCODE"/>
+            <code code="NOTEQUIVTHER" codeSystem="ACTCODE"/>
+            <code code="NOTEQUIVGEN" codeSystem="ACTCODE"/>
+            <code code="TIMING" codeSystem="ACTCODE"/>
+            <code code="MINFREQ" codeSystem="ACTCODE"/>
+            <code code="INTERVAL" codeSystem="ACTCODE"/>
+            <code code="ALLDONE" codeSystem="ACTCODE"/>
+            <code code="HELD" codeSystem="ACTCODE"/>
+        </ActDetectedIssueCode>
+        <CPHACodes>
+            <code code=""/>
+        </CPHACodes>
+        <ObservationIssueTriggerCodedObservationType>
+            <code code="FALG" codeSystem="ACTCODE"/>
+            <!-- ObservationIntoleranceType codes -->
+            <code code="OINT" codeSystem="ACTCODE"/>
+            <code code="ALG" codeSystem="ACTCODE"/>
+            <code code="DALG" codeSystem="ACTCODE"/>
+            <code code="DINT" codeSystem="ACTCODE"/>
+            <code code="DALG" codeSystem="ACTCODE"/>
+            <code code="DNAINT" codeSystem="ACTCODE"/>
+            <code code="EINT" codeSystem="ACTCODE"/>
+            <code code="EALG" codeSystem="ACTCODE"/>
+            <code code="ENAINT" codeSystem="ACTCODE"/>
+            <code code="FINT" codeSystem="ACTCODE"/>
+            <code code="FNAINT" codeSystem="ACTCODE"/>
+            <code code="NAINT" codeSystem="ACTCODE"/>
+            <code code="DNAINT" codeSystem="ACTCODE"/>
+            <code code="ENAINT" codeSystem="ACTCODE"/>
+            <code code="FNAINT" codeSystem="ACTCODE"/>
+            <!-- also need codes for "DX" and "ObservationOrderableLabType" -->
+        </ObservationIssueTriggerCodedObservationType>
+        <ObservationCodedEvent>
+            <code code="peanutbutter" codeSystem="ACTCODE"/>
+            <!-- TODO: find correct set of codes and codesystems. -->
+        </ObservationCodedEvent>
+
+        <ObservationMeasurableCode>
+            <code code="*" codeSystem="LOINC"/>
+            <!-- TODO: find correct set of codes and codesystems. -->
+        </ObservationMeasurableCode>
+        <ActDetectedIssueManagementCode>
+            <code code="EMAUTH"/>
+            <code code="1"/>
+            <code code="19"/>
+            <code code="2"/>
+            <code code="3"/>
+            <code code="4"/>
+            <code code="5"/>
+            <code code="6"/>
+            <code code="7"/>
+            <code code="14"/>
+            <code code="15"/>
+            <code code="16"/>
+            <code code="17"/>
+            <code code="18"/>
+            <code code="19"/>
+            <code code="20"/>
+            <code code="8"/>
+            <code code="10"/>
+            <code code="11"/>
+            <code code="12"/>
+            <code code="13"/>
+            <code code="9"/>
+        </ActDetectedIssueManagementCode>
+        <fulfillmentSubsetCode>
+            <code code="FUTSUM"/>
+        </fulfillmentSubsetCode>
+        <subjectReaction>
+            <code code="*" codeSystem="ICD10CA"/>
+            <!-- codesystem is all ICD10CA -->
+        </subjectReaction>
+        <causalityAssessmentCode>
+            <code code="RXNASSES"/>
+        </causalityAssessmentCode>
+        <causalityAssessmentValue>
+            <code code="RELATED"/>
+        </causalityAssessmentValue>
+        <otherMedicationCode>
+            <code code="DRUG"/>
+        </otherMedicationCode>
+        <dosageCode>
+            <code code="DRUG"/>
+        </dosageCode>
+        <prescriptionCode>
+            <code code="DRUG"/>
+        </prescriptionCode>
+        <RouteOfAdministration>
+            <code code="A" codeSystem="GCRT"/>
+            <code code="B" codeSystem="GCRT"/>
+            <code code="C" codeSystem="GCRT"/>
+            <code code="D" codeSystem="GCRT"/>
+            <code code="E" codeSystem="GCRT"/>
+            <code code="F" codeSystem="GCRT"/>
+            <code code="G" codeSystem="GCRT"/>
+            <code code="H" codeSystem="GCRT"/>
+            <code code="I" codeSystem="GCRT"/>
+            <code code="J" codeSystem="GCRT"/>
+            <code code="K" codeSystem="GCRT"/>
+            <code code="L" codeSystem="GCRT"/>
+            <code code="M" codeSystem="GCRT"/>
+            <code code="N" codeSystem="GCRT"/>
+            <code code="O" codeSystem="GCRT"/>
+            <code code="P" codeSystem="GCRT"/>
+            <code code="Q" codeSystem="GCRT"/>
+            <code code="R" codeSystem="GCRT"/>
+            <code code="S" codeSystem="GCRT"/>
+            <code code="T" codeSystem="GCRT"/>
+            <code code="U" codeSystem="GCRT"/>
+            <code code="V" codeSystem="GCRT"/>
+            <code code="W" codeSystem="GCRT"/>
+            <code code="X" codeSystem="GCRT"/>
+            <code code="Y" codeSystem="GCRT"/>
+            <code code="Z" codeSystem="GCRT"/>
+            <code code="0" codeSystem="GCRT"/>
+            <code code="1" codeSystem="GCRT"/>
+            <code code="2" codeSystem="GCRT"/>
+            <code code="3" codeSystem="GCRT"/>
+            <code code="4" codeSystem="GCRT"/>
+            <code code="5" codeSystem="GCRT"/>
+            <code code="6" codeSystem="GCRT"/>
+            <code code="7" codeSystem="GCRT"/>
+            <code code="8" codeSystem="GCRT"/>
+            <code code="9" codeSystem="GCRT"/>
+        </RouteOfAdministration>
+        <HumanSubstanceAdministrationSite>
+            <code code="BE"/>
+            <code code="BN"/>
+            <code code="BU"/>
+            <code code="LA"/>
+            <code code="LAC"/>
+            <code code="LACF"/>
+            <code code="LD"/>
+            <code code="LE"/>
+            <code code="LEJ"/>
+            <code code="LF"/>
+            <code code="LG"/>
+            <code code="LH"/>
+            <code code="LIJ"/>
+            <code code="LLAQ"/>
+            <code code="LLFA"/>
+            <code code="LMFA"/>
+            <code code="LN"/>
+            <code code="LPC"/>
+            <code code="LSC"/>
+            <code code="LT"/>
+            <code code="LUA"/>
+            <code code="LUAQ"/>
+            <code code="LUFA"/>
+            <code code="LVG"/>
+            <code code="LVL"/>
+            <code code="OD"/>
+            <code code="OS"/>
+            <code code="OU"/>
+            <code code="PA"/>
+            <code code="PERIN"/>
+            <code code="RA"/>
+            <code code="RAC"/>
+            <code code="RACF"/>
+            <code code="RD"/>
+            <code code="RE"/>
+            <code code="REJ"/>
+            <code code="RF"/>
+            <code code="RG"/>
+            <code code="RH"/>
+            <code code="RIJ"/>
+            <code code="RLAQ"/>
+            <code code="RLFA"/>
+            <code code="RMFA"/>
+            <code code="RN"/>
+            <code code="RPC"/>
+            <code code="RSC"/>
+            <code code="RT"/>
+            <code code="RUA"/>
+            <code code="RUAQ"/>
+            <code code="RUFA"/>
+            <code code="RVG"/>
+            <code code="RVL"/>
+        </HumanSubstanceAdministrationSite>
+        <maxDosageDenominatorUnit>
+            <code code="day"/>
+            <code code="wk"/>
+        </maxDosageDenominatorUnit>
+        <AdministrableDrugForm>
+            <code code="AA" codeSystem="GCDF"/>
+            <code code="AB" codeSystem="GCDF"/>
+            <code code="AC" codeSystem="GCDF"/>
+            <code code="AD" codeSystem="GCDF"/>
+            <code code="AE" codeSystem="GCDF"/>
+            <code code="AF" codeSystem="GCDF"/>
+            <code code="AG" codeSystem="GCDF"/>
+            <code code="AH" codeSystem="GCDF"/>
+            <code code="AI" codeSystem="GCDF"/>
+            <code code="AJ" codeSystem="GCDF"/>
+            <code code="AK" codeSystem="GCDF"/>
+            <code code="AL" codeSystem="GCDF"/>
+            <code code="AM" codeSystem="GCDF"/>
+            <code code="AN" codeSystem="GCDF"/>
+            <code code="AO" codeSystem="GCDF"/>
+            <code code="AP" codeSystem="GCDF"/>
+            <code code="AQ" codeSystem="GCDF"/>
+            <code code="AR" codeSystem="GCDF"/>
+            <code code="AS" codeSystem="GCDF"/>
+            <code code="AT" codeSystem="GCDF"/>
+            <code code="AU" codeSystem="GCDF"/>
+            <code code="AV" codeSystem="GCDF"/>
+            <code code="AW" codeSystem="GCDF"/>
+            <code code="AX" codeSystem="GCDF"/>
+            <code code="AY" codeSystem="GCDF"/>
+            <code code="AZ" codeSystem="GCDF"/>
+            <code code="BA" codeSystem="GCDF"/>
+            <code code="BB" codeSystem="GCDF"/>
+            <code code="BC" codeSystem="GCDF"/>
+            <code code="BD" codeSystem="GCDF"/>
+            <code code="BE" codeSystem="GCDF"/>
+            <code code="BF" codeSystem="GCDF"/>
+            <code code="BG" codeSystem="GCDF"/>
+            <code code="BH" codeSystem="GCDF"/>
+            <code code="BI" codeSystem="GCDF"/>
+            <code code="BJ" codeSystem="GCDF"/>
+            <code code="CA" codeSystem="GCDF"/>
+            <code code="CB" codeSystem="GCDF"/>
+            <code code="CC" codeSystem="GCDF"/>
+            <code code="CD" codeSystem="GCDF"/>
+            <code code="CE" codeSystem="GCDF"/>
+            <code code="CF" codeSystem="GCDF"/>
+            <code code="CG" codeSystem="GCDF"/>
+            <code code="CH" codeSystem="GCDF"/>
+            <code code="CI" codeSystem="GCDF"/>
+            <code code="CJ" codeSystem="GCDF"/>
+            <code code="CK" codeSystem="GCDF"/>
+            <code code="CL" codeSystem="GCDF"/>
+            <code code="CM" codeSystem="GCDF"/>
+            <code code="CN" codeSystem="GCDF"/>
+            <code code="CO" codeSystem="GCDF"/>
+            <code code="CP" codeSystem="GCDF"/>
+            <code code="CQ" codeSystem="GCDF"/>
+            <code code="CR" codeSystem="GCDF"/>
+            <code code="CS" codeSystem="GCDF"/>
+            <code code="CT" codeSystem="GCDF"/>
+            <code code="CU" codeSystem="GCDF"/>
+            <code code="CV" codeSystem="GCDF"/>
+            <code code="DA" codeSystem="GCDF"/>
+            <code code="DP" codeSystem="GCDF"/>
+            <code code="DS" codeSystem="GCDF"/>
+            <code code="EA" codeSystem="GCDF"/>
+            <code code="EB" codeSystem="GCDF"/>
+            <code code="EC" codeSystem="GCDF"/>
+            <code code="ED" codeSystem="GCDF"/>
+            <code code="EE" codeSystem="GCDF"/>
+            <code code="EF" codeSystem="GCDF"/>
+            <code code="EG" codeSystem="GCDF"/>
+            <code code="EH" codeSystem="GCDF"/>
+            <code code="EI" codeSystem="GCDF"/>
+            <code code="EJ" codeSystem="GCDF"/>
+            <code code="EK" codeSystem="GCDF"/>
+            <code code="EL" codeSystem="GCDF"/>
+            <code code="EM" codeSystem="GCDF"/>
+            <code code="EN" codeSystem="GCDF"/>
+            <code code="EP" codeSystem="GCDF"/>
+            <code code="ER" codeSystem="GCDF"/>
+            <code code="ET" codeSystem="GCDF"/>
+            <code code="FA" codeSystem="GCDF"/>
+            <code code="FB" codeSystem="GCDF"/>
+            <code code="FH" codeSystem="GCDF"/>
+            <code code="FI" codeSystem="GCDF"/>
+            <code code="FS" codeSystem="GCDF"/>
+            <code code="GA" codeSystem="GCDF"/>
+            <code code="GH" codeSystem="GCDF"/>
+            <code code="GI" codeSystem="GCDF"/>
+            <code code="GJ" codeSystem="GCDF"/>
+            <code code="GK" codeSystem="GCDF"/>
+            <code code="GT" codeSystem="GCDF"/>
+            <code code="GY" codeSystem="GCDF"/>
+            <code code="GZ" codeSystem="GCDF"/>
+            <code code="HA" codeSystem="GCDF"/>
+            <code code="HB" codeSystem="GCDF"/>
+            <code code="HC" codeSystem="GCDF"/>
+            <code code="HD" codeSystem="GCDF"/>
+            <code code="HE" codeSystem="GCDF"/>
+            <code code="HF" codeSystem="GCDF"/>
+            <code code="HG" codeSystem="GCDF"/>
+            <code code="HH" codeSystem="GCDF"/>
+            <code code="HI" codeSystem="GCDF"/>
+            <code code="HJ" codeSystem="GCDF"/>
+            <code code="HK" codeSystem="GCDF"/>
+            <code code="HL" codeSystem="GCDF"/>
+            <code code="HM" codeSystem="GCDF"/>
+            <code code="HN" codeSystem="GCDF"/>
+            <code code="HO" codeSystem="GCDF"/>
+            <code code="HP" codeSystem="GCDF"/>
+            <code code="HQ" codeSystem="GCDF"/>
+            <code code="HR" codeSystem="GCDF"/>
+            <code code="HS" codeSystem="GCDF"/>
+            <code code="HT" codeSystem="GCDF"/>
+            <code code="HU" codeSystem="GCDF"/>
+            <code code="HV" codeSystem="GCDF"/>
+            <code code="HW" codeSystem="GCDF"/>
+            <code code="HX" codeSystem="GCDF"/>
+            <code code="HY" codeSystem="GCDF"/>
+            <code code="HZ" codeSystem="GCDF"/>
+            <code code="IA" codeSystem="GCDF"/>
+            <code code="IB" codeSystem="GCDF"/>
+            <code code="IC" codeSystem="GCDF"/>
+            <code code="ID" codeSystem="GCDF"/>
+            <code code="IE" codeSystem="GCDF"/>
+            <code code="IF" codeSystem="GCDF"/>
+            <code code="IG" codeSystem="GCDF"/>
+            <code code="IJ" codeSystem="GCDF"/>
+            <code code="IK" codeSystem="GCDF"/>
+            <code code="IN" codeSystem="GCDF"/>
+            <code code="IO" codeSystem="GCDF"/>
+            <code code="IP" codeSystem="GCDF"/>
+            <code code="IR" codeSystem="GCDF"/>
+            <code code="JA" codeSystem="GCDF"/>
+            <code code="JB" codeSystem="GCDF"/>
+            <code code="JC" codeSystem="GCDF"/>
+            <code code="JD" codeSystem="GCDF"/>
+            <code code="JE" codeSystem="GCDF"/>
+            <code code="JF" codeSystem="GCDF"/>
+            <code code="JG" codeSystem="GCDF"/>
+            <code code="JH" codeSystem="GCDF"/>
+            <code code="JI" codeSystem="GCDF"/>
+            <code code="JJ" codeSystem="GCDF"/>
+            <code code="JK" codeSystem="GCDF"/>
+            <code code="JL" codeSystem="GCDF"/>
+            <code code="JM" codeSystem="GCDF"/>
+            <code code="JN" codeSystem="GCDF"/>
+            <code code="JO" codeSystem="GCDF"/>
+            <code code="JP" codeSystem="GCDF"/>
+            <code code="JQ" codeSystem="GCDF"/>
+            <code code="JR" codeSystem="GCDF"/>
+            <code code="JS" codeSystem="GCDF"/>
+            <code code="JT" codeSystem="GCDF"/>
+            <code code="JU" codeSystem="GCDF"/>
+            <code code="JV" codeSystem="GCDF"/>
+            <code code="JW" codeSystem="GCDF"/>
+            <code code="JX" codeSystem="GCDF"/>
+            <code code="JY" codeSystem="GCDF"/>
+            <code code="JZ" codeSystem="GCDF"/>
+            <code code="KA" codeSystem="GCDF"/>
+            <code code="KB" codeSystem="GCDF"/>
+            <code code="KC" codeSystem="GCDF"/>
+            <code code="KD" codeSystem="GCDF"/>
+            <code code="KE" codeSystem="GCDF"/>
+            <code code="KF" codeSystem="GCDF"/>
+            <code code="KG" codeSystem="GCDF"/>
+            <code code="KH" codeSystem="GCDF"/>
+            <code code="KI" codeSystem="GCDF"/>
+            <code code="KJ" codeSystem="GCDF"/>
+            <code code="KK" codeSystem="GCDF"/>
+            <code code="KL" codeSystem="GCDF"/>
+            <code code="KM" codeSystem="GCDF"/>
+            <code code="KN" codeSystem="GCDF"/>
+            <code code="KO" codeSystem="GCDF"/>
+            <code code="KP" codeSystem="GCDF"/>
+            <code code="KQ" codeSystem="GCDF"/>
+            <code code="KT" codeSystem="GCDF"/>
+            <code code="KV" codeSystem="GCDF"/>
+            <code code="KW" codeSystem="GCDF"/>
+            <code code="LP" codeSystem="GCDF"/>
+            <code code="MA" codeSystem="GCDF"/>
+            <code code="OA" codeSystem="GCDF"/>
+            <code code="OB" codeSystem="GCDF"/>
+            <code code="OC" codeSystem="GCDF"/>
+            <code code="OV" codeSystem="GCDF"/>
+            <code code="OW" codeSystem="GCDF"/>
+            <code code="PA" codeSystem="GCDF"/>
+            <code code="PB" codeSystem="GCDF"/>
+            <code code="PC" codeSystem="GCDF"/>
+            <code code="PD" codeSystem="GCDF"/>
+            <code code="PE" codeSystem="GCDF"/>
+            <code code="PF" codeSystem="GCDF"/>
+            <code code="PG" codeSystem="GCDF"/>
+            <code code="PH" codeSystem="GCDF"/>
+            <code code="PI" codeSystem="GCDF"/>
+            <code code="PJ" codeSystem="GCDF"/>
+            <code code="PK" codeSystem="GCDF"/>
+            <code code="PL" codeSystem="GCDF"/>
+            <code code="PM" codeSystem="GCDF"/>
+            <code code="PN" codeSystem="GCDF"/>
+            <code code="PO" codeSystem="GCDF"/>
+            <code code="PP" codeSystem="GCDF"/>
+            <code code="PQ" codeSystem="GCDF"/>
+            <code code="PR" codeSystem="GCDF"/>
+            <code code="PS" codeSystem="GCDF"/>
+            <code code="PT" codeSystem="GCDF"/>
+            <code code="PU" codeSystem="GCDF"/>
+            <code code="PV" codeSystem="GCDF"/>
+            <code code="PW" codeSystem="GCDF"/>
+            <code code="PX" codeSystem="GCDF"/>
+            <code code="PY" codeSystem="GCDF"/>
+            <code code="PZ" codeSystem="GCDF"/>
+            <code code="QA" codeSystem="GCDF"/>
+            <code code="QB" codeSystem="GCDF"/>
+            <code code="QC" codeSystem="GCDF"/>
+            <code code="QD" codeSystem="GCDF"/>
+            <code code="QE" codeSystem="GCDF"/>
+            <code code="QF" codeSystem="GCDF"/>
+            <code code="QG" codeSystem="GCDF"/>
+            <code code="QH" codeSystem="GCDF"/>
+            <code code="QI" codeSystem="GCDF"/>
+            <code code="QJ" codeSystem="GCDF"/>
+            <code code="QK" codeSystem="GCDF"/>
+            <code code="QL" codeSystem="GCDF"/>
+            <code code="QM" codeSystem="GCDF"/>
+            <code code="QN" codeSystem="GCDF"/>
+            <code code="QV" codeSystem="GCDF"/>
+            <code code="RA" codeSystem="GCDF"/>
+            <code code="RB" codeSystem="GCDF"/>
+            <code code="RC" codeSystem="GCDF"/>
+            <code code="RD" codeSystem="GCDF"/>
+            <code code="RE" codeSystem="GCDF"/>
+            <code code="RF" codeSystem="GCDF"/>
+            <code code="RG" codeSystem="GCDF"/>
+            <code code="RH" codeSystem="GCDF"/>
+            <code code="RI" codeSystem="GCDF"/>
+            <code code="RJ" codeSystem="GCDF"/>
+            <code code="RK" codeSystem="GCDF"/>
+            <code code="RL" codeSystem="GCDF"/>
+            <code code="RM" codeSystem="GCDF"/>
+            <code code="RN" codeSystem="GCDF"/>
+            <code code="SA" codeSystem="GCDF"/>
+            <code code="SB" codeSystem="GCDF"/>
+            <code code="SC" codeSystem="GCDF"/>
+            <code code="SD" codeSystem="GCDF"/>
+            <code code="SE" codeSystem="GCDF"/>
+            <code code="SF" codeSystem="GCDF"/>
+            <code code="SG" codeSystem="GCDF"/>
+            <code code="SH" codeSystem="GCDF"/>
+            <code code="SI" codeSystem="GCDF"/>
+            <code code="SJ" codeSystem="GCDF"/>
+            <code code="SK" codeSystem="GCDF"/>
+            <code code="SL" codeSystem="GCDF"/>
+            <code code="SM" codeSystem="GCDF"/>
+            <code code="SN" codeSystem="GCDF"/>
+            <code code="SO" codeSystem="GCDF"/>
+            <code code="SP" codeSystem="GCDF"/>
+            <code code="SQ" codeSystem="GCDF"/>
+            <code code="SR" codeSystem="GCDF"/>
+            <code code="SS" codeSystem="GCDF"/>
+            <code code="ST" codeSystem="GCDF"/>
+            <code code="SU" codeSystem="GCDF"/>
+            <code code="SV" codeSystem="GCDF"/>
+            <code code="SW" codeSystem="GCDF"/>
+            <code code="SX" codeSystem="GCDF"/>
+            <code code="SY" codeSystem="GCDF"/>
+            <code code="SZ" codeSystem="GCDF"/>
+            <code code="TA" codeSystem="GCDF"/>
+            <code code="TB" codeSystem="GCDF"/>
+            <code code="TC" codeSystem="GCDF"/>
+            <code code="TD" codeSystem="GCDF"/>
+            <code code="TE" codeSystem="GCDF"/>
+            <code code="TF" codeSystem="GCDF"/>
+            <code code="TG" codeSystem="GCDF"/>
+            <code code="TH" codeSystem="GCDF"/>
+            <code code="TI" codeSystem="GCDF"/>
+            <code code="TJ" codeSystem="GCDF"/>
+            <code code="TK" codeSystem="GCDF"/>
+            <code code="TL" codeSystem="GCDF"/>
+            <code code="TM" codeSystem="GCDF"/>
+            <code code="TN" codeSystem="GCDF"/>
+            <code code="TO" codeSystem="GCDF"/>
+            <code code="TP" codeSystem="GCDF"/>
+            <code code="TQ" codeSystem="GCDF"/>
+            <code code="TR" codeSystem="GCDF"/>
+            <code code="TS" codeSystem="GCDF"/>
+            <code code="TT" codeSystem="GCDF"/>
+            <code code="TU" codeSystem="GCDF"/>
+            <code code="TV" codeSystem="GCDF"/>
+            <code code="TW" codeSystem="GCDF"/>
+            <code code="TX" codeSystem="GCDF"/>
+            <code code="TY" codeSystem="GCDF"/>
+            <code code="TZ" codeSystem="GCDF"/>
+            <code code="UA" codeSystem="GCDF"/>
+            <code code="UB" codeSystem="GCDF"/>
+            <code code="UC" codeSystem="GCDF"/>
+            <code code="UD" codeSystem="GCDF"/>
+            <code code="UE" codeSystem="GCDF"/>
+            <code code="UF" codeSystem="GCDF"/>
+            <code code="UG" codeSystem="GCDF"/>
+            <code code="UH" codeSystem="GCDF"/>
+            <code code="UI" codeSystem="GCDF"/>
+            <code code="UJ" codeSystem="GCDF"/>
+            <code code="UK" codeSystem="GCDF"/>
+            <code code="UL" codeSystem="GCDF"/>
+            <code code="UM" codeSystem="GCDF"/>
+            <code code="UN" codeSystem="GCDF"/>
+            <code code="UO" codeSystem="GCDF"/>
+            <code code="UP" codeSystem="GCDF"/>
+            <code code="UQ" codeSystem="GCDF"/>
+            <code code="UR" codeSystem="GCDF"/>
+            <code code="WA" codeSystem="GCDF"/>
+            <code code="WB" codeSystem="GCDF"/>
+            <code code="WH" codeSystem="GCDF"/>
+            <code code="WI" codeSystem="GCDF"/>
+            <code code="YA" codeSystem="GCDF"/>
+            <code code="YB" codeSystem="GCDF"/>
+            <code code="YC" codeSystem="GCDF"/>
+            <code code="YD" codeSystem="GCDF"/>
+            <code code="YE" codeSystem="GCDF"/>
+            <code code="YF" codeSystem="GCDF"/>
+            <code code="YG" codeSystem="GCDF"/>
+            <code code="YH" codeSystem="GCDF"/>
+            <code code="YI" codeSystem="GCDF"/>
+            <code code="YJ" codeSystem="GCDF"/>
+            <code code="YK" codeSystem="GCDF"/>
+            <code code="YL" codeSystem="GCDF"/>
+            <code code="YM" codeSystem="GCDF"/>
+            <code code="YN" codeSystem="GCDF"/>
+            <code code="YO" codeSystem="GCDF"/>
+            <code code="YP" codeSystem="GCDF"/>
+            <code code="YQ" codeSystem="GCDF"/>
+            <code code="YR" codeSystem="GCDF"/>
+            <code code="YS" codeSystem="GCDF"/>
+            <code code="YT" codeSystem="GCDF"/>
+            <code code="YU" codeSystem="GCDF"/>
+            <code code="YV" codeSystem="GCDF"/>
+            <code code="YW" codeSystem="GCDF"/>
+            <code code="YX" codeSystem="GCDF"/>
+            <code code="YY" codeSystem="GCDF"/>
+            <code code="YZ" codeSystem="GCDF"/>
+            <code code="ZA" codeSystem="GCDF"/>
+            <code code="ZB" codeSystem="GCDF"/>
+            <code code="ZC" codeSystem="GCDF"/>
+            <code code="ZD" codeSystem="GCDF"/>
+            <code code="ZE" codeSystem="GCDF"/>
+            <code code="ZP" codeSystem="GCDF"/>
+            <code code="ZT" codeSystem="GCDF"/>
+            <code code="0A" codeSystem="GCDF"/>
+            <code code="1B" codeSystem="GCDF"/>
+            <code code="1C" codeSystem="GCDF"/>
+            <code code="1D" codeSystem="GCDF"/>
+            <code code="1E" codeSystem="GCDF"/>
+            <code code="1F" codeSystem="GCDF"/>
+            <code code="1G" codeSystem="GCDF"/>
+            <code code="1H" codeSystem="GCDF"/>
+            <code code="1I" codeSystem="GCDF"/>
+            <code code="1J" codeSystem="GCDF"/>
+            <code code="1K" codeSystem="GCDF"/>
+            <code code="1L" codeSystem="GCDF"/>
+            <code code="1M" codeSystem="GCDF"/>
+            <code code="1N" codeSystem="GCDF"/>
+            <code code="1O" codeSystem="GCDF"/>
+            <code code="1P" codeSystem="GCDF"/>
+            <code code="1Q" codeSystem="GCDF"/>
+            <code code="1R" codeSystem="GCDF"/>
+            <code code="1S" codeSystem="GCDF"/>
+            <code code="1T" codeSystem="GCDF"/>
+            <code code="1U" codeSystem="GCDF"/>
+            <code code="1V" codeSystem="GCDF"/>
+            <code code="1W" codeSystem="GCDF"/>
+            <code code="1X" codeSystem="GCDF"/>
+            <code code="1Y" codeSystem="GCDF"/>
+            <code code="1Z" codeSystem="GCDF"/>
+            <code code="2A" codeSystem="GCDF"/>
+            <code code="2B" codeSystem="GCDF"/>
+            <code code="2C" codeSystem="GCDF"/>
+            <code code="2D" codeSystem="GCDF"/>
+            <code code="2E" codeSystem="GCDF"/>
+            <code code="2F" codeSystem="GCDF"/>
+            <code code="2G" codeSystem="GCDF"/>
+            <code code="2H" codeSystem="GCDF"/>
+            <code code="2I" codeSystem="GCDF"/>
+            <code code="2J" codeSystem="GCDF"/>
+            <code code="2K" codeSystem="GCDF"/>
+            <code code="2L" codeSystem="GCDF"/>
+            <code code="2M" codeSystem="GCDF"/>
+            <code code="2N" codeSystem="GCDF"/>
+            <code code="2O" codeSystem="GCDF"/>
+            <code code="2P" codeSystem="GCDF"/>
+            <code code="2Q" codeSystem="GCDF"/>
+            <code code="2R" codeSystem="GCDF"/>
+            <code code="2S" codeSystem="GCDF"/>
+            <code code="2T" codeSystem="GCDF"/>
+            <code code="2U" codeSystem="GCDF"/>
+            <code code="2V" codeSystem="GCDF"/>
+            <code code="2W" codeSystem="GCDF"/>
+            <code code="2X" codeSystem="GCDF"/>
+            <code code="2Y" codeSystem="GCDF"/>
+            <code code="2Z" codeSystem="GCDF"/>
+            <code code="3A" codeSystem="GCDF"/>
+            <code code="3B" codeSystem="GCDF"/>
+            <code code="3C" codeSystem="GCDF"/>
+            <code code="3D" codeSystem="GCDF"/>
+            <code code="3E" codeSystem="GCDF"/>
+            <code code="3F" codeSystem="GCDF"/>
+            <code code="3G" codeSystem="GCDF"/>
+            <code code="3H" codeSystem="GCDF"/>
+            <code code="3I" codeSystem="GCDF"/>
+            <code code="3J" codeSystem="GCDF"/>
+            <code code="3K" codeSystem="GCDF"/>
+            <code code="3L" codeSystem="GCDF"/>
+            <code code="3M" codeSystem="GCDF"/>
+            <code code="3N" codeSystem="GCDF"/>
+            <code code="3O" codeSystem="GCDF"/>
+            <code code="3P" codeSystem="GCDF"/>
+            <code code="3Q" codeSystem="GCDF"/>
+            <code code="3R" codeSystem="GCDF"/>
+            <code code="3S" codeSystem="GCDF"/>
+            <code code="3T" codeSystem="GCDF"/>
+            <code code="3U" codeSystem="GCDF"/>
+            <code code="3V" codeSystem="GCDF"/>
+            <code code="3W" codeSystem="GCDF"/>
+            <code code="3X" codeSystem="GCDF"/>
+            <code code="3Y" codeSystem="GCDF"/>
+            <code code="3Z" codeSystem="GCDF"/>
+            <code code="4B" codeSystem="GCDF"/>
+            <code code="4C" codeSystem="GCDF"/>
+            <code code="4D" codeSystem="GCDF"/>
+            <code code="4E" codeSystem="GCDF"/>
+            <code code="4F" codeSystem="GCDF"/>
+            <code code="4G" codeSystem="GCDF"/>
+            <code code="4H" codeSystem="GCDF"/>
+            <code code="4I" codeSystem="GCDF"/>
+            <code code="4J" codeSystem="GCDF"/>
+            <code code="4K" codeSystem="GCDF"/>
+            <code code="4L" codeSystem="GCDF"/>
+            <code code="4M" codeSystem="GCDF"/>
+            <code code="4N" codeSystem="GCDF"/>
+            <code code="4O" codeSystem="GCDF"/>
+            <code code="4Q" codeSystem="GCDF"/>
+            <code code="4R" codeSystem="GCDF"/>
+            <code code="4S" codeSystem="GCDF"/>
+            <code code="4T" codeSystem="GCDF"/>
+            <code code="4U" codeSystem="GCDF"/>
+            <code code="4V" codeSystem="GCDF"/>
+            <code code="4W" codeSystem="GCDF"/>
+            <code code="4X" codeSystem="GCDF"/>
+            <code code="4Y" codeSystem="GCDF"/>
+            <code code="4Z" codeSystem="GCDF"/>
+            <code code="5A" codeSystem="GCDF"/>
+            <code code="5B" codeSystem="GCDF"/>
+            <code code="5C" codeSystem="GCDF"/>
+            <code code="5D" codeSystem="GCDF"/>
+            <code code="5E" codeSystem="GCDF"/>
+            <code code="5F" codeSystem="GCDF"/>
+            <code code="5G" codeSystem="GCDF"/>
+            <code code="5H" codeSystem="GCDF"/>
+            <code code="5I" codeSystem="GCDF"/>
+            <code code="5J" codeSystem="GCDF"/>
+            <code code="5K" codeSystem="GCDF"/>
+            <code code="5L" codeSystem="GCDF"/>
+            <code code="5M" codeSystem="GCDF"/>
+            <code code="5N" codeSystem="GCDF"/>
+            <code code="5O" codeSystem="GCDF"/>
+            <code code="5P" codeSystem="GCDF"/>
+            <code code="5Q" codeSystem="GCDF"/>
+            <code code="5R" codeSystem="GCDF"/>
+            <code code="5S" codeSystem="GCDF"/>
+            <code code="5T" codeSystem="GCDF"/>
+            <code code="5U" codeSystem="GCDF"/>
+            <code code="5V" codeSystem="GCDF"/>
+            <code code="5W" codeSystem="GCDF"/>
+            <code code="5X" codeSystem="GCDF"/>
+            <code code="5Y" codeSystem="GCDF"/>
+            <code code="5Z" codeSystem="GCDF"/>
+            <code code="6A" codeSystem="GCDF"/>
+            <code code="6B" codeSystem="GCDF"/>
+            <code code="6C" codeSystem="GCDF"/>
+            <code code="6D" codeSystem="GCDF"/>
+            <code code="6E" codeSystem="GCDF"/>
+            <code code="6F" codeSystem="GCDF"/>
+            <code code="6G" codeSystem="GCDF"/>
+            <code code="6H" codeSystem="GCDF"/>
+            <code code="6I" codeSystem="GCDF"/>
+            <code code="6J" codeSystem="GCDF"/>
+            <code code="6K" codeSystem="GCDF"/>
+            <code code="6L" codeSystem="GCDF"/>
+            <code code="6M" codeSystem="GCDF"/>
+            <code code="6N" codeSystem="GCDF"/>
+            <code code="6O" codeSystem="GCDF"/>
+            <code code="6P" codeSystem="GCDF"/>
+            <code code="6Q" codeSystem="GCDF"/>
+            <code code="6S" codeSystem="GCDF"/>
+            <code code="6T" codeSystem="GCDF"/>
+            <code code="6U" codeSystem="GCDF"/>
+            <code code="6V" codeSystem="GCDF"/>
+            <code code="6W" codeSystem="GCDF"/>
+            <code code="6X" codeSystem="GCDF"/>
+            <code code="6Y" codeSystem="GCDF"/>
+            <code code="6Z" codeSystem="GCDF"/>
+            <code code="7A" codeSystem="GCDF"/>
+            <code code="7B" codeSystem="GCDF"/>
+            <code code="7C" codeSystem="GCDF"/>
+            <code code="7D" codeSystem="GCDF"/>
+            <code code="7E" codeSystem="GCDF"/>
+            <code code="7F" codeSystem="GCDF"/>
+            <code code="7G" codeSystem="GCDF"/>
+            <code code="7H" codeSystem="GCDF"/>
+            <code code="7I" codeSystem="GCDF"/>
+            <code code="7J" codeSystem="GCDF"/>
+            <code code="7L" codeSystem="GCDF"/>
+            <code code="7M" codeSystem="GCDF"/>
+            <code code="7N" codeSystem="GCDF"/>
+            <code code="7O" codeSystem="GCDF"/>
+            <code code="7P" codeSystem="GCDF"/>
+            <code code="7Q" codeSystem="GCDF"/>
+            <code code="7R" codeSystem="GCDF"/>
+            <code code="7S" codeSystem="GCDF"/>
+            <code code="7T" codeSystem="GCDF"/>
+            <code code="7U" codeSystem="GCDF"/>
+            <code code="7V" codeSystem="GCDF"/>
+            <code code="7W" codeSystem="GCDF"/>
+            <code code="7X" codeSystem="GCDF"/>
+            <code code="7Y" codeSystem="GCDF"/>
+            <code code="7Z" codeSystem="GCDF"/>
+            <code code="8A" codeSystem="GCDF"/>
+            <code code="8B" codeSystem="GCDF"/>
+            <code code="8C" codeSystem="GCDF"/>
+            <code code="8D" codeSystem="GCDF"/>
+            <code code="8E" codeSystem="GCDF"/>
+            <code code="8F" codeSystem="GCDF"/>
+            <code code="8G" codeSystem="GCDF"/>
+            <code code="8H" codeSystem="GCDF"/>
+            <code code="8I" codeSystem="GCDF"/>
+            <code code="8J" codeSystem="GCDF"/>
+        </AdministrableDrugForm>
+        <OrderableDrugForm>
+            <code code="AA" codeSystem="GCDF"/>
+            <code code="AB" codeSystem="GCDF"/>
+            <code code="AC" codeSystem="GCDF"/>
+            <code code="AD" codeSystem="GCDF"/>
+            <code code="AE" codeSystem="GCDF"/>
+            <code code="AF" codeSystem="GCDF"/>
+            <code code="AG" codeSystem="GCDF"/>
+            <code code="AH" codeSystem="GCDF"/>
+            <code code="AI" codeSystem="GCDF"/>
+            <code code="AJ" codeSystem="GCDF"/>
+            <code code="AK" codeSystem="GCDF"/>
+            <code code="AL" codeSystem="GCDF"/>
+            <code code="AM" codeSystem="GCDF"/>
+            <code code="AN" codeSystem="GCDF"/>
+            <code code="AO" codeSystem="GCDF"/>
+            <code code="AP" codeSystem="GCDF"/>
+            <code code="AQ" codeSystem="GCDF"/>
+            <code code="AR" codeSystem="GCDF"/>
+            <code code="AS" codeSystem="GCDF"/>
+            <code code="AT" codeSystem="GCDF"/>
+            <code code="AU" codeSystem="GCDF"/>
+            <code code="AV" codeSystem="GCDF"/>
+            <code code="AW" codeSystem="GCDF"/>
+            <code code="AX" codeSystem="GCDF"/>
+            <code code="AY" codeSystem="GCDF"/>
+            <code code="AZ" codeSystem="GCDF"/>
+            <code code="BA" codeSystem="GCDF"/>
+            <code code="BB" codeSystem="GCDF"/>
+            <code code="BC" codeSystem="GCDF"/>
+            <code code="BD" codeSystem="GCDF"/>
+            <code code="BE" codeSystem="GCDF"/>
+            <code code="BF" codeSystem="GCDF"/>
+            <code code="BG" codeSystem="GCDF"/>
+            <code code="BH" codeSystem="GCDF"/>
+            <code code="BI" codeSystem="GCDF"/>
+            <code code="BJ" codeSystem="GCDF"/>
+            <code code="CA" codeSystem="GCDF"/>
+            <code code="CB" codeSystem="GCDF"/>
+            <code code="CC" codeSystem="GCDF"/>
+            <code code="CD" codeSystem="GCDF"/>
+            <code code="CE" codeSystem="GCDF"/>
+            <code code="CF" codeSystem="GCDF"/>
+            <code code="CG" codeSystem="GCDF"/>
+            <code code="CH" codeSystem="GCDF"/>
+            <code code="CI" codeSystem="GCDF"/>
+            <code code="CJ" codeSystem="GCDF"/>
+            <code code="CK" codeSystem="GCDF"/>
+            <code code="CL" codeSystem="GCDF"/>
+            <code code="CM" codeSystem="GCDF"/>
+            <code code="CN" codeSystem="GCDF"/>
+            <code code="CO" codeSystem="GCDF"/>
+            <code code="CP" codeSystem="GCDF"/>
+            <code code="CQ" codeSystem="GCDF"/>
+            <code code="CR" codeSystem="GCDF"/>
+            <code code="CS" codeSystem="GCDF"/>
+            <code code="CT" codeSystem="GCDF"/>
+            <code code="CU" codeSystem="GCDF"/>
+            <code code="CV" codeSystem="GCDF"/>
+            <code code="DA" codeSystem="GCDF"/>
+            <code code="DP" codeSystem="GCDF"/>
+            <code code="DS" codeSystem="GCDF"/>
+            <code code="EA" codeSystem="GCDF"/>
+            <code code="EB" codeSystem="GCDF"/>
+            <code code="EC" codeSystem="GCDF"/>
+            <code code="ED" codeSystem="GCDF"/>
+            <code code="EE" codeSystem="GCDF"/>
+            <code code="EF" codeSystem="GCDF"/>
+            <code code="EG" codeSystem="GCDF"/>
+            <code code="EH" codeSystem="GCDF"/>
+            <code code="EI" codeSystem="GCDF"/>
+            <code code="EJ" codeSystem="GCDF"/>
+            <code code="EK" codeSystem="GCDF"/>
+            <code code="EL" codeSystem="GCDF"/>
+            <code code="EM" codeSystem="GCDF"/>
+            <code code="EN" codeSystem="GCDF"/>
+            <code code="EP" codeSystem="GCDF"/>
+            <code code="ER" codeSystem="GCDF"/>
+            <code code="ET" codeSystem="GCDF"/>
+            <code code="FA" codeSystem="GCDF"/>
+            <code code="FB" codeSystem="GCDF"/>
+            <code code="FH" codeSystem="GCDF"/>
+            <code code="FI" codeSystem="GCDF"/>
+            <code code="FS" codeSystem="GCDF"/>
+            <code code="GA" codeSystem="GCDF"/>
+            <code code="GH" codeSystem="GCDF"/>
+            <code code="GI" codeSystem="GCDF"/>
+            <code code="GJ" codeSystem="GCDF"/>
+            <code code="GK" codeSystem="GCDF"/>
+            <code code="GT" codeSystem="GCDF"/>
+            <code code="GY" codeSystem="GCDF"/>
+            <code code="GZ" codeSystem="GCDF"/>
+            <code code="HA" codeSystem="GCDF"/>
+            <code code="HB" codeSystem="GCDF"/>
+            <code code="HC" codeSystem="GCDF"/>
+            <code code="HD" codeSystem="GCDF"/>
+            <code code="HE" codeSystem="GCDF"/>
+            <code code="HF" codeSystem="GCDF"/>
+            <code code="HG" codeSystem="GCDF"/>
+            <code code="HH" codeSystem="GCDF"/>
+            <code code="HI" codeSystem="GCDF"/>
+            <code code="HJ" codeSystem="GCDF"/>
+            <code code="HK" codeSystem="GCDF"/>
+            <code code="HL" codeSystem="GCDF"/>
+            <code code="HM" codeSystem="GCDF"/>
+            <code code="HN" codeSystem="GCDF"/>
+            <code code="HO" codeSystem="GCDF"/>
+            <code code="HP" codeSystem="GCDF"/>
+            <code code="HQ" codeSystem="GCDF"/>
+            <code code="HR" codeSystem="GCDF"/>
+            <code code="HS" codeSystem="GCDF"/>
+            <code code="HT" codeSystem="GCDF"/>
+            <code code="HU" codeSystem="GCDF"/>
+            <code code="HV" codeSystem="GCDF"/>
+            <code code="HW" codeSystem="GCDF"/>
+            <code code="HX" codeSystem="GCDF"/>
+            <code code="HY" codeSystem="GCDF"/>
+            <code code="HZ" codeSystem="GCDF"/>
+            <code code="IA" codeSystem="GCDF"/>
+            <code code="IB" codeSystem="GCDF"/>
+            <code code="IC" codeSystem="GCDF"/>
+            <code code="ID" codeSystem="GCDF"/>
+            <code code="IE" codeSystem="GCDF"/>
+            <code code="IF" codeSystem="GCDF"/>
+            <code code="IG" codeSystem="GCDF"/>
+            <code code="IJ" codeSystem="GCDF"/>
+            <code code="IK" codeSystem="GCDF"/>
+            <code code="IN" codeSystem="GCDF"/>
+            <code code="IO" codeSystem="GCDF"/>
+            <code code="IP" codeSystem="GCDF"/>
+            <code code="IR" codeSystem="GCDF"/>
+            <code code="JA" codeSystem="GCDF"/>
+            <code code="JB" codeSystem="GCDF"/>
+            <code code="JC" codeSystem="GCDF"/>
+            <code code="JD" codeSystem="GCDF"/>
+            <code code="JE" codeSystem="GCDF"/>
+            <code code="JF" codeSystem="GCDF"/>
+            <code code="JG" codeSystem="GCDF"/>
+            <code code="JH" codeSystem="GCDF"/>
+            <code code="JI" codeSystem="GCDF"/>
+            <code code="JJ" codeSystem="GCDF"/>
+            <code code="JK" codeSystem="GCDF"/>
+            <code code="JL" codeSystem="GCDF"/>
+            <code code="JM" codeSystem="GCDF"/>
+            <code code="JN" codeSystem="GCDF"/>
+            <code code="JO" codeSystem="GCDF"/>
+            <code code="JP" codeSystem="GCDF"/>
+            <code code="JQ" codeSystem="GCDF"/>
+            <code code="JR" codeSystem="GCDF"/>
+            <code code="JS" codeSystem="GCDF"/>
+            <code code="JT" codeSystem="GCDF"/>
+            <code code="JU" codeSystem="GCDF"/>
+            <code code="JV" codeSystem="GCDF"/>
+            <code code="JW" codeSystem="GCDF"/>
+            <code code="JX" codeSystem="GCDF"/>
+            <code code="JY" codeSystem="GCDF"/>
+            <code code="JZ" codeSystem="GCDF"/>
+            <code code="KA" codeSystem="GCDF"/>
+            <code code="KB" codeSystem="GCDF"/>
+            <code code="KC" codeSystem="GCDF"/>
+            <code code="KD" codeSystem="GCDF"/>
+            <code code="KE" codeSystem="GCDF"/>
+            <code code="KF" codeSystem="GCDF"/>
+            <code code="KG" codeSystem="GCDF"/>
+            <code code="KH" codeSystem="GCDF"/>
+            <code code="KI" codeSystem="GCDF"/>
+            <code code="KJ" codeSystem="GCDF"/>
+            <code code="KK" codeSystem="GCDF"/>
+            <code code="KL" codeSystem="GCDF"/>
+            <code code="KM" codeSystem="GCDF"/>
+            <code code="KN" codeSystem="GCDF"/>
+            <code code="KO" codeSystem="GCDF"/>
+            <code code="KP" codeSystem="GCDF"/>
+            <code code="KQ" codeSystem="GCDF"/>
+            <code code="KT" codeSystem="GCDF"/>
+            <code code="KV" codeSystem="GCDF"/>
+            <code code="KW" codeSystem="GCDF"/>
+            <code code="LP" codeSystem="GCDF"/>
+            <code code="MA" codeSystem="GCDF"/>
+            <code code="OA" codeSystem="GCDF"/>
+            <code code="OB" codeSystem="GCDF"/>
+            <code code="OC" codeSystem="GCDF"/>
+            <code code="OV" codeSystem="GCDF"/>
+            <code code="OW" codeSystem="GCDF"/>
+            <code code="PA" codeSystem="GCDF"/>
+            <code code="PB" codeSystem="GCDF"/>
+            <code code="PC" codeSystem="GCDF"/>
+            <code code="PD" codeSystem="GCDF"/>
+            <code code="PE" codeSystem="GCDF"/>
+            <code code="PF" codeSystem="GCDF"/>
+            <code code="PG" codeSystem="GCDF"/>
+            <code code="PH" codeSystem="GCDF"/>
+            <code code="PI" codeSystem="GCDF"/>
+            <code code="PJ" codeSystem="GCDF"/>
+            <code code="PK" codeSystem="GCDF"/>
+            <code code="PL" codeSystem="GCDF"/>
+            <code code="PM" codeSystem="GCDF"/>
+            <code code="PN" codeSystem="GCDF"/>
+            <code code="PO" codeSystem="GCDF"/>
+            <code code="PP" codeSystem="GCDF"/>
+            <code code="PQ" codeSystem="GCDF"/>
+            <code code="PR" codeSystem="GCDF"/>
+            <code code="PS" codeSystem="GCDF"/>
+            <code code="PT" codeSystem="GCDF"/>
+            <code code="PU" codeSystem="GCDF"/>
+            <code code="PV" codeSystem="GCDF"/>
+            <code code="PW" codeSystem="GCDF"/>
+            <code code="PX" codeSystem="GCDF"/>
+            <code code="PY" codeSystem="GCDF"/>
+            <code code="PZ" codeSystem="GCDF"/>
+            <code code="QA" codeSystem="GCDF"/>
+            <code code="QB" codeSystem="GCDF"/>
+            <code code="QC" codeSystem="GCDF"/>
+            <code code="QD" codeSystem="GCDF"/>
+            <code code="QE" codeSystem="GCDF"/>
+            <code code="QF" codeSystem="GCDF"/>
+            <code code="QG" codeSystem="GCDF"/>
+            <code code="QH" codeSystem="GCDF"/>
+            <code code="QI" codeSystem="GCDF"/>
+            <code code="QJ" codeSystem="GCDF"/>
+            <code code="QK" codeSystem="GCDF"/>
+            <code code="QL" codeSystem="GCDF"/>
+            <code code="QM" codeSystem="GCDF"/>
+            <code code="QN" codeSystem="GCDF"/>
+            <code code="QV" codeSystem="GCDF"/>
+            <code code="RA" codeSystem="GCDF"/>
+            <code code="RB" codeSystem="GCDF"/>
+            <code code="RC" codeSystem="GCDF"/>
+            <code code="RD" codeSystem="GCDF"/>
+            <code code="RE" codeSystem="GCDF"/>
+            <code code="RF" codeSystem="GCDF"/>
+            <code code="RG" codeSystem="GCDF"/>
+            <code code="RH" codeSystem="GCDF"/>
+            <code code="RI" codeSystem="GCDF"/>
+            <code code="RJ" codeSystem="GCDF"/>
+            <code code="RK" codeSystem="GCDF"/>
+            <code code="RL" codeSystem="GCDF"/>
+            <code code="RM" codeSystem="GCDF"/>
+            <code code="RN" codeSystem="GCDF"/>
+            <code code="SA" codeSystem="GCDF"/>
+            <code code="SB" codeSystem="GCDF"/>
+            <code code="SC" codeSystem="GCDF"/>
+            <code code="SD" codeSystem="GCDF"/>
+            <code code="SE" codeSystem="GCDF"/>
+            <code code="SF" codeSystem="GCDF"/>
+            <code code="SG" codeSystem="GCDF"/>
+            <code code="SH" codeSystem="GCDF"/>
+            <code code="SI" codeSystem="GCDF"/>
+            <code code="SJ" codeSystem="GCDF"/>
+            <code code="SK" codeSystem="GCDF"/>
+            <code code="SL" codeSystem="GCDF"/>
+            <code code="SM" codeSystem="GCDF"/>
+            <code code="SN" codeSystem="GCDF"/>
+            <code code="SO" codeSystem="GCDF"/>
+            <code code="SP" codeSystem="GCDF"/>
+            <code code="SQ" codeSystem="GCDF"/>
+            <code code="SR" codeSystem="GCDF"/>
+            <code code="SS" codeSystem="GCDF"/>
+            <code code="ST" codeSystem="GCDF"/>
+            <code code="SU" codeSystem="GCDF"/>
+            <code code="SV" codeSystem="GCDF"/>
+            <code code="SW" codeSystem="GCDF"/>
+            <code code="SX" codeSystem="GCDF"/>
+            <code code="SY" codeSystem="GCDF"/>
+            <code code="SZ" codeSystem="GCDF"/>
+            <code code="TA" codeSystem="GCDF"/>
+            <code code="TB" codeSystem="GCDF"/>
+            <code code="TC" codeSystem="GCDF"/>
+            <code code="TD" codeSystem="GCDF"/>
+            <code code="TE" codeSystem="GCDF"/>
+            <code code="TF" codeSystem="GCDF"/>
+            <code code="TG" codeSystem="GCDF"/>
+            <code code="TH" codeSystem="GCDF"/>
+            <code code="TI" codeSystem="GCDF"/>
+            <code code="TJ" codeSystem="GCDF"/>
+            <code code="TK" codeSystem="GCDF"/>
+            <code code="TL" codeSystem="GCDF"/>
+            <code code="TM" codeSystem="GCDF"/>
+            <code code="TN" codeSystem="GCDF"/>
+            <code code="TO" codeSystem="GCDF"/>
+            <code code="TP" codeSystem="GCDF"/>
+            <code code="TQ" codeSystem="GCDF"/>
+            <code code="TR" codeSystem="GCDF"/>
+            <code code="TS" codeSystem="GCDF"/>
+            <code code="TT" codeSystem="GCDF"/>
+            <code code="TU" codeSystem="GCDF"/>
+            <code code="TV" codeSystem="GCDF"/>
+            <code code="TW" codeSystem="GCDF"/>
+            <code code="TX" codeSystem="GCDF"/>
+            <code code="TY" codeSystem="GCDF"/>
+            <code code="TZ" codeSystem="GCDF"/>
+            <code code="UA" codeSystem="GCDF"/>
+            <code code="UB" codeSystem="GCDF"/>
+            <code code="UC" codeSystem="GCDF"/>
+            <code code="UD" codeSystem="GCDF"/>
+            <code code="UE" codeSystem="GCDF"/>
+            <code code="UF" codeSystem="GCDF"/>
+            <code code="UG" codeSystem="GCDF"/>
+            <code code="UH" codeSystem="GCDF"/>
+            <code code="UI" codeSystem="GCDF"/>
+            <code code="UJ" codeSystem="GCDF"/>
+            <code code="UK" codeSystem="GCDF"/>
+            <code code="UL" codeSystem="GCDF"/>
+            <code code="UM" codeSystem="GCDF"/>
+            <code code="UN" codeSystem="GCDF"/>
+            <code code="UO" codeSystem="GCDF"/>
+            <code code="UP" codeSystem="GCDF"/>
+            <code code="UQ" codeSystem="GCDF"/>
+            <code code="UR" codeSystem="GCDF"/>
+            <code code="WA" codeSystem="GCDF"/>
+            <code code="WB" codeSystem="GCDF"/>
+            <code code="WH" codeSystem="GCDF"/>
+            <code code="WI" codeSystem="GCDF"/>
+            <code code="YA" codeSystem="GCDF"/>
+            <code code="YB" codeSystem="GCDF"/>
+            <code code="YC" codeSystem="GCDF"/>
+            <code code="YD" codeSystem="GCDF"/>
+            <code code="YE" codeSystem="GCDF"/>
+            <code code="YF" codeSystem="GCDF"/>
+            <code code="YG" codeSystem="GCDF"/>
+            <code code="YH" codeSystem="GCDF"/>
+            <code code="YI" codeSystem="GCDF"/>
+            <code code="YJ" codeSystem="GCDF"/>
+            <code code="YK" codeSystem="GCDF"/>
+            <code code="YL" codeSystem="GCDF"/>
+            <code code="YM" codeSystem="GCDF"/>
+            <code code="YN" codeSystem="GCDF"/>
+            <code code="YO" codeSystem="GCDF"/>
+            <code code="YP" codeSystem="GCDF"/>
+            <code code="YQ" codeSystem="GCDF"/>
+            <code code="YR" codeSystem="GCDF"/>
+            <code code="YS" codeSystem="GCDF"/>
+            <code code="YT" codeSystem="GCDF"/>
+            <code code="YU" codeSystem="GCDF"/>
+            <code code="YV" codeSystem="GCDF"/>
+            <code code="YW" codeSystem="GCDF"/>
+            <code code="YX" codeSystem="GCDF"/>
+            <code code="YY" codeSystem="GCDF"/>
+            <code code="YZ" codeSystem="GCDF"/>
+            <code code="ZA" codeSystem="GCDF"/>
+            <code code="ZB" codeSystem="GCDF"/>
+            <code code="ZC" codeSystem="GCDF"/>
+            <code code="ZD" codeSystem="GCDF"/>
+            <code code="ZE" codeSystem="GCDF"/>
+            <code code="ZP" codeSystem="GCDF"/>
+            <code code="ZT" codeSystem="GCDF"/>
+            <code code="0A" codeSystem="GCDF"/>
+            <code code="1B" codeSystem="GCDF"/>
+            <code code="1C" codeSystem="GCDF"/>
+            <code code="1D" codeSystem="GCDF"/>
+            <code code="1E" codeSystem="GCDF"/>
+            <code code="1F" codeSystem="GCDF"/>
+            <code code="1G" codeSystem="GCDF"/>
+            <code code="1H" codeSystem="GCDF"/>
+            <code code="1I" codeSystem="GCDF"/>
+            <code code="1J" codeSystem="GCDF"/>
+            <code code="1K" codeSystem="GCDF"/>
+            <code code="1L" codeSystem="GCDF"/>
+            <code code="1M" codeSystem="GCDF"/>
+            <code code="1N" codeSystem="GCDF"/>
+            <code code="1O" codeSystem="GCDF"/>
+            <code code="1P" codeSystem="GCDF"/>
+            <code code="1Q" codeSystem="GCDF"/>
+            <code code="1R" codeSystem="GCDF"/>
+            <code code="1S" codeSystem="GCDF"/>
+            <code code="1T" codeSystem="GCDF"/>
+            <code code="1U" codeSystem="GCDF"/>
+            <code code="1V" codeSystem="GCDF"/>
+            <code code="1W" codeSystem="GCDF"/>
+            <code code="1X" codeSystem="GCDF"/>
+            <code code="1Y" codeSystem="GCDF"/>
+            <code code="1Z" codeSystem="GCDF"/>
+            <code code="2A" codeSystem="GCDF"/>
+            <code code="2B" codeSystem="GCDF"/>
+            <code code="2C" codeSystem="GCDF"/>
+            <code code="2D" codeSystem="GCDF"/>
+            <code code="2E" codeSystem="GCDF"/>
+            <code code="2F" codeSystem="GCDF"/>
+            <code code="2G" codeSystem="GCDF"/>
+            <code code="2H" codeSystem="GCDF"/>
+            <code code="2I" codeSystem="GCDF"/>
+            <code code="2J" codeSystem="GCDF"/>
+            <code code="2K" codeSystem="GCDF"/>
+            <code code="2L" codeSystem="GCDF"/>
+            <code code="2M" codeSystem="GCDF"/>
+            <code code="2N" codeSystem="GCDF"/>
+            <code code="2O" codeSystem="GCDF"/>
+            <code code="2P" codeSystem="GCDF"/>
+            <code code="2Q" codeSystem="GCDF"/>
+            <code code="2R" codeSystem="GCDF"/>
+            <code code="2S" codeSystem="GCDF"/>
+            <code code="2T" codeSystem="GCDF"/>
+            <code code="2U" codeSystem="GCDF"/>
+            <code code="2V" codeSystem="GCDF"/>
+            <code code="2W" codeSystem="GCDF"/>
+            <code code="2X" codeSystem="GCDF"/>
+            <code code="2Y" codeSystem="GCDF"/>
+            <code code="2Z" codeSystem="GCDF"/>
+            <code code="3A" codeSystem="GCDF"/>
+            <code code="3B" codeSystem="GCDF"/>
+            <code code="3C" codeSystem="GCDF"/>
+            <code code="3D" codeSystem="GCDF"/>
+            <code code="3E" codeSystem="GCDF"/>
+            <code code="3F" codeSystem="GCDF"/>
+            <code code="3G" codeSystem="GCDF"/>
+            <code code="3H" codeSystem="GCDF"/>
+            <code code="3I" codeSystem="GCDF"/>
+            <code code="3J" codeSystem="GCDF"/>
+            <code code="3K" codeSystem="GCDF"/>
+            <code code="3L" codeSystem="GCDF"/>
+            <code code="3M" codeSystem="GCDF"/>
+            <code code="3N" codeSystem="GCDF"/>
+            <code code="3O" codeSystem="GCDF"/>
+            <code code="3P" codeSystem="GCDF"/>
+            <code code="3Q" codeSystem="GCDF"/>
+            <code code="3R" codeSystem="GCDF"/>
+            <code code="3S" codeSystem="GCDF"/>
+            <code code="3T" codeSystem="GCDF"/>
+            <code code="3U" codeSystem="GCDF"/>
+            <code code="3V" codeSystem="GCDF"/>
+            <code code="3W" codeSystem="GCDF"/>
+            <code code="3X" codeSystem="GCDF"/>
+            <code code="3Y" codeSystem="GCDF"/>
+            <code code="3Z" codeSystem="GCDF"/>
+            <code code="4B" codeSystem="GCDF"/>
+            <code code="4C" codeSystem="GCDF"/>
+            <code code="4D" codeSystem="GCDF"/>
+            <code code="4E" codeSystem="GCDF"/>
+            <code code="4F" codeSystem="GCDF"/>
+            <code code="4G" codeSystem="GCDF"/>
+            <code code="4H" codeSystem="GCDF"/>
+            <code code="4I" codeSystem="GCDF"/>
+            <code code="4J" codeSystem="GCDF"/>
+            <code code="4K" codeSystem="GCDF"/>
+            <code code="4L" codeSystem="GCDF"/>
+            <code code="4M" codeSystem="GCDF"/>
+            <code code="4N" codeSystem="GCDF"/>
+            <code code="4O" codeSystem="GCDF"/>
+            <code code="4Q" codeSystem="GCDF"/>
+            <code code="4R" codeSystem="GCDF"/>
+            <code code="4S" codeSystem="GCDF"/>
+            <code code="4T" codeSystem="GCDF"/>
+            <code code="4U" codeSystem="GCDF"/>
+            <code code="4V" codeSystem="GCDF"/>
+            <code code="4W" codeSystem="GCDF"/>
+            <code code="4X" codeSystem="GCDF"/>
+            <code code="4Y" codeSystem="GCDF"/>
+            <code code="4Z" codeSystem="GCDF"/>
+            <code code="5A" codeSystem="GCDF"/>
+            <code code="5B" codeSystem="GCDF"/>
+            <code code="5C" codeSystem="GCDF"/>
+            <code code="5D" codeSystem="GCDF"/>
+            <code code="5E" codeSystem="GCDF"/>
+            <code code="5F" codeSystem="GCDF"/>
+            <code code="5G" codeSystem="GCDF"/>
+            <code code="5H" codeSystem="GCDF"/>
+            <code code="5I" codeSystem="GCDF"/>
+            <code code="5J" codeSystem="GCDF"/>
+            <code code="5K" codeSystem="GCDF"/>
+            <code code="5L" codeSystem="GCDF"/>
+            <code code="5M" codeSystem="GCDF"/>
+            <code code="5N" codeSystem="GCDF"/>
+            <code code="5O" codeSystem="GCDF"/>
+            <code code="5P" codeSystem="GCDF"/>
+            <code code="5Q" codeSystem="GCDF"/>
+            <code code="5R" codeSystem="GCDF"/>
+            <code code="5S" codeSystem="GCDF"/>
+            <code code="5T" codeSystem="GCDF"/>
+            <code code="5U" codeSystem="GCDF"/>
+            <code code="5V" codeSystem="GCDF"/>
+            <code code="5W" codeSystem="GCDF"/>
+            <code code="5X" codeSystem="GCDF"/>
+            <code code="5Y" codeSystem="GCDF"/>
+            <code code="5Z" codeSystem="GCDF"/>
+            <code code="6A" codeSystem="GCDF"/>
+            <code code="6B" codeSystem="GCDF"/>
+            <code code="6C" codeSystem="GCDF"/>
+            <code code="6D" codeSystem="GCDF"/>
+            <code code="6E" codeSystem="GCDF"/>
+            <code code="6F" codeSystem="GCDF"/>
+            <code code="6G" codeSystem="GCDF"/>
+            <code code="6H" codeSystem="GCDF"/>
+            <code code="6I" codeSystem="GCDF"/>
+            <code code="6J" codeSystem="GCDF"/>
+            <code code="6K" codeSystem="GCDF"/>
+            <code code="6L" codeSystem="GCDF"/>
+            <code code="6M" codeSystem="GCDF"/>
+            <code code="6N" codeSystem="GCDF"/>
+            <code code="6O" codeSystem="GCDF"/>
+            <code code="6P" codeSystem="GCDF"/>
+            <code code="6Q" codeSystem="GCDF"/>
+            <code code="6S" codeSystem="GCDF"/>
+            <code code="6T" codeSystem="GCDF"/>
+            <code code="6U" codeSystem="GCDF"/>
+            <code code="6V" codeSystem="GCDF"/>
+            <code code="6W" codeSystem="GCDF"/>
+            <code code="6X" codeSystem="GCDF"/>
+            <code code="6Y" codeSystem="GCDF"/>
+            <code code="6Z" codeSystem="GCDF"/>
+            <code code="7A" codeSystem="GCDF"/>
+            <code code="7B" codeSystem="GCDF"/>
+            <code code="7C" codeSystem="GCDF"/>
+            <code code="7D" codeSystem="GCDF"/>
+            <code code="7E" codeSystem="GCDF"/>
+            <code code="7F" codeSystem="GCDF"/>
+            <code code="7G" codeSystem="GCDF"/>
+            <code code="7H" codeSystem="GCDF"/>
+            <code code="7I" codeSystem="GCDF"/>
+            <code code="7J" codeSystem="GCDF"/>
+            <code code="7L" codeSystem="GCDF"/>
+            <code code="7M" codeSystem="GCDF"/>
+            <code code="7N" codeSystem="GCDF"/>
+            <code code="7O" codeSystem="GCDF"/>
+            <code code="7P" codeSystem="GCDF"/>
+            <code code="7Q" codeSystem="GCDF"/>
+            <code code="7R" codeSystem="GCDF"/>
+            <code code="7S" codeSystem="GCDF"/>
+            <code code="7T" codeSystem="GCDF"/>
+            <code code="7U" codeSystem="GCDF"/>
+            <code code="7V" codeSystem="GCDF"/>
+            <code code="7W" codeSystem="GCDF"/>
+            <code code="7X" codeSystem="GCDF"/>
+            <code code="7Y" codeSystem="GCDF"/>
+            <code code="7Z" codeSystem="GCDF"/>
+            <code code="8A" codeSystem="GCDF"/>
+            <code code="8B" codeSystem="GCDF"/>
+            <code code="8C" codeSystem="GCDF"/>
+            <code code="8D" codeSystem="GCDF"/>
+            <code code="8E" codeSystem="GCDF"/>
+            <code code="8F" codeSystem="GCDF"/>
+            <code code="8G" codeSystem="GCDF"/>
+            <code code="8H" codeSystem="GCDF"/>
+            <code code="8I" codeSystem="GCDF"/>
+            <code code="8J" codeSystem="GCDF"/>
+        </OrderableDrugForm>
+        <CompliancePackageEntityType>
+            <code code="STRIP"/>
+            <code code="COMPPKG"/>
+            <code code="BLSTRPK"/>
+            <code code="CARD"/>
+            <code code="DIALPK"/>
+            <code code="DISK"/>
+            <code code="DOSET"/>
+            <code code="STRIP"/>
+        </CompliancePackageEntityType>
+        <ActiveIngredientDrugEntityType>
+            <code code="*" codeSystem="HIC"/>
+        </ActiveIngredientDrugEntityType>
+        <x_drugUnitsOfMeasure>
+            <code code=""/>
+            <code code="%"/>
+            <code code="[cup_us]"/>
+            <code code="[foz_br]"/>
+            <code code="[gal_br]"/>
+            <code code="[sft_i]"/>
+            <code code="[sin_i]"/>
+            <code code="[lb_av]"/>
+            <code code="[oz_av]"/>
+            <code code="[pt_br]"/>
+            <code code="[qt_br]"/>
+            <code code="[tbs_us]"/>
+            <code code="[tsp_us]"/>
+            <code code="[syd_i]"/>
+            <code code="cm2"/>
+            <code code="cm3"/>
+            <code code="g"/>
+            <code code="iU"/>
+            <code code="kg"/>
+            <code code="l"/>
+            <code code="m2"/>
+            <code code="meq"/>
+            <code code="mg"/>
+            <code code="ml"/>
+            <code code="mm2"/>
+            <code code="mm3"/>
+            <code code="mmol"/>
+            <code code="mol"/>
+            <code code="mU"/>
+            <code code="ng"/>
+            <code code="nl"/>
+            <code code="U"/>
+            <code code="ug"/>
+            <code code="ul"/>
+            <code code="umol"/>
+            <code code="mcg"/>
+            <code code="units"/>
+            <code code="gm"/>
+            <code code="cc"/>
+            <!-- TODO: complete codeset -->
+        </x_drugUnitsOfMeasure>
+        <ActSubstanceAdminSubstitutionCode>
+            <code code="N" codeSystem="ACTCODE"/>
+            <code code="G" codeSystem="ACTCODE"/>
+            <code code="F" codeSystem="ACTCODE"/>
+            <code code="TE" codeSystem="ACTCODE"/>
+            <!-- complete codeset -->
+        </ActSubstanceAdminSubstitutionCode>
+        <SubstanceAdminSubstitutionNotAllowedReason>
+            <code code="ALGALT" codeSystem="ACTCODE"/>
+            <code code="PATCH" codeSystem="ACTCODE"/>
+            <code code="THERCHAR" codeSystem="ACTCODE"/>
+            <code code="COMPCON" codeSystem="ACTCODE"/>
+            <code code="TRIAL" codeSystem="ACTCODE"/>
+            <!-- complete codeset -->
+        </SubstanceAdminSubstitutionNotAllowedReason>
+        <SubstanceAdminSubstitutionReason>
+            <code code="CT" codeSystem="ACTCODE"/>
+            <code code="FP" codeSystem="ACTCODE"/>
+            <code code="OS" codeSystem="ACTCODE"/>
+            <code code="RR" codeSystem="ACTCODE"/>
+            <!-- complete codeset -->
+        </SubstanceAdminSubstitutionReason>
+        <ActPharmacySupplyType>
+            <code code="FF"/>
+            <code code="DF"/>
+            <code code="EM"/>
+            <code code="SO"/>
+            <code code="FFS"/>
+            <code code="FFCS"/>
+            <code code="FFPS"/>
+            <code code="TFS"/>
+            <code code="FFC"/>
+            <code code="FFCS"/>
+            <code code="FFP"/>
+            <code code="FFPS"/>
+            <code code="TF"/>
+            <code code="TFS"/>
+            <code code="_UD"/>
+            <code code="FS"/>
+            <code code="MS"/>
+            <code code="RF"/>
+            <code code="RFS"/>
+            <code code="RFC"/>
+            <code code="RFCS"/>
+            <code code="RFF"/>
+            <code code="RFFS"/>
+            <code code="RFP"/>
+            <code code="RFPS"/>
+            <code code="TB"/>
+            <code code="TBS"/>
+            <code code="UD"/>
+            <code code="UDE"/>
+        </ActPharmacySupplyType>
+        <InvoiceReasonOfCode>
+            <code code="RXDINV"/>
+            <code code="RXCINV"/>
+        </InvoiceReasonOfCode>
+        <invoiceElementGroupCode>
+            <code code="RXDINV"/>
+            <code code="RXCINV"/>
+            <code code="DRUGING"/>
+        </invoiceElementGroupCode>
+        <invoiceElementDetailCode>
+            <code code="MARKUP"/>
+            <code code="PROFFEE"/>
+            <code code="*" codeSystem="DIN"/>
+        </invoiceElementDetailCode>
+        <adjudicatedInvoiceElementDetailCode>
+            <code code="MARKUP"/>
+            <code code="PROFFEE"/>
+            <code code="COINS"/>
+            <code code="COPAYMENT"/>
+            <code code="DEDUCTIBLE"/>
+            <code code="*" codeSystem="DIN"/>
+        </adjudicatedInvoiceElementDetailCode>
+        <invoiceMedication>
+            <code code="*" codeSystem="DIN"/>
+        </invoiceMedication>
+        <invoiceIssueAlertCode>
+            <code code="MT"/>
+        </invoiceIssueAlertCode>
+        <adjudicationResultCode>
+            <code code="AS"/>
+            <code code="AR"/>
+            <code code="ANF"/>
+            <code code="AA"/>
+        </adjudicationResultCode>
+        <observationDiagnosisCode>
+            <code code="DX"/>
+        </observationDiagnosisCode>
+        <observationSymptomCode>
+            <code code="SYMPT"/>
+        </observationSymptomCode>
+        <ActNonConditionIndicationCode>
+            <code code="IND01" codeSystem="ACTCODE"/>
+            <code code="IND02" codeSystem="ACTCODE"/>
+            <code code="IND03" codeSystem="ACTCODE"/>
+            <code code="IND04" codeSystem="ACTCODE"/>
+            <code code="IND05" codeSystem="ACTCODE"/>
+        </ActNonConditionIndicationCode>
+        <PrescriptionAuthoritativeCode>
+            <code code="VFPAPER"/>
+        </PrescriptionAuthoritativeCode>
+        <x_ActObservationHeightOrWeight>
+            <code code="3137-7" codeSystem="LOINC"/>
+            <code code="3137-5" codeSystem="LOINC"/>
+            <code code="3141-9" codeSystem="LOINC"/>
+            <code code="3141-7" codeSystem="LOINC"/>
+        </x_ActObservationHeightOrWeight>
+        <x_ActObservationHeightOrWeightUnits>
+            <code code="kg"/>
+            <code code="cm"/>
+        </x_ActObservationHeightOrWeightUnits>
+        <trialSupplyPermission>
+            <code code="TF"/>
+        </trialSupplyPermission>
+        <ActTherapyDurationWorkingListCode>
+            <code code="CHRON"/>
+            <code code="ACU"/>
+            <code code="ONET"/>
+            <code code="PRN"/>
+        </ActTherapyDurationWorkingListCode>
+        <ObservationSymptomValue>
+            <code code="*" codeSystem="ICD10CA"/>
+        </ObservationSymptomValue>
+        <ObservationDiagnosisValue>
+            <code code="*" codeSystem="ICD10CA"/>
+        </ObservationDiagnosisValue>
+        <actNoAdministrationReason>
+            <code code="RELIG"/>
+            <code code="PATOBJ"/>
+            <code code="PHILISOP"/>
+            <code code="VACSAF"/>
+            <code code="OSTOCK"/>
+            <code code="IMMUNE"/>
+            <code code="VACEFF"/>
+            <code code="MEDPREC"/>
+        </actNoAdministrationReason>
+        <x_InformationSource>
+            <code code="AGNT"/>
+            <code code="PAT"/>
+            <code code="PROV"/>
+        </x_InformationSource>
+        <codeImmunize>
+            <code code="IMMUNIZ"/>
+        </codeImmunize>
+        <CommonClinicalObservationType>
+            <code code="3137-7" codeSystem="LOINC"/>
+            <code code="3137-5" codeSystem="LOINC"/>
+            <code code="3141-9" codeSystem="LOINC"/>
+            <code code="3141-7" codeSystem="LOINC"/>
+            <code code="8867-4" codeSystem="LOINC"/>
+            <code code="18684-1" codeSystem="LOINC"/>
+            <code code="11378-7" codeSystem="LOINC"/>
+            <code code="11377-9" codeSystem="LOINC"/>
+            <code code="11289-6" codeSystem="LOINC"/>
+            <code code="2340-8" codeSystem="LOINC"/>
+            <code code="2341-6" codeSystem="LOINC"/>
+            <code code="18686-6" codeSystem="LOINC"/>
+            <code code="3142-7" codeSystem="LOINC"/>
+        </CommonClinicalObservationType>
+        <subObservationEventType>
+            <!-- either code for SYSTOLIC or DYSTOLIC - CommonClinicalObservationType -->
+            <code code="11378-7" codeSystem="LOINC"/>
+            <code code="11377-9" codeSystem="LOINC"/>
+        </subObservationEventType>
+        <BloodPressureUnits>
+            <code code="mm[Hg]"/>
+        </BloodPressureUnits>
+        <x_BasicUnitsOfMeasure>
+            <code code="%"/>
+            <code code="[cup_us]"/>
+            <code code="[foz_br]"/>
+            <code code="[gal_br]"/>
+            <code code="[lb_av]"/>
+            <code code="[oz_av]"/>
+            <code code="[pt_br]"/>
+            <code code="[qt_br]"/>
+            <code code="[sft_i]"/>
+            <code code="[sin_i]"/>
+            <code code="[syd_i]"/>
+            <code code="[tbs_us]"/>
+            <code code="[tsp_us]"/>
+            <code code="1/d"/>
+            <code code="1/min"/>
+            <code code="a"/>
+            <code code="cm2"/>
+            <code code="cm3"/>
+            <code code="d"/>
+            <code code="dg"/>
+            <code code="dl"/>
+            <code code="g"/>
+            <code code="g/d"/>
+            <code code="g/l"/>
+            <code code="h"/>
+            <code code="iU"/>
+            <code code="kg"/>
+            <code code="l"/>
+            <code code="m2"/>
+            <code code="meq"/>
+            <code code="mg"/>
+            <code code="mg"/>
+            <code code="mg/d"/>
+            <code code="min"/>
+            <code code="ml"/>
+            <code code="ml/s"/>
+            <code code="mm[Hg]"/>
+            <code code="mm2"/>
+            <code code="mm3"/>
+            <code code="mmol"/>
+            <code code="mmol/l"/>
+            <code code="mo"/>
+            <code code="mol"/>
+            <code code="ms"/>
+            <code code="mU"/>
+            <code code="ng"/>
+            <code code="ng"/>
+            <code code="nl"/>
+            <code code="nl"/>
+            <code code="pg/ml"/>
+            <code code="s"/>
+            <code code="U"/>
+            <code code="U/l"/>
+            <code code="ug"/>
+            <code code="ug/min"/>
+            <code code="ul"/>
+            <code code="umol"/>
+            <code code="umol/l"/>
+            <code code="wk"/>
+        </x_BasicUnitsOfMeasure>
+        <MedicalConditionCode>
+            <code code="DX"/>
+        </MedicalConditionCode>
+        <MedicalConditionValue>
+            <code code="*" codeSystem="ICD10CA"/>
+        </MedicalConditionValue>
+        <chronicIndicator>
+            <code code="CHRON"/>
+        </chronicIndicator>
+    </codeSystems>
+    <OIDSets>
+        <assignedPerson>
+            <id OIDName="DEPT_HEALTH_BILLING_NUMBER"/>
+            <id OIDName="DEPT_HEALTH_PHARMACIST_ID"/>
+            <id OIDName="PEI_MED_SOCIETY"/>
+            <id OIDName="PEI_PHARMACIST_BOARD_ID"/>
+            <id OIDName="DEPT_HEALTH_VETERINARIAN_LICENSE_ID"/>
+            <id OIDName="DEPT_HEALTH_EMPLOYEE_NUMBER_ID"/>
+            <id OIDName="DEPT_HEALTH_PHARMACY_TECHNICIAN_ID"/>
+
+        </assignedPerson>
+        <prescribers>
+            <id OIDName="DEPT_HEALTH_BILLING_NUMBER"/>
+            <id OIDName="PEI_MED_SOCIETY"/>
+        </prescribers>
+        <serviceDeliveryLocation>
+            <id OIDName="DEPT_HEALTH_HOSPITAL_ID"/>
+            <id OIDName="DEPT_HEALTH_PHARMACY_ID"/>
+            <id OIDName="DEPT_HEALTH_PHYSICIANS_OFFICE_ID"/>
+            <id OIDName="DEPT_HEALTH_LONG_TERM_CARE_FACILITY_ID"/>
+            <id OIDName="DEPT_HEALTH_MENTAL_HEALTH_CARE_FACILITY_ID"/>
+            <id OIDName="DEPT_HEALTH_ADDICTION_CENTER_FACILITY_ID"/>
+            <id OIDName="DEPT_HEALTH_DENTAL_FACILITY_ID"/>
+            <id OIDName="DEPT_HEALTH_VETERINARY_FACILITY_ID"/>
+        </serviceDeliveryLocation>
+        <patient>
+            <id OIDName="PE_PHN"/>
+            <!--<id OIDName="BC_PHN"/>-->
+        </patient>
+        <informant>
+            <id OIDName="PE_PHN"/>
+        </informant>
+        <exposureEvent>
+            <!-- prescription, dispense, immunization, active med -->
+            <id OIDName="DIS_DISPENSE_ID"/>
+            <id OIDName="DIS_PRESCRIPTION_ID"/>
+            <id OIDName="DIS_IMMUNIZATION_ID"/>
+            <id OIDName="DIS_OTHER_ACTIVE_MED_ID"/>
+        </exposureEvent>
+        <supplyEvent>
+            <id OIDName="DIS_DISPENSE_ID"/>
+        </supplyEvent>
+        <observationCodedEvent>
+            <id OIDName="DIS_ALLERGY_ID"/>
+            <id OIDName="DIS_MEDICAL_CONDITION_ID"/>
+        </observationCodedEvent>
+        <observationMeasurableEvent>
+            <id OIDName="DIS_OBSERVATION_ID"/>
+        </observationMeasurableEvent>
+        <detectedIssueDefinition>
+            <id OIDName="DIS_OBSERVATION_ID"/>
+            <!-- todo: find correct set of OIDs for Knowledgebase ids -->
+        </detectedIssueDefinition>
+        <annotatedRecord>
+            <id OIDName="DIS_DISPENSE_ID"/>
+            <!-- add all things notes can be added too. -->
+            <id OIDName="DIS_PRESCRIPTION_ID"/>
+            <id OIDName="DIS_OBSERVATION_ID"/>
+            <id OIDName="DIS_ALLERGY_ID"/>
+            <id OIDName="DIS_MEDICAL_CONDITION_ID"/>
+            <id OIDName="DIS_PROF_SERVICE_ID"/>
+            <id OIDName="DIS_REACTION_ID"/>
+            <id OIDName="DIS_IMMUNIZATION_ID"/>
+            <id OIDName="DIS_OTHER_ACTIVE_MED_ID"/>
+        </annotatedRecord>
+        <ClientSystemDispense>
+            <id OIDName="PORTAL_DISPENSE_ID"/>
+        </ClientSystemDispense>
+        <ServerSystemDispense>
+            <id OIDName="DIS_DISPENSE_ID"/>
+        </ServerSystemDispense>
+        <allergyRecordType>
+            <id OIDName="DIS_ALLERGY_ID"/>
+        </allergyRecordType>
+        <patientNoteRecordType>
+            <id OIDName="DIS_PATIENT_NOTE_ID"/>
+        </patientNoteRecordType>
+        <prescriptionRecordType>
+            <id OIDName="DIS_PRESCRIPTION_ID"/>
+        </prescriptionRecordType>
+        <otherMedRecordType>
+            <id OIDName="DIS_OTHER_ACTIVE_MED_ID"/>
+        </otherMedRecordType>
+        <dispenseRecordType>
+            <id OIDName="DIS_DISPENSE_ID"/>
+        </dispenseRecordType>
+        <immunizationRecordType>
+            <id OIDName="DIS_IMMUNIZATION_ID"/>
+        </immunizationRecordType>
+        <observationRecordType>
+            <id OIDName="DIS_OBSERVATION_ID"/>
+        </observationRecordType>
+        <reactionRecordType>
+            <id OIDName="DIS_REACTION_ID"/>
+        </reactionRecordType>
+        <refusalNoteRecordType>
+            <id OIDName=""/>
+        </refusalNoteRecordType>
+        <conditionRecordType>
+            <id OIDName="DIS_MEDICAL_CONDITION_ID"/>
+        </conditionRecordType>
+        <undoOids>
+            <id OIDName="PORTAL_CONTROL_ACT_ID"/>
+        </undoOids>
+
+    </OIDSets>
+</Data>

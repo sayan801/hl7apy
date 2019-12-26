@@ -1,0 +1,2650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  
+    Copyright © 1996-2006 by DeltaWare Systems Inc. 
+
+    The GNU General Public License (GPL)
+    This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the 
+    Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 
+    59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+
+
+<configuration>
+    <testData BaseDateTime="20060101000001">
+        <!-- MEDICAL PROFILES -->
+        <medicalProfiles>
+            <!-- Each profile represents the status of a given patient at a given time
+                The sequence value can be used to show how a profile changes over time.
+            -->
+            <medicalProfile description="Staged Profile" sequence="New Prescription v0">
+                <patient description="Patient 3"/>
+                <!-- optional consent  -->
+                <!-- 
+                <consent>
+                    <effectiveTime>optional</effectiveTime>
+                    <OverRideCode code=""/> optional
+                    <modeCode code="V"/>
+                    <keyword>keyword</keyword>
+                    <ProvidedBy>name</ProvidedBy>
+                    <AccessLevel code="1"/>
+                </consent>
+                -->
+                <consent>
+                    <OverRideCode code="123"/>
+                </consent>
+                <items/>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="New Prescription v1">
+                <patient description="Patient 3"/>
+                <consent>
+                    <OverRideCode code="123"/>
+                </consent>
+                <items>
+                    <prescription description="Prescription 1">
+                        <record-id client="222" server="333" root_OID="DIS_PRESCRIPTION_ID"/>
+                        <author description="Physician 1"/>
+                        <location description="Physician Location 1"/>
+                    </prescription>
+                    <dispense description="Dispense 1 of Prescription 1">
+                        <record-id client="2221" server="3331" root_OID="DIS_DISPENSE_ID"/>
+                        <local-id client="10000" server="10001" root_OID="PORTAL_DISPENSE_ID"/>
+                        <prescription description="Prescription 1"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <!-- optional element for substitution details -->
+                        <substitutionMade>
+                            <code code="N"/>
+                            <reasonCode code="OS"/>
+                        </substitutionMade>
+                        <pickup>
+                            <author description="Pharmacist 1"/>
+                            <location description="Pharmacy 1"/>
+                        </pickup>
+                    </dispense>
+                    <invoice description="Invoice 1 for Dispense 1" currency="CAD">
+                        <author description="Physician 1"/>
+                        <dispense description="Dispense 1 of Prescription 1"/>
+                        <payee description="Pharmacy 1"/>
+                        <override code="GFTH"/>
+                        <request>
+                            <coverage description="Insurance Coverage 1"/>
+                            <professionalfee value="100.00"/>
+                            <markupfee value="50.00"/>
+                            <upstreampayor value="10.00" />
+                            <issue>
+                                <code code="GEND"/>
+                                <severity code="L"/>
+                                <management>
+                                    <code code="10"/>
+                                </management>
+                            </issue>
+                        </request>
+                        <payment>
+                            <paymentTime value="20060201"/>
+                            <coverage description="Insurance Coverage 1"/>
+                            <professionalfee value="100">
+                                <reason code="AS"/>
+                            </professionalfee>
+                            <markupfee value="25.00">
+                                <reason code="AA" error="D8" warning="QB"/>
+                            </markupfee>
+                            <patientcost value="0"/>
+                            <copayment value="0"/>
+                            <deductible value="0"/>
+                        </payment>
+                    </invoice>
+                </items>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="Refill Prescription v0">
+                <patient description="Patient 1"/>
+                <items>
+                    <prescription description="Prescription 1">
+                        <record-id client="222" server="333" root_OID="DIS_PRESCRIPTION_ID"/>
+                        <author description="Physician 1"/>
+                        <location description="Physician Location 1"/>
+                    </prescription>
+                    <dispense description="Dispense 1 of Prescription 1">
+                        <record-id client="2221" server="3331" root_OID="DIS_DISPENSE_ID"/>
+                        <local-id client="10000" server="10001" root_OID="PORTAL_DISPENSE_ID"/>
+                        <prescription description="Prescription 1"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <pickup>
+                            <author description="Pharmacist 1"/>
+                            <location description="Pharmacy 1"/>
+                        </pickup>
+                    </dispense>
+                </items>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="Refill Prescription v1">
+                <patient description="Patient 1"/>
+                <items>
+                    <prescription description="Prescription 1">
+                        <record-id client="222" server="333"  root_OID="DIS_PRESCRIPTION_ID"/>
+                        <author description="Physician 1"/>
+                        <location description="Physician Location 1"/>
+                    </prescription>
+                    <dispense description="Dispense 1 of Prescription 1">
+                        <record-id client="2221" server="3331" root_OID="DIS_DISPENSE_ID"/>
+                        <local-id client="10000" server="10001"  root_OID="PORTAL_DISPENSE_ID"/>
+                        <prescription description="Prescription 1"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <pickup>
+                            <author description="Pharmacist 1"/>
+                            <location description="Pharmacy 1"/>
+                        </pickup>
+                    </dispense>
+                    <invoice description="Invoice 1 for Dispense 1" currency="CAD">
+                        <author description="Physician 1"/>
+                        <dispense description="Dispense 1 of Prescription 1"/>
+                        <payee description="Pharmacy 1"/>
+                        <override code="GFTH"/>
+                        <request>
+                            <coverage description="Insurance Coverage 1"/>
+                            <professionalfee value="100.00"/>
+                            <markupfee value="50.00"/>
+                            <upstreampayor value="10.00" />
+                            <issue>
+                                <code code="GEND"/>
+                                <severity code="L"/>
+                                <management>
+                                    <code code="10"/>
+                                </management>
+                            </issue>
+                        </request>
+                        <payment>
+                            <paymentTime value="20060201"/>
+                            <coverage description="Insurance Coverage 1"/>
+                            <professionalfee value="100">
+                                <reason code="AS"/>
+                            </professionalfee>
+                            <markupfee value="25.00">
+                                <reason code="AA" error="D8" warning="QB"/>
+                            </markupfee>
+                            <patientcost value="0"/>
+                            <copayment value="0"/>
+                            <deductible value="0"/>
+                        </payment>
+                    </invoice>
+                    <dispense description="Dispense 2 of Prescription 1">
+                        <record-id client="2222" server="3332" root_OID="DIS_DISPENSE_ID"/>
+                        <local-id client="10002" server="10003"  root_OID="PORTAL_DISPENSE_ID"/>
+                        <prescription description="Prescription 1"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <pickup>
+                            <author description="Pharmacist 1"/>
+                            <location description="Pharmacy 1"/>
+                        </pickup>
+                    </dispense>
+                    <invoice description="Invoice 1 for Dispense 2" currency="CAD">
+                        <author description="Physician 1"/>
+                        <dispense description="Dispense 2 of Prescription 1"/>
+                        <payee description="Pharmacy 1"/>
+                        <override code="GFTH"/>
+                        <request>
+                            <coverage description="Insurance Coverage 1"/>
+                            <professionalfee value="100.00"/>
+                            <markupfee value="50.00"/>
+                            <upstreampayor value="10.00" />
+                            <issue>
+                                <code code="GEND"/>
+                                <severity code="L"/>
+                                <management>
+                                    <code code="10"/>
+                                </management>
+                            </issue>
+                        </request>
+                        <payment>
+                            <paymentTime value="20060201"/>
+                            <coverage description="Insurance Coverage 1"/>
+                            <professionalfee value="100">
+                                <reason code="AS"/>
+                            </professionalfee>
+                            <markupfee value="25.00">
+                                <reason code="AA" error="D8" warning="QB"/>
+                            </markupfee>
+                            <patientcost value="0"/>
+                            <copayment value="0"/>
+                            <deductible value="0"/>
+                        </payment>
+                    </invoice>
+                </items>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="infered Prescription v0">
+                <patient description="Patient 2"/>
+                <items/>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="infered Prescription v1">
+                <patient description="Patient 2"/>
+                <items>
+                    <prescription description="Drug 1 - infered Precription" infered="true">
+                        <record-id client="222" server="333"  root_OID="DIS_PRESCRIPTION_ID"/>
+                        <author description="Physician 1"/>
+                        <location description="Physician Location 1"/>
+                    </prescription>
+                    <dispense description="Dispense 1 - of Drug 1 - infered Precription">
+                        <record-id client="2221" server="3331" root_OID="DIS_DISPENSE_ID"/>
+                        <local-id client="11111" server="11112"  root_OID="PORTAL_DISPENSE_ID"/>
+                        <prescription description="Drug 1 - infered Precription"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <pickup>
+                            <author description="Pharmacist 1"/>
+                            <location description="Pharmacy 1"/>
+                        </pickup>
+                    </dispense>
+                    <invoice description="Invoice 1 for Dispense 1" currency="CAD">
+                        <author description="Physician 1"/>
+                        <dispense description="Dispense 1 - of Drug 1 - infered Precription"/>
+                        <payee description="Pharmacy 1"/>
+                        <override code="GFTH"/>
+                        <request>
+                            <coverage description="Insurance Coverage 1"/>
+                            <professionalfee value="100.00"/>
+                            <markupfee value="50.00"/>
+                            <upstreampayor value="10.00" />
+                            <issue>
+                                <code code="GEND"/>
+                                <severity code="L"/>
+                                <management>
+                                    <code code="10"/>
+                                </management>
+                            </issue>
+                        </request>
+                        <payment>
+                            <paymentTime value="20060201"/>
+                            <coverage description="Insurance Coverage 1"/>
+                            <professionalfee value="100">
+                                <reason code="AS"/>
+                            </professionalfee>
+                            <markupfee value="25.00">
+                                <reason code="AA" error="D8" warning="QB"/>
+                            </markupfee>
+                            <patientcost value="0"/>
+                            <copayment value="0"/>
+                            <deductible value="0"/>
+                        </payment>
+                    </invoice>
+                    
+                </items>
+            </medicalProfile>
+
+            <medicalProfile description="Staged Profile" sequence="Reversal of Transaction v1">
+                <patient description="Patient 1"/>
+                <items>
+                    <prescription description="Prescription 1">
+                        <record-id client="222" server="333"  root_OID="DIS_PRESCRIPTION_ID"/>
+                        <author description="Physician 1"/>
+                        <location description="Physician Location 1"/>
+                    </prescription>
+                    <dispense description="Dispense 1 of Prescription 1">
+                        <record-id client="2221" server="3331" root_OID="DIS_DISPENSE_ID"/>
+                        <local-id client="10000" server="10001"  root_OID="PORTAL_DISPENSE_ID"/>
+                        <prescription description="Prescription 1"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <pickup>
+                            <author description="Pharmacist 1"/>
+                            <location description="Pharmacy 1"/>
+                        </pickup>
+                    </dispense>
+                    <invoice description="Invoice 1 for Dispense 1" currency="CAD">
+                        <author description="Physician 1"/>
+                        <dispense description="Dispense 1 of Prescription 1"/>
+                        <payee description="Pharmacy 1"/>
+                        <override code="GFTH"/>
+                        <request>
+                            <coverage description="Insurance Coverage 1"/>
+                            <professionalfee value="100.00"/>
+                            <markupfee value="50.00"/>
+                            <upstreampayor value="10.00" />
+                            <issue>
+                                <code code="GEND"/>
+                                <severity code="L"/>
+                                <management>
+                                    <code code="10"/>
+                                </management>
+                            </issue>
+                        </request>
+                        <payment>
+                            <paymentTime value="20060201"/>
+                            <coverage description="Insurance Coverage 1"/>
+                            <professionalfee value="100">
+                                <reason code="AS"/>
+                            </professionalfee>
+                            <markupfee value="25.00">
+                                <reason code="AA" error="D8" warning="QB"/>
+                            </markupfee>
+                            <patientcost value="0"/>
+                            <copayment value="0"/>
+                            <deductible value="0"/>
+                        </payment>
+                    </invoice>
+                </items>
+            </medicalProfile>
+
+            <medicalProfile description="Staged Profile" sequence="Add Other Medication v1">
+                <!-- Patient this profile is for. -->
+                <patient description="Patient 1"/>
+                <items/>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="Add Other Medication v2">
+                <!-- Patient this profile is for. -->
+                <patient description="Patient 1"/>
+                <items>
+                    <otherMedication description="OtherMedication 1">
+                        <record-id client="1111" server="2222" root_OID="DIS_OTHER_ACTIVE_MED_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <statusCode code="completed"/>
+                        <effectiveTime>
+                            <low value="20040101"/>
+                            <high value="20060101"/>
+                        </effectiveTime>
+                    </otherMedication>
+                </items>
+            </medicalProfile>
+            
+            <medicalProfile description="Staged Profile" sequence="Add Professional Service v1">
+                <!-- Patient this profile is for. -->
+                <patient description="Patient 1"/>
+                <items>
+                    <profService description="Professional Service 1">
+                        <record-id client="1111" server="2222" root_OID="DIS_PROF_SERVICE_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <code code="PA"/>
+                        <statusCode code="completed"/>
+                        <effectiveTime>
+                            <low value="20060101"/>
+                            <high value="20060101"/>
+                        </effectiveTime>
+                        <requestedBy description="Physician 1"/>
+                    </profService>
+                </items>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="Add Professional Service v2">
+                <!-- Patient this profile is for. -->
+                <patient description="Patient 1"/>
+                <items>
+                    <profService description="Professional Service 1">
+                        <record-id client="1111" server="2222" root_OID="DIS_PROF_SERVICE_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <code code="PA"/>
+                        <statusCode code="completed"/>
+                        <effectiveTime>
+                            <low value="20060101"/>
+                            <high value="20060101"/>
+                        </effectiveTime>
+                        <requestedBy description="Physician 1"/>
+                    </profService>
+                    <profService description="Professional Service 2">
+                        <record-id client="1112" server="2223" root_OID="DIS_PROF_SERVICE_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <code code="PB"/>
+                        <statusCode code="active"/>
+                        <effectiveTime>
+                            <low value="20060101"/>
+                            <high value="20060101"/>
+                        </effectiveTime>
+                        <requestedBy description="Physician 1"/>
+                    </profService>
+                </items>
+            </medicalProfile>
+            
+            <medicalProfile description="Staged Profile" sequence="Add Allergy v1">
+                <!-- Patient this profile is for. -->
+                <patient description="Patient 1"/>
+                <items/>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="Add Allergy v2">
+                <!-- Patient this profile is for. -->
+                <patient description="Patient 1"/>
+                <items>
+                    <allergy description="Allergy 2 - Peanuts">
+                        <record-id client="1111" server="2222" root_OID="DIS_ALLERGY_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <statusCode code="active"/>
+                        <effectiveTime value="20031501"/>
+                        <uncertaintyCode code="U"/>
+                        <severity code="L"/>
+                        <allergytest description="test 1234">
+                            <record-id client="1234" server="1234"  root_OID="DIS_ALLERGY_TEST_ID"/>
+                            <!-- required element for a coded value denoting the type of allergy test conducted. ObservationAllergyTestType vocab -->
+                            <code code="1234"/>
+                            <!-- required element with default value - status code is now everywhere -->
+                            <statusCode code="completed"/>
+                            <!-- optional element for the date on which the allergy test was performed -->
+                            <effectiveTime value="20010815"/>
+                            <!-- optional element for a coded value denoting the result of the allergy test - AllergyTestValue vocab. -->
+                            <value code="A1"/>
+                        </allergytest>
+                        <note description="Patient Note 1">
+                            <author description="Pharmacist 1"/>
+                            <location description="Physician Location 1"/>
+                            <text>Discovered from eating peanuts and re-confirmed with allergy test.</text>
+                        </note>
+                    </allergy>
+                </items>
+            </medicalProfile>
+
+            <medicalProfile description="Staged Profile" sequence="Update Allergy v1">
+                <!-- Patient this profile is for. -->
+                <patient description="Patient 1"/>
+                <items>
+                    <allergy description="Allergy 2 - Peanuts">
+                        <record-id client="1111" server="2222"  root_OID="DIS_ALLERGY_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <statusCode code="active"/>
+                        <effectiveTime value="20031501"/>
+                        <uncertaintyCode code="U"/>
+                        <severity code="H"/>
+                        <note description="Patient Note 1">
+                            <author description="Pharmacist 1"/>
+                            <location description="Physician Location 1"/>
+                            <text>Discovered from eating peanuts and re-confirmed with allergy test.</text>
+                        </note>
+                    </allergy>
+                </items>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="Update Allergy v2">
+                <!-- Patient this profile is for. -->
+                <patient description="Patient 1"/>
+                <items>
+                    <allergy description="Allergy 2 - Peanuts">
+                        <record-id client="1111" server="2222"  root_OID="DIS_ALLERGY_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <statusCode code="active"/>
+                        <effectiveTime value="20031501"/>
+                        <uncertaintyCode code="C"/>
+                        <severity code="H"/>
+                        <allergytest description="test 1234">
+                            <record-id client="1234" server="1234" root_OID="DIS_ALLERGY_TEST_ID"/>
+                            <!-- required element for a coded value denoting the type of allergy test conducted. ObservationAllergyTestType vocab -->
+                            <code code="1234"/>
+                            <!-- required element with default value - status code is now everywhere -->
+                            <statusCode code="completed"/>
+                            <!-- optional element for the date on which the allergy test was performed -->
+                            <effectiveTime value="20010815"/>
+                            <!-- optional element for a coded value denoting the result of the allergy test - AllergyTestValue vocab. -->
+                            <value code="A3"/>
+                        </allergytest>
+                        <note description="Patient Note 1">
+                            <author description="Pharmacist 1"/>
+                            <location description="Physician Location 1"/>
+                            <text>Discovered from eating peanuts and re-confirmed with allergy test.</text>
+                        </note>
+                    </allergy>
+                </items>
+            </medicalProfile>
+            
+            <medicalProfile description="Staged Profile" sequence="Add Adverse Reaction v1">
+                <!-- Patient this profile is for. -->
+                <patient description="Patient 1"/>
+                <items/>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="Add Adverse Reaction v2">
+                <!-- Patient this profile is for. -->
+                <patient description="Patient 1"/>
+                <items>
+                    <reaction description="Reaction 1 - Nausea">
+                        <record-id client="1111" server="2222"  root_OID="DIS_ALLERGY_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <effectiveTime>
+                            <low value="20051230"/>
+                        </effectiveTime>
+                        <severity code="M"/>
+                    </reaction>
+                </items>
+            </medicalProfile>
+
+            <medicalProfile description="Staged Profile" sequence="Undo - Add Allergy v1">
+                <!-- Patient this profile is for. -->
+                <patient description="Patient 1"/>
+                <items/>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="Undo - Add Allergy v2">
+                <!-- Patient this profile is for. -->
+                <patient description="Patient 1"/>
+                <items>
+                    <allergy description="Allergy 2 - Peanuts">
+                        <record-id client="1111" server="2222" root_OID="DIS_ALLERGY_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <statusCode code="active"/>
+                        <effectiveTime value="20031501"/>
+                        <uncertaintyCode code="U"/>
+                        <severity code="L"/>
+                        <allergytest description="test 1234">
+                            <record-id client="1234" server="1234"  root_OID="DIS_ALLERGY_TEST_ID"/>
+                            <!-- required element for a coded value denoting the type of allergy test conducted. ObservationAllergyTestType vocab -->
+                            <code code="1234"/>
+                            <!-- required element with default value - status code is now everywhere -->
+                            <statusCode code="completed"/>
+                            <!-- optional element for the date on which the allergy test was performed -->
+                            <effectiveTime value="20010815"/>
+                            <!-- optional element for a coded value denoting the result of the allergy test - AllergyTestValue vocab. -->
+                            <value code="A1"/>
+                        </allergytest>
+                        <note description="Patient Note 1">
+                            <author description="Pharmacist 1"/>
+                            <location description="Physician Location 1"/>
+                            <text>Discovered from eating peanuts and re-confirmed with allergy test.</text>
+                        </note>
+                    </allergy>
+                </items>
+            </medicalProfile>
+
+            <medicalProfile description="Staged Profile" sequence="Correct Clinical Data v1">
+                <patient description="Patient 1"/>
+                <items>
+                    <allergy description="Allergy 1 - Sulfa">
+                        <record-id client="1119" server="2229"  root_OID="DIS_ALLERGY_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <statusCode code="active"/>
+                        <effectiveTime value="20031501"/>
+                        <uncertaintyCode code="U"/>
+                        <severity code="L"/>
+                    </allergy>
+                    <reaction description="Reaction 1 - Nausea">
+                        <record-id client="1129" server="2239"  root_OID="DIS_REACTION_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <effectiveTime>
+                            <low value="20051230"/>
+                        </effectiveTime>
+                        <severity code="M"/>
+                    </reaction>
+                    <immunization description="immunization 1">
+                        <record-id client="1219" server="2329"  root_OID="DIS_IMMUNIZATION_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <effectiveTime value="20060501"/>
+                        <immunizationPlan type="fulfillment">
+                            <sequenceNumber value="1"/>
+                            <effectiveTime value="20051001"/>
+                        </immunizationPlan>
+                    </immunization>
+                    <condition description="Condition 2">
+                        <record-id client="1229" server="2339"  root_OID="DIS_MEDICAL_CONDITION_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <statusCode code="active"/>
+                        <effectiveTime>
+                            <low value="20051201"/>
+                            <high value="20060101"/>
+                        </effectiveTime>
+                    </condition>
+                    <otherMedication description="OtherMedication 1">
+                        <record-id client="1228" server="2328"  root_OID="DIS_OTHER_ACTIVE_MED_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <statusCode code="completed"/>
+                        <effectiveTime>
+                            <low value="20040101"/>
+                            <high value="20060101"/>
+                        </effectiveTime>
+                    </otherMedication>
+                </items>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="Correct Clinical Data v2">
+                <patient description="Patient 1"/>
+                <items>
+                    <allergy description="Allergy 1 - Sulfa">
+                        <record-id client="1119" server="2229"  root_OID="DIS_ALLERGY_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <statusCode code="active"/>
+                        <effectiveTime value="20031501"/>
+                        <uncertaintyCode code="C"/>
+                        <severity code="L"/>
+                        <allergytest description="test 1234">
+                            <record-id client="1234" server="1234" root_OID="DIS_ALLERGY_TEST_ID"/>
+                            <!-- required element for a coded value denoting the type of allergy test conducted. ObservationAllergyTestType vocab -->
+                            <code code="1234"/>
+                            <!-- required element with default value - status code is now everywhere -->
+                            <statusCode code="completed"/>
+                            <!-- optional element for the date on which the allergy test was performed -->
+                            <effectiveTime value="20010815"/>
+                            <!-- optional element for a coded value denoting the result of the allergy test - AllergyTestValue vocab. -->
+                            <value code="A2"/>
+                        </allergytest>
+                        <note description="Patient Note 1">
+                            <author description="Pharmacist 1"/>
+                            <location description="Physician Location 1"/>
+                            <text>re-confirmed allergy with allergy test.</text>
+                        </note>
+                    </allergy>
+                    <reaction description="Reaction 1 - Nausea">
+                        <record-id client="1129" server="2239"  root_OID="DIS_REACTION_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <effectiveTime>
+                            <low value="20051230"/>
+                        </effectiveTime>
+                        <severity code="H"/>
+                    </reaction>
+                    <immunization description="immunization 1">
+                        <record-id client="1219" server="2329"  root_OID="DIS_IMMUNIZATION_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <effectiveTime value="20060101"/>
+                        <immunizationPlan type="fulfillment">
+                            <sequenceNumber value="1"/>
+                            <effectiveTime value="20051001"/>
+                        </immunizationPlan>
+                    </immunization>
+                    <condition description="Condition 2">
+                        <record-id client="1229" server="2339"  root_OID="DIS_MEDICAL_CONDITION_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <statusCode code="active"/>
+                        <effectiveTime>
+                            <low value="20051230"/>
+                            <high value="20060101"/>
+                        </effectiveTime>
+                    </condition>
+                    <otherMedication description="OtherMedication 1">
+                        <record-id client="1218" server="2328"  root_OID="DIS_OTHER_ACTIVE_MED_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <statusCode code="active"/>
+                        <effectiveTime>
+                            <low value="20040101"/>
+                        </effectiveTime>
+                    </otherMedication>
+                </items>
+            </medicalProfile>
+            
+            <medicalProfile description="Staged Profile" sequence="Transfer Prescription v1">
+                <patient description="Patient 1"/>
+                <items>
+                    <prescription description="Prescription 1">
+                        <record-id client="222" server="333" root_OID="DIS_PRESCRIPTION_ID"/>
+                        <author description="Physician 1"/>
+                        <location description="Physician Location 1"/>
+                    </prescription>
+                    <dispense description="Dispense 1 of Prescription 1">
+                        <record-id client="2221" server="3331" root_OID="DIS_DISPENSE_ID"/>
+                        <local-id client="10000" server="10001"  root_OID="PORTAL_DISPENSE_ID" />
+                        <prescription description="Prescription 1"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <pickup>
+                            <author description="Pharmacist 1"/>
+                            <location description="Pharmacy 1"/>
+                        </pickup>
+                    </dispense>
+                </items>
+            </medicalProfile>
+            
+            <medicalProfile description="Staged Profile" sequence="Add Patient Note v1">
+                <!-- Patient this profile is for. -->
+                <patient description="Patient 1"/>
+                <items/>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="Add Patient Note v2">
+                <!-- Patient this profile is for. -->
+                <patient description="Patient 1"/>
+                <items>
+                    <note description="Patient Note 1">
+                        <record-id client="1111" server="2222"  root_OID="DIS_PATIENT_NOTE_ID"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <text>Testing of Patient Note</text>
+                    </note>
+                </items>
+            </medicalProfile>
+
+            <medicalProfile description="Staged Profile" sequence="Add Prescription Note v1">
+                <patient description="Patient 1"/>
+                <items>
+                    <prescription description="Prescription 1">
+                        <record-id client="222" server="333"  root_OID="DIS_PRESCRIPTION_ID"/>
+                        <author description="Physician 1"/>
+                        <location description="Physician Location 1"/>
+                    </prescription>
+                    <dispense description="Dispense 1 of Prescription 1">
+                        <record-id client="2221" server="3331"   root_OID="DIS_DISPENSE_ID"/>
+                        <local-id client="10000" server="10001"  root_OID="PORTAL_DISPENSE_ID"/>
+                        <prescription description="Prescription 1"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <pickup>
+                            <author description="Pharmacist 1"/>
+                            <location description="Pharmacy 1"/>
+                        </pickup>
+                    </dispense>
+                </items>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="Add Prescription Note v2">
+                <patient description="Patient 1"/>
+                <items>
+                    <prescription description="Prescription 1">
+                        <record-id client="222" server="333"  root_OID="DIS_PRESCRIPTION_ID"/>
+                        <author description="Physician 1"/>
+                        <location description="Physician Location 1"/>
+                        <note description="Prescription Note 1">
+                            <author description="Physician 2"/>
+                            <location description="Physician Location 1"/>
+                            <text>Testing of Prescription Note</text>
+                        </note>
+                    </prescription>
+                    <dispense description="Dispense 1 of Prescription 1">
+                        <record-id client="2221" server="3331"  root_OID="DIS_DISPENSE_ID"/>
+                        <local-id client="10000" server="10001"  root_OID="PORTAL_DISPENSE_ID"/>
+                        <prescription description="Prescription 1"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <pickup>
+                            <author description="Pharmacist 1"/>
+                            <location description="Pharmacy 1"/>
+                        </pickup>
+                    </dispense>
+                </items>
+            </medicalProfile>
+
+            <medicalProfile description="Staged Profile" sequence="Pre-Determin Invoice v0">
+                <patient description="Patient 2"/>
+                <items/>
+            </medicalProfile>
+            <medicalProfile description="Staged Profile" sequence="Pre-Determin Invoice v1">
+                <patient description="Patient 2"/>
+                <items>
+                    <prescription description="Drug 1 - infered Precription" infered="true">
+                        <record-id client="222" server="333"  root_OID="DIS_PRESCRIPTION_ID"/>
+                        <author description="Physician 1"/>
+                        <location description="Physician Location 1"/>
+                    </prescription>
+                    <dispense description="Dispense 1 - of Drug 1 - infered Precription">
+                        <record-id client="2221" server="3331" root_OID="DIS_DISPENSE_ID"/>
+                        <local-id client="11111" server="11112"  root_OID="PORTAL_DISPENSE_ID"/>
+                        <prescription description="Drug 1 - infered Precription"/>
+                        <author description="Pharmacist 1"/>
+                        <location description="Pharmacy 1"/>
+                        <pickup>
+                            <author description="Pharmacist 1"/>
+                            <location description="Pharmacy 1"/>
+                        </pickup>
+                    </dispense>
+                    <invoice description="predetermin Invoice for Dispense 1" currency="CAD" predetermin="true">
+                        <author description="Physician 1"/>
+                        <dispense description="Dispense 1 - of Drug 1 - infered Precription"/>
+                        <payee description="Pharmacy 1"/>
+                        <override code="GFTH"/>
+                        <request>
+                            <coverage description="Insurance Coverage 1"/>
+                            <professionalfee value="100.00"/>
+                            <markupfee value="50.00"/>
+                            <upstreampayor value="10.00" />
+                            <issue>
+                                <code code="GEND"/>
+                                <severity code="L"/>
+                                <management>
+                                    <code code="10"/>
+                                </management>
+                            </issue>
+                        </request>
+                        <payment>
+                            <paymentTime value="20060201"/>
+                            <coverage description="Insurance Coverage 1"/>
+                            <professionalfee value="100">
+                                <reason code="AS"/>
+                            </professionalfee>
+                            <markupfee value="25.00">
+                                <reason code="AA" error="D8" warning="QB"/>
+                            </markupfee>
+                            <patientcost value="0"/>
+                            <copayment value="0"/>
+                            <deductible value="0"/>
+                        </payment>
+                    </invoice>
+                </items>
+            </medicalProfile>
+            
+        </medicalProfiles>
+        <patients>
+<!--            <patient description="Patient 1" age="-P50Y" OID="PE_PHN">
+                <client>
+                    <id root="1.1"/>
+                    <phn>12345678</phn>
+                    <given>Jane</given>
+                    <family>Smith</family>
+                    <gender>F</gender>
+                    <dob>19560307</dob>
+                    <addr>
+                        <line1>555 Dupont Rd.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5G4</postalCode>
+                        <country/>
+                    </addr>
+                </client>
+                <server>
+                    <id root="1.1"/>
+                    <phn>12345679</phn>
+                    <given>JaneX</given>
+                    <family>Smith</family>
+                    <gender>M</gender>
+                    <dob>19560308</dob>
+                    <addr>
+                        <line1>999 Dupont Rd.</line1>
+                        <line2/>
+                        <city>CharlottetownX</city>
+                        <state>PEX</state>
+                        <postalCode>X1A5G4</postalCode>
+                        <country/>
+                    </addr>
+                </server>
+            </patient>
+            <patient description="Patient 2" age="-P30Y" OID="PE_PHN">
+                <client>
+                    <id root="1.1"/>
+                    <phn>12345677</phn>
+                    <given>Adam</given>
+                    <family>Everyman</family>
+                    <gender>M</gender>
+                    <dob>19760525</dob>
+                    <telecom>9025551111</telecom>
+                    <addr>
+                        <line1>20 Everywhere St.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A1X1</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </client>
+                <server>
+                    <id root="1.1"/>
+                    <phn>12345699</phn>
+                    <given>AdamX</given>
+                    <family>Everyman</family>
+                    <gender>F</gender>
+                    <dob>19750901</dob>
+                    <telecom>9025552222</telecom>
+                    <addr>
+                        <line1>99 Everywhere St.</line1>
+                        <line2/>
+                        <city>CharlottetownX</city>
+                        <state>PEX</state>
+                        <postalCode>X1A1X1</postalCode>
+                        <country>CanadaX</country>
+                    </addr>
+                </server>
+            </patient>
+            <patient description="Patient 3" age="-P57Y" OID="PE_PHN">
+                <client>
+                    <id root="1.1"/>
+                    <phn>12345666</phn>
+                    <given>Lisa</given>
+                    <family>Littlewoman</family>
+                    <gender>F</gender>
+                    <dob>19490525</dob>
+                    <telecom>9025551112</telecom>
+                    <addr>
+                        <line1>500 Passmore Drive</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A1X1</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <keyword>j135p</keyword>
+                </client>
+                <server>
+                    <id root="1.1"/>
+                    <phn>12345999</phn>
+                    <given>LisaX</given>
+                    <family>Littlewoman</family>
+                    <gender>M</gender>
+                    <dob>19490108</dob>
+                    <telecom>9025559992</telecom>
+                    <addr>
+                        <line1>999 Passmore Drive</line1>
+                        <line2/>
+                        <city>CharlottetownX</city>
+                        <state>PEX</state>
+                        <postalCode>X1A1X1</postalCode>
+                        <country>CanadaX</country>
+                    </addr>
+                    <keyword>j135pX</keyword>
+                </server>
+            </patient>
+            <patient description="Patient 4" age="-P6M" OID="PE_PHN">
+                <client>
+                    <id root="1.1"/>
+                    <phn>12345555</phn>
+                    <given>Matthew</given>
+                    <family>Littleguy</family>
+                    <gender>M</gender>
+                    <dob>20051125</dob>
+                    <telecom>9025667777</telecom>
+                    <addr>
+                        <line1>231 Avery Rd</line1>
+                        <line2/>
+                        <city>Summerside</city>
+                        <state>PEI</state>
+                        <postalCode>C1N5G5</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </client>
+                <server>
+                    <id root="1.1"/>
+                    <phn>12349999</phn>
+                    <given>MatthewX</given>
+                    <family>Littleguy</family>
+                    <gender>F</gender>
+                    <dob>20051101</dob>
+                    <telecom>9025669999</telecom>
+                    <addr>
+                        <line1>999 Avery Rd</line1>
+                        <line2/>
+                        <city>SummersideX</city>
+                        <state>PEX</state>
+                        <postalCode>X1N5G5</postalCode>
+                        <country>CanadaX</country>
+                    </addr>
+                </server>
+            </patient>
+            <patient description="Patient 5" age="-P7Y" OID="PE_PHN">
+                <client>
+                    <id root="1.1"/>
+                    <phn>12347777</phn>
+                    <given>John</given>
+                    <family>Joseph</family>
+                    <gender>M</gender>
+                    <dob>19990525</dob>
+                    <telecom>9022221111</telecom>
+                    <addr>
+                        <line1>10 Mason Rd</line1>
+                        <line2/>
+                        <city>Stratford</city>
+                        <state>PEI</state>
+                        <postalCode>C1B6H3</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </client>
+                <server>
+                    <id root="1.1"/>
+                    <phn>12347799</phn>
+                    <given>JohnX</given>
+                    <family>Joseph</family>
+                    <gender>F</gender>
+                    <dob>19990426</dob>
+                    <telecom>9022229999</telecom>
+                    <addr>
+                        <line1>99 Mason Rd</line1>
+                        <line2/>
+                        <city>StratfordX</city>
+                        <state>PEX</state>
+                        <postalCode>X1B6H3</postalCode>
+                        <country>CanadaX</country>
+                    </addr>
+                </server>
+            </patient>
+            <patient description="Patient 6" age="-P49Y" OID="PE_PHN">
+                <client>
+                    <id root="1.1"/>
+                    <phn>00112201</phn>
+                    <given>Joe</given>
+                    <family>Smith</family>
+                    <gender>M</gender>
+                    <dob>19550307</dob>
+                    <addr>
+                        <line1>555 Dupont Rd.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5G4</postalCode>
+                        <country/>
+                    </addr>
+                </client>
+                <server>
+                    <id root="1.1"/>
+                    <phn>00112202</phn>
+                    <given>JoeX</given>
+                    <family>Smith</family>
+                    <gender>F</gender>
+                    <dob>19550408</dob>
+                    <addr>
+                        <line1>999 Dupont Rd.</line1>
+                        <line2/>
+                        <city>CharlottetownX</city>
+                        <state>PEX</state>
+                        <postalCode>X1A5G4</postalCode>
+                        <country/>
+                    </addr>
+                </server>
+            </patient>
+-->
+            <patient description="Patient 1" age="-P50Y" OID="PE_PHN">
+                <client>
+                    <id root="1.1"/>
+                    <phn>12345001</phn>
+                    <keyword>JMS0001</keyword>
+                    <given>Jane</given>
+                    <family>Smith</family>
+                    <gender>F</gender>
+                    <dob>19560307</dob>
+                    <addr>
+                        <line1>555 Dupont Rd.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5G4</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </client>
+                <server>
+                    <id root="1.1"/>
+                    <phn>12345001</phn>
+                    <keyword>JMS0001</keyword>
+                    <given>Jane</given>
+                    <family>Smith</family>
+                    <gender>F</gender>
+                    <dob>19560307</dob>
+                    <addr>
+                        <line1>555 Dupont Rd.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5G4</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </server>
+            </patient>
+            <patient description="Patient 2" age="-P31Y" OID="PE_PHN">
+                <client>
+                    <id root="1.1"/>
+                    <phn>12345002</phn>
+                    <keyword>AJE0001</keyword>
+                    <given>Adam</given>
+                    <family>Everyman</family>
+                    <gender>M</gender>
+                    <dob>19750901</dob>
+                    <telecom>9025551111</telecom>
+                    <addr>
+                        <line1>20 Everywhere St.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A1X1</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </client>
+                <server>
+                    <id root="1.1"/>
+                    <phn>12345002</phn>
+                    <keyword>AJE0001</keyword>
+                    <given>Adam</given>
+                    <family>Everyman</family>
+                    <gender>M</gender>
+                    <dob>19750901</dob>
+                    <telecom>9025551111</telecom>
+                    <addr>
+                        <line1>20 Everywhere St.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A1X1</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </server>
+            </patient>
+            <patient description="Patient 3" age="-P58Y" OID="PE_PHN">
+                <client>
+                    <id root="1.1"/>
+                    <phn>12345003</phn>
+                    <keyword>LLL001</keyword>
+                    <given>Lisa</given>
+                    <family>Littlewoman</family>
+                    <gender>F</gender>
+                    <dob>19490108</dob>
+                    <telecom>9025551111</telecom>
+                    <addr>
+                        <line1>20 Everywhere St.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A1X1</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </client>
+                <server>
+                    <id root="1.1"/>
+                    <phn>12345003</phn>
+                    <keyword>LLL001</keyword>
+                    <given>Lisa</given>
+                    <family>Littlewoman</family>
+                    <gender>F</gender>
+                    <dob>19490108</dob>
+                    <telecom>9025551111</telecom>
+                    <addr>
+                        <line1>20 Everywhere St.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A1X1</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </server>
+            </patient>
+            <patient description="Patient 4" age="-P61Y" OID="PE_PHN">
+                <client>
+                    <id root="1.1"/>
+                    <phn>12345004</phn>
+                    <keyword>HPM001</keyword>
+                    <given>Harold</given>
+                    <family>Munro</family>
+                    <gender>M</gender>
+                    <dob>19450324</dob>
+                    <telecom>9025551111</telecom>
+                    <addr>
+                        <line1>20 Everywhere St.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A1X1</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </client>
+                <server>
+                    <id root="1.1"/>
+                    <phn>12345004</phn>
+                    <keyword>HPM001</keyword>
+                    <given>Harold</given>
+                    <family>Munro</family>
+                    <gender>M</gender>
+                    <dob>19450324</dob>
+                    <telecom>9025551111</telecom>
+                    <addr>
+                        <line1>20 Everywhere St.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A1X1</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </server>
+            </patient>
+            <patient description="Patient 5" age="-P20Y" OID="PE_PHN">
+                <client>
+                    <id root="1.1"/>
+                    <phn>12345005</phn>
+                    <keyword>FSF001</keyword>
+                    <given>Fred</given>
+                    <family>Flintstone</family>
+                    <gender>M</gender>
+                    <dob>19860413</dob>
+                    <telecom>9025551111</telecom>
+                    <addr>
+                        <line1>20 Everywhere St.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A1X1</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </client>
+                <server>
+                    <id root="1.1"/>
+                    <phn>12345005</phn>
+                    <keyword>FSF001</keyword>
+                    <given>Fred</given>
+                    <family>Flintstone</family>
+                    <gender>M</gender>
+                    <dob>19860413</dob>
+                    <telecom>9025551111</telecom>
+                    <addr>
+                        <line1>20 Everywhere St.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A1X1</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </server>
+            </patient>
+            <patient description="Patient 6" age="-P33Y" OID="PE_PHN">
+                <client>
+                    <id root="1.1"/>
+                    <phn>12345006</phn>
+                    <keyword>WTF001</keyword>
+                    <given>Wilma</given>
+                    <family>Flintstone</family>
+                    <gender>F</gender>
+                    <dob>19730412</dob>
+                    <telecom>9025551112</telecom>
+                    <addr>
+                        <line1>500 Passmore Drive</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A1X1</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </client>
+                <server>
+                    <id root="1.1"/>
+                    <phn>12345006</phn>
+                    <keyword>WTF001</keyword>
+                    <given>Wilma</given>
+                    <family>Flintstone</family>
+                    <gender>F</gender>
+                    <dob>19730412</dob>
+                    <telecom>9025551112</telecom>
+                    <addr>
+                        <line1>500 Passmore Drive</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A1X1</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                </server>
+            </patient>
+        </patients>
+        <providers>
+            <provider description="Physician 1" OID="DEPT_HEALTH_BILLING_NUMBER">
+                <client>
+                    <id root="1.15" extension="258"/>
+                    <role>Physician</role>
+                    <given>Dr. Rankin</given>
+                    <family>Sethi</family>
+                </client>
+                <server>
+                    <id root="1.15" extension="259"/>
+                    <role>Physician</role>
+                    <given>Dr. Rankin</given>
+                    <family>SethiX</family>
+                </server>
+            </provider>
+            <provider description="Physician 2" OID="DEPT_HEALTH_BILLING_NUMBER">
+                <client>
+                    <id root="1.15" extension="3"/>
+                    <role>Physician</role>
+                    <given>Dr. Kirklyn</given>
+                    <family>Saunderson</family>
+                </client>
+                <server>
+                    <id root="1.15" extension="9"/>
+                    <role>Physician</role>
+                    <given>Dr. Kirklyn</given>
+                    <family>SaundersonX</family>
+                </server>
+            </provider>
+            <provider description="Physician 3" OID="DEPT_HEALTH_BILLING_NUMBER">
+                <client>
+                    <id root="1.15" extension="6"/>
+                    <role>Physician</role>
+                    <given>Dr Bevin</given>
+                    <family>Hodgkinson</family>
+                </client>
+                <server>
+                    <id root="1.15" extension="7"/>
+                    <role>Physician</role>
+                    <given>Dr Bevin</given>
+                    <family>HodgkinsonX</family>
+                </server>
+            </provider>
+            <provider description="Physician 4" OID="DEPT_HEALTH_BILLING_NUMBER">
+                <client>
+                    <id root="1.15" extension="13"/>
+                    <role>Physician</role>
+                    <given>Dr. Jayson</given>
+                    <family>Berrourad</family>
+                </client>
+                <server>
+                    <id root="1.15" extension="19"/>
+                    <role>Physician</role>
+                    <given>Dr. Jayson</given>
+                    <family>BerrouradX</family>
+                </server>
+            </provider>
+            <provider description="Pharmacist 1" OID="DEPT_HEALTH_PHARMACIST_ID">
+                <client>
+                    <id root="1.16" extension="94102"/>
+                    <role>Pharmacist</role>
+                    <given>Ann Lynn</given>
+                    <family>Glynn</family>
+                </client>
+                <server>
+                    <id root="1.16" extension="94103"/>
+                    <role>Pharmacist</role>
+                    <given>Ann LynnX</given>
+                    <family>Glynn</family>
+                </server>
+            </provider>
+            <provider description="Pharmacist 2" OID="DEPT_HEALTH_PHARMACIST_ID">
+                <client>
+                    <id root="1.16" extension="9423"/>
+                    <role>Pharmacist</role>
+                    <given>Sherma</given>
+                    <family>Swant</family>
+                </client>
+                <server>
+                    <id root="1.16" extension="9429"/>
+                    <role>Pharmacist</role>
+                    <given>ShermaX</given>
+                    <family>Swant</family>
+                </server>
+            </provider>
+            <provider description="Pharmacist 3" OID="DEPT_HEALTH_PHARMACIST_ID">
+                <client>
+                    <id root="1.16" extension="9431"/>
+                    <role>Pharmacist</role>
+                    <given>Ulysse</given>
+                    <family>Galt</family>
+                </client>
+                <server>
+                    <id root="1.16" extension="9439"/>
+                    <role>Pharmacist</role>
+                    <given>UlysseX</given>
+                    <family>Galt</family>
+                </server>
+            </provider>
+            <provider description="Pharmacist 4" OID="DEPT_HEALTH_PHARMACIST_ID">
+                <client>
+                    <id root="1.16" extension="9433"/>
+                    <role>Pharmacist</role>
+                    <given>Manoel</given>
+                    <family>Womell</family>
+                </client>
+                <server>
+                    <id root="1.16" extension="9438"/>
+                    <role>Pharmacist</role>
+                    <given>ManoelX</given>
+                    <family>Womell</family>
+                </server>
+            </provider>
+        </providers>
+        <serviceDeliveryLocations>
+<!--            <location description="Pharmacy 1" OID="DEPT_HEALTH_PHARMACY_ID">
+                <client>
+                    <id root="1.14" extension="0000400507"/>
+                    <name>Sherwood Drug Mart</name>
+                    <addr>
+                        <line1>19 BrakeleyPoint Rd</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5G5</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9025555151</telecom>
+                </client>
+                <server>
+                    <id root="1.14" extension="0000400508"/>
+                    <name>Sherwood Drug MartX</name>
+                    <addr>
+                        <line1>99 BrakeleyPoint Rd</line1>
+                        <line2/>
+                        <city>CharlottetownX</city>
+                        <state>PEX</state>
+                        <postalCode>X1A5G5</postalCode>
+                        <country>CanadaX</country>
+                    </addr>
+                    <telecom>9025555159</telecom>
+                </server>
+            </location>
+            <location description="Pharmacy 2" OID="DEPT_HEALTH_PHARMACY_ID">
+                <client>
+                    <id root="1.14" extension="0000441287"/>
+                    <name>Shoppers Drug Mart</name>
+                    <addr>
+                        <line1>500 University Avenue</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5G8</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9023332626</telecom>
+                </client>
+                <server>
+                    <id root="1.14" extension="0000441288"/>
+                    <name>Shoppers Drug MartX</name>
+                    <addr>
+                        <line1>599 University Avenue</line1>
+                        <line2/>
+                        <city>CharlottetownX</city>
+                        <state>PEX</state>
+                        <postalCode>X1A5G8</postalCode>
+                        <country>CanadaX</country>
+                    </addr>
+                    <telecom>9023332699</telecom>
+                </server>
+            </location>
+            <location description="Pharmacy 3" OID="DEPT_HEALTH_PHARMACY_ID">
+                <client>
+                    <id root="1.14" extension="0000441055"/>
+                    <name>Lawton's Drugs</name>
+                    <addr>
+                        <line1>21 Brakely Point Rd</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5G5</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9024642525</telecom>
+                </client>
+                <server>
+                    <id root="1.14" extension="0000441059"/>
+                    <name>Lawton's DrugsX</name>
+                    <addr>
+                        <line1>99 Brakely Point Rd</line1>
+                        <line2/>
+                        <city>CharlottetownX</city>
+                        <state>PEX</state>
+                        <postalCode>X1A5G5</postalCode>
+                        <country>CanadaX</country>
+                    </addr>
+                    <telecom>9024642599</telecom>
+                </server>
+            </location>
+            <location description="Pharmacy 4" OID="DEPT_HEALTH_PHARMACY_ID">
+                <client>
+                    <id root="1.14" extension="0000441303"/>
+                    <name>Wal-Mart Pharmacy</name>
+                    <addr>
+                        <line1>101 NorthRiver Rd.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A6T9</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9022222222</telecom>
+                </client>
+                <server>
+                    <id root="1.14" extension="0000441309"/>
+                    <name>Wal-Mart PharmacyX</name>
+                    <addr>
+                        <line1>199 NorthRiver Rd.</line1>
+                        <line2/>
+                        <city>CharlottetownX</city>
+                        <state>PEX</state>
+                        <postalCode>X1A6T9</postalCode>
+                        <country>CanadaX</country>
+                    </addr>
+                    <telecom>9022222299</telecom>
+                </server>
+            </location>
+-->
+            <!--            <location description="Physician Location 1" OID="DEPT_HEALTH_FACILITY_ID">
+                <client>
+                    <id root="1.17" extension="9874"/>
+                    <name>Dr. Rankin's Office</name>
+                    <addr>
+                        <line1>Suite 300</line1>
+                        <line2>20 Bunbury Lane</line2>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5G5</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9025555555</telecom>
+                </client>
+                <server>
+                    <id root="1.17" extension="9879"/>
+                    <name>Dr. Rankin's OfficeX</name>
+                    <addr>
+                        <line1>Suite 399</line1>
+                        <line2>99 Bunbury Lane</line2>
+                        <city>CharlottetownX</city>
+                        <state>PEX</state>
+                        <postalCode>X1A5G5</postalCode>
+                        <country>CanadaX</country>
+                    </addr>
+                    <telecom>9025555999</telecom>
+                </server>
+            </location>
+            <location description="Physician Office 2" OID="DEPT_HEALTH_FACILITY_ID">
+                <client>
+                    <id root="1.17" extension="1"/>
+                    <name>Dr. Rankin's Office #2</name>
+                    <addr>
+                        <line1>55 Dover Ave</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A3H9</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9022225589</telecom>
+                </client>
+                <server>
+                    <id root="1.17" extension="1"/>
+                    <name>Dr. Rankin's Office #2X</name>
+                    <addr>
+                        <line1>99 Dover Ave</line1>
+                        <line2/>
+                        <city>CharlottetownX</city>
+                        <state>PEX</state>
+                        <postalCode>X1A3H9</postalCode>
+                        <country>CanadaX</country>
+                    </addr>
+                    <telecom>9022225599</telecom>
+                </server>
+            </location>
+            <location description="Physician Office 3" OID="DEPT_HEALTH_FACILITY_ID">
+                <client>
+                    <id root="1.17" extension="2"/>
+                    <name>Dr. Kirklyn's Office</name>
+                    <addr>
+                        <line1>500 North River Rd.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A3Z5</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9025551920</telecom>
+                </client>
+                <server>
+                    <id root="1.17" extension="2"/>
+                    <name>Dr. Kirklyn's OfficeX</name>
+                    <addr>
+                        <line1>599 North River Rd.</line1>
+                        <line2/>
+                        <city>CharlottetownX</city>
+                        <state>PEX</state>
+                        <postalCode>X1A3Z5</postalCode>
+                        <country>CanadaX</country>
+                    </addr>
+                    <telecom>9025551929</telecom>
+                </server>
+            </location>
+            <location description="Physician Office 4" OID="DEPT_HEALTH_FACILITY_ID">
+                <client>
+                    <id root="1.17" extension="3"/>
+                    <name>Dr. Bevin's Office</name>
+                    <addr>
+                        <line1>200 River St.</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A2H5</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9023335555</telecom>
+                </client>
+                <server>
+                    <id root="1.17" extension="3"/>
+                    <name>Dr. Bevin's OfficeX</name>
+                    <addr>
+                        <line1>209 River St.</line1>
+                        <line2/>
+                        <city>CharlottetownX</city>
+                        <state>PEX</state>
+                        <postalCode>X1A2H5</postalCode>
+                        <country>CanadaX</country>
+                    </addr>
+                    <telecom>9023335559</telecom>
+                </server>
+            </location>
+            <location description="Physician Office 5" OID="DEPT_HEALTH_FACILITY_ID">
+                <client>
+                    <id root="1.17" extension="4"/>
+                    <name>Dr. Jayson's Office</name>
+                    <addr>
+                        <line1>12 Vermont Rd</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A3X5</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9024542525</telecom>
+                </client>
+                <server>
+                    <id root="1.17" extension="4"/>
+                    <name>Dr. Jayson's OfficeX</name>
+                    <addr>
+                        <line1>99 Vermont Rd</line1>
+                        <line2/>
+                        <city>CharlottetownX</city>
+                        <state>PEX</state>
+                        <postalCode>X1A3X5</postalCode>
+                        <country>CanadaX</country>
+                    </addr>
+                    <telecom>9024542599</telecom>
+                </server>
+            </location>
+-->
+
+            <location description="Pharmacy 1" OID="DEPT_HEALTH_PHARMACY_ID">
+                <!-- TODO: need to change location reference for all locations -->
+                <client>
+                    <id root="2.14" extension="900005"/>
+                    <name>Walmart</name>
+                    <addr>
+                        <line1>130 North River Rd</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A2R2</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9028994571</telecom>
+                </client>
+                <server>
+                    <id root="2.14" extension="900005"/>
+                    <name>Walmart</name>
+                    <addr>
+                        <line1>130 North River Rd</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A2R2</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9028994571</telecom>
+                </server>
+            </location>
+            <location description="Pharmacy 2" OID="DEPT_HEALTH_PHARMACY_ID">
+                <!-- Was Pharmacy #1 -->
+                <!-- TODO: need to change location reference for all locations -->
+                <client>
+                    <id root="2.14" extension="900004"/>
+                    <name>Lawtons</name>
+                    <addr>
+                        <line1>255 University Ave</line1>
+                        <line2/>
+                        <city>Souris</city>
+                        <state>PEI</state>
+                        <postalCode>C0A3S2</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9024887884</telecom>
+                </client>
+                <server>
+                    <id root="2.14" extension="900004"/>
+                    <name>Lawtons</name>
+                    <addr>
+                        <line1>255 University Ave</line1>
+                        <line2/>
+                        <city>Souris</city>
+                        <state>PEI</state>
+                        <postalCode>C0A3S2</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9024887884</telecom>
+                </server>
+            </location>
+            <location description="Pharmacy 3" OID="DEPT_HEALTH_PHARMACY_ID">
+                <!-- TODO: need to change location reference for all locations -->
+                <client>
+                    <id root="2.14" extension="900005"/>
+                    <name>Walmart</name>
+                    <addr>
+                        <line1>130 North River Rd</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A2R2</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9028994571</telecom>
+                </client>
+                <server>
+                    <id root="2.14" extension="900005"/>
+                    <name>Walmart</name>
+                    <addr>
+                        <line1>130 North River Rd</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A2R2</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9028994571</telecom>
+                </server>
+            </location>
+            <location description="Pharmacy 4" OID="DEPT_HEALTH_PHARMACY_ID">
+                <!-- Was Pharmacy #1 -->
+                <!-- TODO: need to change location reference for all locations -->
+                <client>
+                    <id root="2.14" extension="900004"/>
+                    <name>Lawtons</name>
+                    <addr>
+                        <line1>255 University Ave</line1>
+                        <line2/>
+                        <city>Souris</city>
+                        <state>PEI</state>
+                        <postalCode>C0A3S2</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9024887884</telecom>
+                </client>
+                <server>
+                    <id root="2.14" extension="900004"/>
+                    <name>Lawtons</name>
+                    <addr>
+                        <line1>255 University Ave</line1>
+                        <line2/>
+                        <city>Souris</city>
+                        <state>PEI</state>
+                        <postalCode>C0A3S2</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9024887884</telecom>
+                </server>
+            </location>
+            
+            <location description="Physician Location 1" OID="DEPT_HEALTH_HOSPITAL_ID">
+                <!-- Was Provider #1 Office -->
+                <client>
+                    <id root="2.14" extension="900001"/>
+                    <name>Queen Elizabeth Hospital</name>
+                    <addr>
+                        <line1>1 Exbition Drive</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5H4</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9025551478</telecom>
+                </client>
+                <server>
+                    <!-- Until Peter finishes entering all providers we can use the below ID. <id root="2.14" extension="900001"/>-->
+                    <id root="2.14" extension="9879"/>
+                    <name>Queen Elizabeth Hospital</name>
+                    <addr>
+                        <line1>1 Exbition Drive</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5H4</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9025551478</telecom>
+                </server>
+            </location>
+            <location description="Physician Location 2" OID="DEPT_HEALTH_HOSPITAL_ID">
+                <client>
+                    <id root="2.17" extension="900002"/>
+                    <name>Prince County Hospital</name>
+                    <addr>
+                        <line1>20 Bunbury Lane</line1>
+                        <city>Summerside</city>
+                        <state>PEI</state>
+                        <postalCode>C2E3H6</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9024664558</telecom>
+                </client>
+                <server>
+                    <id root="2.17" extension="900002"/>
+                    <name>Prince County Hospital</name>
+                    <addr>
+                        <line1>20 Bunbury Lane</line1>
+                        <city>Summerside</city>
+                        <state>PEI</state>
+                        <postalCode>C2E3H6</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9024664558</telecom>
+                </server>
+            </location>
+            <location description="Physician Office 2" OID="DEPT_HEALTH_PHYSICIANS_OFFICE_ID">
+                <client>
+                    <id root="2.14" extension="900003"/>
+                    <name>The Polyclinic</name>
+                    <addr>
+                        <line1>300 Grafton St</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5F3</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9026554187</telecom>
+                </client>
+                <server>
+                    <id root="2.14" extension="900003"/>
+                    <name>The Polyclinic</name>
+                    <addr>
+                        <line1>300 Grafton St</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5F3</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9026554187</telecom>
+                </server>
+            </location>
+            <location description="Physician Office 3" OID="DEPT_HEALTH_PHYSICIANS_OFFICE_ID">
+                <client>
+                    <id root="2.14" extension="900003"/>
+                    <name>The Polyclinic</name>
+                    <addr>
+                        <line1>300 Grafton St</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5F3</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9026554187</telecom>
+                </client>
+                <server>
+                    <id root="2.14" extension="900003"/>
+                    <name>The Polyclinic</name>
+                    <addr>
+                        <line1>300 Grafton St</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5F3</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9026554187</telecom>
+                </server>
+            </location>
+            <location description="Physician Office 4" OID="DEPT_HEALTH_PHYSICIANS_OFFICE_ID">
+                <client>
+                    <id root="2.14" extension="900003"/>
+                    <name>The Polyclinic</name>
+                    <addr>
+                        <line1>300 Grafton St</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5F3</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9026554187</telecom>
+                </client>
+                <server>
+                    <id root="2.14" extension="900003"/>
+                    <name>The Polyclinic</name>
+                    <addr>
+                        <line1>300 Grafton St</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5F3</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9026554187</telecom>
+                </server>
+            </location>
+            <location description="Physician Office 5" OID="DEPT_HEALTH_PHYSICIANS_OFFICE_ID">
+                <client>
+                    <id root="2.14" extension="900003"/>
+                    <name>The Polyclinic</name>
+                    <addr>
+                        <line1>300 Grafton St</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5F3</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9026554187</telecom>
+                </client>
+                <server>
+                    <id root="2.14" extension="900003"/>
+                    <name>The Polyclinic</name>
+                    <addr>
+                        <line1>300 Grafton St</line1>
+                        <line2/>
+                        <city>Charlottetown</city>
+                        <state>PEI</state>
+                        <postalCode>C1A5F3</postalCode>
+                        <country>Canada</country>
+                    </addr>
+                    <telecom>9026554187</telecom>
+                </server>
+            </location>
+        
+        </serviceDeliveryLocations>
+        <drugs>
+            <drug description="drug 1 - Inhibace 2.5 mg">
+                <code code="01911473" codeSystem="DIN"/>
+                <name>Inhibace 2.5 mg</name>
+                <desc>Angiotensin converting enzyme inhibitor</desc>
+                <formCode code="CA" codeSystem="GCDF"/>
+                <packageformCode code="COMPPKG"/>
+                <quantity value="100"/>
+                <!-- <packageformCode code="COMPPKG"/>  -->
+                <!-- cost is a value per quantity, ex $5.00 per 1 quantity = total cost of $500 -->
+                <cost value="5.00" per="1">
+                    <coverage description="Insurance Coverage 1">
+                        <cost value="5.00" per="1"/>
+                        <copayment value="0"/>
+                        <deductible value="0"/>
+                        <patientcost value="0"/>
+                    </coverage>
+                </cost>
+            </drug>
+            <drug description="drug 2 - Flovent  HFA">
+                <code code="02244292" codeSystem="DIN"/>
+                <name>Flovent HFA</name>
+                <desc>Corticosteroid for Oral Inhalation</desc>
+                <formCode code="AA" codeSystem="GCDF"/>
+                <quantity value="7500" unit="uG"/>
+                <packageformCode code="INHALER"/>
+                <cost value="25.00" per="7500"/>
+            </drug>
+            <drug description="drug 3 - Biaxin BID">
+                <code code="01984853" codeSystem="DIN"/>
+                <name>Biaxin BID</name>
+                <desc>Clarithromycin</desc>
+                <formCode code="CA" codeSystem="GCDF"/>
+                <quantity value="250"/>
+                <packageformCode code="COMPPKG"/>
+                <cost value="1.00" per="1"/>
+            </drug>
+            <drug description="drug 4 - Ventolin HFA">
+                <code code="02241497" codeSystem="DIN"/>
+                <name>Ventolin HFA</name>
+                <desc>Bronchodilator—Beta2–adrenergic Stimulant</desc>
+                <formCode code="AA" codeSystem="GCDF"/>
+                <quantity value="20000" unit="uG"/>
+                <packageformCode code="INHALER"/>
+            </drug>
+            <drug description="drug 5 - Metoprolol">
+                <code code="02246010" codeSystem="DIN"/>
+                <name>METOPROLOL</name>
+                <desc>Adrenoceptor blocking agent</desc>
+                <formCode code="CA" codeSystem="GCDF"/>
+                <quantity value="100"/>
+                <packageformCode code="COMPPKG"/>
+            </drug>
+            <drug description="drug 6 - Slow K">
+                <code code="00074225" codeSystem="DIN"/>
+                <name>SLOW K</name>
+                <desc>Potassium suppliment</desc>
+                <formCode code="CA" codeSystem="GCDF"/>
+                <quantity value="1000"/>
+                <packageformCode code="COMPPKG"/>
+            </drug>
+            <drug description="drug 7 - Apo Hydro Chlorothiazide">
+                <code code="00326844" codeSystem="DIN"/>
+                <name>Apo Hydro Chlorothiazide</name>
+                <desc>Diuretic</desc>
+                <formCode code="CA" codeSystem="GCDF"/>
+                <quantity value="500"/>
+                <packageformCode code="COMPPKG"/>
+            </drug>
+            <drug description="drug 8 - Amoxicillin">
+                <code code="00452149" codeSystem="DIN"/>
+                <name>Amoxicillin</name>
+                <desc>Antibiotic</desc>
+                <formCode code="JL" codeSystem="GCDF"/>
+                <quantity value="150" unit="ml"/>
+                <packageformCode code="COMPPKG"/>
+            </drug>
+            <drug description="drug 9 - Prevnar">
+                <code code="00012153" codeSystem="DIN"/>
+                <name>Prevnar</name>
+                <desc>Pneumococcal 7-valent Conjugate Vaccine</desc>
+                <formCode code="IB" codeSystem="GCDF"/>
+                <quantity value="26" unit="ug"/>
+                <packageformCode code="COMPPKG"/>
+            </drug>
+        </drugs>
+        <allergies>
+            <!--
+                Allergy:
+                code - coded value denoting the type of allergy that is present (ObservationIntoleranceType)
+                statusCode - current status of the allergy (ACTIVE | COMPLETED)
+                effectiveTime - when the allergy started
+                uncertaintyCode - degree of certainty (uncertaintyCode)
+                value 
+            -->
+            <allergy description="Allergy 1 - Sulfa">
+                <code code="EALG" codeSystem="ACTCODE"/>
+                <value codeSystem="ENTITYCODE" code="NDA02"/>
+            </allergy>
+            <allergy description="Allergy 2 - Peanuts">
+                <code code="EALG" codeSystem="ACTCODE"/>
+                <value codeSystem="ENTITYCODE" code="NDA01"/>
+            </allergy>
+        </allergies>
+        <reactions>
+            <reaction description="Reaction 1 - Nausea">
+                <text>Nausea occurs as soon as medication is administered.</text>
+                <value code="Nausea" codeSystem="ICD10CA"/>
+            </reaction>
+            <reaction description="Reaction 2 - Anaphylactic Shock">
+                <text>Extreme allergy to peanuts. Must carry EPI E-Z PEN at all times in case of exposure.</text>
+                <value code="anaphylactic shock" codeSystem="ICD10CA"/>
+            </reaction>
+        </reactions>
+        <immunizations>
+            <immunization description="immunization 1">
+                <routeCode code="C" codeSystem="GCRT"/>
+                <approachSiteCode code="LT"/>
+                <doseQuantity unit="ml" value="0.5"/>
+                <drug description="drug 9 - Prevnar"/>
+            </immunization>
+            <immunization description="immunization 2">
+                <routeCode code="C"  codeSystem="GCRT"/>
+                <approachSiteCode code="LT"/>
+                <doseQuantity unit="ml" value="0.5"/>
+                <drug description="drug 9 - Prevnar"/>
+            </immunization>
+        </immunizations>
+        <observations>
+            <observation description="Patient Observation 1">
+                <code code="3141-9" codeSystem="LOINC"/>
+                <effectiveTime value="20051225"/>
+                <value unit="kg" value="90"/>
+            </observation>
+            <observation description="Observation 2">
+                <code code="3141-9" codeSystem="LOINC"/>
+                <effectiveTime value="20060101"/>
+                <value unit="kg" value="55"/>
+                <subObservation>
+                    <code code="3141-7" codeSystem="LOINC"/>
+                    <value unit="mm[Hg]" value="130"/>
+                </subObservation>
+                <subObservation>
+                    <code code="3141-6" codeSystem="LOINC"/>
+                    <value unit="mm[Hg]" value="90"/>
+                </subObservation>
+            </observation>
+            <observation description="Patient Observation 9">
+                <code code="3137-5" codeSystem="LOINC"/>
+                <effectiveTime value="20051201"/>
+                <value unit="cm" value="167"/>
+            </observation>
+        </observations>
+        <conditions>
+            <condition description="Condition 1">
+                <value code="O000" codeSystem="ICD10CA"/>
+                <!-- i.e. OID identifying codeSystem for ICD10 codes TBD -->
+                <text>Patient is pregnant with third child.</text>
+            </condition>
+            <condition description="Condition 2">
+                <!-- A code indicating the specific condition. E.g. Hypertension, Pregnancy  when using SNOMED the actual diagnosis will be sent in the 'code' attribute -->
+                <value code="G439" codeSystem="ICD10CA"/>
+                <!-- i.e. OID identifying codeSystem for ICD10 codes TBD -->
+                <text>Patient is monitoring diet to see if they can determine a pattern.</text>
+                <chronic/>
+            </condition>
+        </conditions>
+        <prescriptions>
+            <prescription description="Prescription 1">
+                <statusCode code="active"/>
+                <confidentialityCode code="NORMAL"/>
+                <drug description="drug 1 - Inhibace 2.5 mg"/>
+                <dosageInstruction description="Drug 1 Instructions"/>
+                <supplyRequestItem>
+                    <quantity value="365"/>
+                    <expectedUseTime>
+                        <width value="365" unit="d"/>
+                    </expectedUseTime>
+                    <drug description="drug 1 - Inhibace 2.5 mg"/>
+                    <subsequentSupplyRequest>
+                            <repeatNumber value="4"/>
+                            <quantity value="90" />
+                        <expectedUseTime>
+                            <width value="90" unit="d"/>
+                        </expectedUseTime>
+                    </subsequentSupplyRequest>
+                </supplyRequestItem>
+                <coverage description="Insurance Coverage 1"/>
+                <observation description="Patient Observation 1"/>
+                <non-authoritative code="VFPAPER"/>
+                <reason type="observationDiagnosis">
+                    <priorityNumber value="1"/>
+                    <text>High blood pressure</text>
+                    <statusCode code="completed"/>
+                    <value code="Z013" codeSystem="ICD10CA"/>
+                </reason>
+                <category code="CHRON"/>
+            </prescription>
+            <prescription description="Prescription 2">
+                <statusCode code="active"/>
+                <confidentialityCode code="NORMAL"/>
+                <drug description="drug 1 - Inhibace 2.5 mg"/>
+                <dosageInstruction description="Drug 1 Instructions"/>
+                <trialSupplycode code="TF"/>
+                <effectiveTime>
+                    <low value="20050810"/>
+                    <high value="20060810"/>
+                </effectiveTime>
+                <supplyRequestItem>
+                    <quantity value="10" />
+                    <expectedUseTime>
+                        <width value="365" unit="d"/>
+                    </expectedUseTime>
+                    <drug description="drug 1 - Inhibace 2.5 mg"/>
+                    <subsequentSupplyRequest>
+                        <effectiveTime>
+                            <width value="30" unit="d"/>
+                        </effectiveTime>
+                        <repeatNumber value="1"/>
+                        <quantity value="30" />
+                        <expectedUseTime>
+                            <width value="30" unit="d"/>
+                        </expectedUseTime>
+                    </subsequentSupplyRequest>
+                        <supplyEventFutureSummary>
+                            <repeatNumber value="5"/>
+                            <quantity value="100" unit="mg"/>
+                        </supplyEventFutureSummary>
+                        <supplyEventFirstSummary>
+                            <effectiveTime>
+                                <high value="20060101"/>
+                            </effectiveTime>
+                            <quantity value="10" unit="mg"/>
+                        </supplyEventFirstSummary>
+                        <supplyEventLastSummary>
+                            <effectiveTime>
+                                <high value="20060101"/>
+                            </effectiveTime>
+                            <quantity value="10" unit="mg"/>
+                        </supplyEventLastSummary>
+                        <supplyEventPastSummary>
+                            <repeatNumber value="10"/>
+                            <quantity value="10" unit="mg"/>
+                        </supplyEventPastSummary>
+                </supplyRequestItem>
+                <coverage description="Insurance Coverage 1"/>
+                <observation description="Patient Observation 1"/>
+                <non-authoritative code="VFPAPER"/>
+                <priorPrescription description="Prescription 1"/>
+                <reason type="observationDiagnosis">
+                    <priorityNumber value="1"/>
+                    <text>Pain in the ear.</text>
+                    <statusCode code="completed"/>
+                    <value code="Z013" codeSystem="ICD10CA"/>
+                </reason>
+                <category code="123" />
+                <substitutionPermission>
+                    <code code="G"/>
+                    <reasonCode code="ALGALT" codeSystem="ACTCODE"/>
+                </substitutionPermission>
+            </prescription>
+            <prescription description="Drug 1 - infered Precription">
+                <statusCode code="active"/>
+                <confidentialityCode code="NORMAL"/>
+                <drug description="drug 1 - Inhibace 2.5 mg"/>
+                <dosageInstruction description="Drug 1 Instructions"/>
+                <trialSupplycode code="TF"/>
+                <effectiveTime>
+                    <low value="20050810"/>
+                    <high value="20060810"/>
+                </effectiveTime>
+                <supplyRequestItem>
+                    <quantity value="10"/>
+                    <expectedUseTime>
+                        <width value="365" unit="d"/>
+                    </expectedUseTime>
+                    <drug description="drug 1 - Inhibace 2.5 mg"/>
+                    <subsequentSupplyRequest>
+                        <effectiveTime>
+                            <width value="30" unit="d"/>
+                        </effectiveTime>
+                        <repeatNumber value="1"/>
+                        <quantity value="30"/>
+                        <expectedUseTime>
+                            <width value="30" unit="d"/>
+                        </expectedUseTime>
+                        </subsequentSupplyRequest>
+                        <supplyEventFutureSummary>
+                            <repeatNumber value="5"/>
+                            <quantity value="100" unit="mg"/>
+                        </supplyEventFutureSummary>
+                        <supplyEventFirstSummary>
+                            <effectiveTime>
+                                <high value="20060101"/>
+                            </effectiveTime>
+                            <quantity value="10" unit="mg"/>
+                        </supplyEventFirstSummary>
+                        <supplyEventLastSummary>
+                            <effectiveTime>
+                                <high value="20060101"/>
+                            </effectiveTime>
+                            <quantity value="10" unit="mg"/>
+                        </supplyEventLastSummary>
+                        <supplyEventPastSummary>
+                            <repeatNumber value="10"/>
+                            <quantity value="10" unit="mg"/>
+                        </supplyEventPastSummary>
+                </supplyRequestItem>
+                <coverage description="Insurance Coverage 1"/>
+                <observation description="Patient Observation 1"/>
+                <non-authoritative code="VFPAPER"/>
+                <priorPrescription description="Prescription 1"/>
+                <reason type="observationDiagnosis">
+                    <priorityNumber value="1"/>
+                    <text>Pain in the ear.</text>
+                    <statusCode code="completed"/>
+                    <value code="Z013" codeSystem="ICD10CA"/>
+                </reason>
+                <category code="123" />
+                <substitutionPermission>
+                    <code code="G"/>
+                    <reasonCode code="ALGALT" codeSystem="ACTCODE"/>
+                </substitutionPermission>
+            </prescription>
+        </prescriptions>
+        <refusalToFills>
+            <refusalToFill description="resfusal 1">
+                <code code=""/>
+                <reasonCode code=""/>
+                <IssueList description=""/>
+            </refusalToFill>
+            <refusalToFill description="resfusal 2">
+                <code code=""/>
+                <reasonCode code=""/>
+                <IssueList description=""/>
+            </refusalToFill>
+        </refusalToFills>
+        <otherMedications>
+            <otherMedication description="OtherMedication 1">
+                <routeCode code="1" codeSystem="GCRT"/>
+                <drug description="drug 1 - Inhibace 2.5 mg"/>
+                <dosageInstruction description="Drug 1 Instructions"/>
+            </otherMedication>
+            <otherMedication description="OtherMedication 2">
+                <routeCode code="1" codeSystem="GCRT"/>
+                <drug description="drug 1 - Inhibace 2.5 mg"/>
+                <dosageInstruction description="Drug 1 Instructions"/>
+            </otherMedication>
+        </otherMedications>
+        <dispenses>
+            <dispense description="Dispense 1 - of Drug 1 - infered Precription">
+                <statusCode code="completed"/>
+                <dosageInstruction description="Drug 1 Instructions"/>
+                <supplyEvent>
+                    <statusCode code="active"/>
+                    <code code="FF"/>
+                    <effectiveTime>
+                        <low value="20040101"/>
+                        <high nullFlavor="NI"/>
+                    </effectiveTime>
+                    <quantity value="90" unit="mg"/>
+                    <expectedUseTime>
+                        <width unit="d" value="90"/>
+                    </expectedUseTime>
+                    <drug description="drug 1 - Inhibace 2.5 mg"/>
+                </supplyEvent>
+            </dispense>
+            <dispense description="Dispense 1 of Prescription 1">
+                <statusCode code="completed"/>
+                <dosageInstruction description="Drug 1 Instructions"/>
+                <supplyEvent>
+                    <code code="FF"/>
+                    <effectiveTime>
+                        <low value="20060101"/>
+                        <high nullFlavor="NI"/>
+                    </effectiveTime>
+                    <quantity value="90"/>
+                    <expectedUseTime>
+                        <width unit="d" value="90"/>
+                    </expectedUseTime>
+                    <drug description="drug 1 - Inhibace 2.5 mg"/>
+                </supplyEvent>
+            </dispense>
+            <dispense description="Dispense 2 of Prescription 1">
+                <statusCode code="completed"/>
+                <dosageInstruction description="Drug 1 Instructions"/>
+                <supplyEvent>
+                    <code code="FF"/>
+                    <effectiveTime>
+                        <low value="20060101"/>
+                        <high nullFlavor="NI"/>
+                    </effectiveTime>
+                    <quantity value="100"/>
+                    <expectedUseTime>
+                        <width unit="d" value="100"/>
+                    </expectedUseTime>
+                    <drug description="drug 1 - Inhibace 2.5 mg"/>
+                </supplyEvent>
+            </dispense>
+        </dispenses>
+        <dosageInstructions>
+            <dosageInstruction description="Drug 1 Instructions">
+                <text>Take 1 pill per day</text>
+                 <routeCode code="1" codeSystem="GCRT"/>
+                <maxDoseQuantity>
+                    <numerator value="1"/>
+                    <denominator value="1" unit="day"/>
+                </maxDoseQuantity>
+                <administrationUnitCode code="PUFF"/>
+                <drug description="drug 1 - Inhibace 2.5 mg"/>
+                <instruction>Dose should be taken at same time each day</instruction>
+            </dosageInstruction>
+            <dosageInstruction description="Drug 1 Instructions 2">
+                <text>Take 5 pills a day at meals</text>
+                <effectiveTime>
+                    <low value="20040101"/>
+                    <high value="20040110"/>
+                </effectiveTime>
+                <routeCode code="1" codeSystem="GCRT"/>
+                <approachSiteCode code="PA"/>
+                <maxDoseQuantity>
+                    <numerator value="2" />
+                    <denominator value="1" unit="day"/>
+                </maxDoseQuantity>
+                <administrationUnitCode code="PUFF"/>
+                <drug description="drug 1 - Inhibace 2.5 mg"/>
+                <instruction>on an empty stomach</instruction>
+                <dosageLine sequenceNumber="1">
+                    <text>A free form description of how the dispensed medication is to be administered to the patient</text>
+                </dosageLine>
+            </dosageInstruction>
+        </dosageInstructions>
+        <coverages>
+            <coverage description="Insurance Coverage 1">
+                <record-id client="FA" server="FA" root_OID="DEPT_HEALTH_PROGRAM_ID"/>
+                <underwriter>
+                    <record-id client="88" server="89"/>
+                    <name>PEI</name>
+                </underwriter>
+            </coverage>
+            <coverage description="Insurance Coverage 2">
+                <record-id client="DCAP" server="DCAP" root_OID="DEPT_HEALTH_PROGRAM_ID"/>
+                <underwriter>
+                    <record-id client="88" server="89"/>
+                    <name>PEI</name>
+                </underwriter>
+            </coverage>
+        </coverages>
+        <issues>
+            <issue description="Issue 1">
+                <code code="INT"/>
+                <text>The patient has an intolerance to glucose</text>
+                <priorityCode code="I"/>
+                <detectedIssueDefinition>
+                    <record-id client="2345" server="2349" root_OID="DIS_MONOGRAPH_ID"/>
+                    <name>FDB</name>
+                </detectedIssueDefinition>
+                <severity code="M"/>
+            </issue>
+            <issue description="Issue 2">
+                <code code="INT"/>
+                <text>The patient has an intolerance to peanuts</text>
+                <priorityCode code="I"/>
+                <detectedIssueDefinition>
+                    <record-id client="2346" server="2348" root_OID="DIS_MONOGRAPH_ID"/>
+                    <name>FDB</name>
+                </detectedIssueDefinition>
+                <severity code="M"/>
+            </issue>
+        </issues>
+        <issueLists>
+            <issueList description="Issue List 1">
+                <issue description="Issue 1">
+                    <causes>
+                        <dispense description="Dispense 1 - of Drug 1 - infered Precription"/>
+                    </causes>
+                    <managment description="Issue 1 Management 1">
+                        <code code="10"/>
+                        <text>I told the patient to lay off the glucose</text>
+                        <time value="20050101100101"/>
+                        <author description="Pharmacist 1"/>
+                    </managment>
+                </issue>
+                <issue description="Issue 2">
+                    <causes>
+                        <dispense description="Dispense 1 - of Drug 1 - infered Precription"/>
+                    </causes>
+                    <managment description="Issue 2 Management 1">
+                        <code code="10"/>
+                        <text>I told the patient to lay off the glucose</text>
+                        <time value="20050101100101"/>
+                        <author description="Pharmacist 1"/>
+                    </managment>
+                </issue>
+            </issueList>
+        </issueLists>
+
+
+        <SOFA>
+            <!-- 
+                SOFA totals are not used by profiles, they are simply used by the sofa messages to calculat the
+               totals that should be returned by the server simulator. 
+            -->
+            <!-- sub-totals code can be: ADPPSPEL, ADRFSPEL, ADNFSPEL, ADNFPPEL, PDPPSPEL -->
+            <payee description="Pharmacy 1" program="FA">
+                <Daily-totals Date="20051130">
+                    <payment-total value="100"/>
+                    <sub-total code="ADPPSPEL" value="200" count="10"/>
+                    <sub-total code="ADRFSPEL" value="50" count="3"/>
+                    <sub-total code="ADNFSPEL" value="20" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20051201">
+                    <payment-total value="101"/>
+                    <sub-total code="ADPPSPEL" value="201" count="11"/>
+                    <sub-total code="ADRFSPEL" value="51" count="3"/>
+                    <sub-total code="ADNFSPEL" value="21" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20051215">
+                    <payment-total value="102"/>
+                    <sub-total code="ADPPSPEL" value="202" count="12"/>
+                    <sub-total code="ADRFSPEL" value="52" count="3"/>
+                    <sub-total code="ADNFSPEL" value="22" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20051231">
+                    <payment-total value="103"/>
+                    <sub-total code="ADPPSPEL" value="203" count="13"/>
+                    <sub-total code="ADRFSPEL" value="53" count="3"/>
+                    <sub-total code="ADNFSPEL" value="23" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20060101">
+                    <payment-total value="104"/>
+                    <sub-total code="ADPPSPEL" value="204" count="14"/>
+                    <sub-total code="ADRFSPEL" value="54" count="3"/>
+                    <sub-total code="ADNFSPEL" value="24" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20060102">
+                    <payment-total value="105"/>
+                    <sub-total code="ADPPSPEL" value="205" count="15"/>
+                    <sub-total code="ADRFSPEL" value="55" count="3"/>
+                    <sub-total code="ADNFSPEL" value="25" count="2"/>
+                </Daily-totals>
+            </payee>
+            <payee description="Pharmacy 1" program="DQ">
+                <Daily-totals Date="20051130">
+                    <payment-total value="100"/>
+                    <sub-total code="ADPPSPEL" value="200" count="10"/>
+                    <sub-total code="ADRFSPEL" value="50" count="3"/>
+                    <sub-total code="ADNFSPEL" value="20" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20051201">
+                    <payment-total value="101"/>
+                    <sub-total code="ADPPSPEL" value="201" count="11"/>
+                    <sub-total code="ADRFSPEL" value="51" count="3"/>
+                    <sub-total code="ADNFSPEL" value="21" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20051215">
+                    <payment-total value="102"/>
+                    <sub-total code="ADPPSPEL" value="202" count="12"/>
+                    <sub-total code="ADRFSPEL" value="52" count="3"/>
+                    <sub-total code="ADNFSPEL" value="22" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20051231">
+                    <payment-total value="103"/>
+                    <sub-total code="ADPPSPEL" value="203" count="13"/>
+                    <sub-total code="ADRFSPEL" value="53" count="3"/>
+                    <sub-total code="ADNFSPEL" value="23" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20060101">
+                    <payment-total value="104"/>
+                    <sub-total code="ADPPSPEL" value="204" count="14"/>
+                    <sub-total code="ADRFSPEL" value="54" count="3"/>
+                    <sub-total code="ADNFSPEL" value="24" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20060102">
+                    <payment-total value="105"/>
+                    <sub-total code="ADPPSPEL" value="205" count="15"/>
+                    <sub-total code="ADRFSPEL" value="55" count="3"/>
+                    <sub-total code="ADNFSPEL" value="25" count="2"/>
+                </Daily-totals>
+            </payee>
+            <payee description="Pharmacy 2" program="FA">
+                <Daily-totals Date="20051130">
+                    <payment-total value="100"/>
+                    <sub-total code="ADPPSPEL" value="200" count="10"/>
+                    <sub-total code="ADRFSPEL" value="50" count="3"/>
+                    <sub-total code="ADNFSPEL" value="20" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20051201">
+                    <payment-total value="101"/>
+                    <sub-total code="ADPPSPEL" value="201" count="11"/>
+                    <sub-total code="ADRFSPEL" value="51" count="3"/>
+                    <sub-total code="ADNFSPEL" value="21" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20051215">
+                    <payment-total value="102"/>
+                    <sub-total code="ADPPSPEL" value="202" count="12"/>
+                    <sub-total code="ADRFSPEL" value="52" count="3"/>
+                    <sub-total code="ADNFSPEL" value="22" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20051231">
+                    <payment-total value="103"/>
+                    <sub-total code="ADPPSPEL" value="203" count="13"/>
+                    <sub-total code="ADRFSPEL" value="53" count="3"/>
+                    <sub-total code="ADNFSPEL" value="23" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20060101">
+                    <payment-total value="104"/>
+                    <sub-total code="ADPPSPEL" value="204" count="14"/>
+                    <sub-total code="ADRFSPEL" value="54" count="3"/>
+                    <sub-total code="ADNFSPEL" value="24" count="2"/>
+                </Daily-totals>
+                <Daily-totals Date="20060102">
+                    <payment-total value="105"/>
+                    <sub-total code="ADPPSPEL" value="205" count="15"/>
+                    <sub-total code="ADRFSPEL" value="55" count="3"/>
+                    <sub-total code="ADNFSPEL" value="25" count="2"/>
+                </Daily-totals>
+            </payee>
+        </SOFA>
+        
+    </testData>
+    <system>
+        <soap required="false"/>
+        <client OID="PORTAL_APPLICATION">
+            <uri>198.203.1.21</uri>
+        </client>
+        <server OID="DIS_APPLICATION">
+            <uri>198.203.1.23</uri>
+        </server>
+        <OIDs>
+            <GCDF server="2.16.840.1.113883.4.79" client="2.16.840.1.113883.4.79" description="FDB Dosage Form Code"/>
+            <GCRT server="2.16.840.1.113883.4.80" client="2.16.840.1.113883.4.80"  description="FDB Route of Administration Code"/>
+            <GCN_SEQNO server="2.16.840.1.113883.4.64" client="2.16.840.1.113883.4.64"
+                description="FDB GCN_SEQNO - identifies a unique drug formulation.  This includes the drugs ACTIVE ingredient(s), strength, dosage form, and route of administration"/>
+            <CCI server="2.16.840.1.113883.6.95" client="2.16.840.1.113883.6.95" description="Canadian Classification of Intervensions (CCI)"/>
+            <DIN server="2.16.840.1.113883.5.1105" client="2.16.840.1.113883.5.1105" description="Canadian Drug Identification Number"/>
+            <ICD9CM server="2.16.840.1.113883.11.15931" client="2.16.840.1.113883.11.15931" description="ICD9CM diagnosis codes"/>
+            <AHFS server="2.16.840.1.113883.6.234" client="2.16.840.1.113883.6.234" description="American Hospital Formulary System (AHFS)"/>
+            <OPINION server="2.16.840.1.113883.5.1102" client="2.16.840.1.113883.5.1102" description="Online Product Identification Number Index of Nova Scotia (OPINIONs)"/>
+            <AIC server="2.16.840.1.113883.5.1103" client="2.16.840.1.113883.5.1103" description="ACTIVE Ingredient Code"/>
+            <AIGC server="2.16.840.1.113883.5.1104" client="2.16.840.1.113883.5.1104" description="ACTIVE Ingredient Group (AIG) Code"/>
+            <NPN server="2.16.840.1.113883.5.1107" client="2.16.840.1.113883.5.1107" description="Natural Product Number (NPN)"/>
+            <SNOMED server="2.16.840.1.113883.6.96" client="2.16.840.1.113883.6.96" description="SNOMED Clinical Terms (CT)"/>
+            <AIGN server="2.16.840.1.113883.5.1106" client="2.16.840.1.113883.5.1106" description="ACTIVE Ingredient Group (AIG) Number"/>
+            <ICD10CA server="2.16.840.1.113883.11.19436" client="2.16.840.1.113883.11.19436" description="ICD10CA - icd10 Canadian Codes - diagnosis codes and reaction codes"/>
+            <LOINC server="2.16.840.1.113883.6.1" client="2.16.840.1.113883.6.1" description="Logical Observation Identifiers Names and Codes (LOINC) - used for Allergy Tests, and Observation Type codes"/>
+            <ATC server="2.16.840.1.113883.6.73" client="2.16.840.1.113883.6.73" description="Anatomical Therapeutic Chemical (ATC) classification"/>
+            <ENCODEFM server="2.16.840.1.113883.5.1108" client="2.16.840.1.113883.5.1108" description="Encode-FM"/>
+            <ACTCODE server="2.16.840.1.113883.5.4" client="2.16.840.1.113883.5.4" description="HL7 v3 ActCode - need this for allergies as allergy type can be either ActCode vocab or SNOMED - we support ActCode."/>
+            <ENTITYCODE server="2.16.840.1.113883.5.1060" client="2.16.840.1.113883.5.1060"
+                description="HL7v3 EntityCode - need this for allergies for expressing the allergen (NonDrugAgentEntity) as the alternative is SNOMED which we are not supporting."/>
+            <CCI server="2.16.840.1.113883.6.95" client="2.16.840.1.113883.6.95" description="Canadian Classification of Intervensions (CCI)"/>
+            <DIS_MESSAGE_ID server="2.16.124.9.101.1.1.1" client="2.16.124.9.101.1.1.1" description="Unique DIS Message Identifier"/>
+            <DIS_ADJUDICATED_INVOICE_GROUP_ID server="2.16.124.9.101.1.1.2" client="2.16.124.9.101.1.1.2" description="Adjudicated Invoice Group Identiifer"/>
+            <DIS_DISPENSE_ID server="2.16.124.9.101.1.1.3" client="2.16.124.9.101.1.1.3" description="DIS Assigned Dispense Identifier"/>
+            <DIS_PRESCRIPTION_ID server="2.16.124.9.101.1.1.4" client="2.16.124.9.101.1.1.4" description="DIS Assigned Prescription Identifier"/>
+            <DIS_PATIENT_CONSENT_ID server="2.16.124.9.101.1.1.5" client="2.16.124.9.101.1.1.5" description="Patient Consent Event Identifier"/>
+            <DIS_OBSERVATION_ID server="2.16.124.9.101.1.1.6" client="2.16.124.9.101.1.1.6" description="Observation Identifier (e.g.  Height, weight.)"/>
+            <DIS_SPECIAL_AUTH_ID server="2.16.124.9.101.1.1.7" client="2.16.124.9.101.1.1.7" description="Special Authorization Identifier"/>
+            <DIS_OTHER_ACTIVE_MED_ID server="2.16.124.9.101.1.1.8" client="2.16.124.9.101.1.1.8" description="Other ACTIVE Medication Identifier"/>
+            <DIS_IMMUNIZATION_ID server="2.16.124.9.101.1.1.9" client="2.16.124.9.101.1.1.9" description="Immunization Identifier"/>
+            <DIS_ALLERGY_ID server="2.16.124.9.101.1.1.10" client="2.16.124.9.101.1.1.10" description="Allergy Identifier"/>
+            <DIS_MEDICAL_CONDITION_ID server="2.16.124.9.101.1.1.11" client="2.16.124.9.101.1.1.11" description="Medical Condition Identifier"/>
+            <DIS_PATIENT_NOTE_ID server="2.16.124.9.101.1.1.12" client="2.16.124.9.101.1.1.12" description="Patient Note Identifier"/>
+            <DIS_REACTION_ID server="2.16.124.9.101.1.1.13" client="2.16.124.9.101.1.1.13" description="Reaction Identifier"/>
+            <DIS_MONOGRAPH_ID server="2.16.124.9.101.1.1.14" client="2.16.124.9.101.1.1.14" description="FDB Drug Monograph Identifier"/>
+            <DIS_CONTROL_ACT_ID server="2.16.124.9.101.1.1.15" client="2.16.124.9.101.1.1.15" description="DIS Control Act Id"/>
+            <DIS_MEDICATION_DOCUMENT_ID server="2.16.124.9.101.1.1.16" client="2.16.124.9.101.1.1.16" description="FDB Document Identifier"/>
+            <PORTAL_MESSAGE_ID server="2.16.124.9.101.1.8.1" client="2.16.124.9.101.1.8.1" description="Unique Portal Message Identifier"/>
+            <PORTAL_INVOICE_REQUEST_ID server="2.16.124.9.101.1.8.2" client="2.16.124.9.101.1.8.2" description="Portal Payment Request Identifier"/>
+            <PORTAL_QUERY_ID server="2.16.124.9.101.1.8.3" client="2.16.124.9.101.1.8.3" description="Portal Query Message Identifier"/>
+            <PORTAL_PARAMETER_LIST_ID server="2.16.124.9.101.1.8.4" client="2.16.124.9.101.1.8.4" description="Portal Parameter List Identifier"/>
+            <PORTAL_CONTROL_ACT_ID server="2.16.124.9.101.1.8.5" client="2.16.124.9.101.1.8.5" description="Portal Control Act Identifier"/>
+            <PORTAL_DISPENSE_ID server="2.16.124.9.101.1.8.6" client="2.16.124.9.101.1.8.6" description="Portal Dispense Identifier"/>
+
+            <PE_PHN server="2.16.840.1.113883.4.13" client="2.16.840.1.113883.4.13" description="PEI PHN"/>
+            <NB_PHN server="2.2" client="2.2" description="New Brunswick PIN"/>
+            <NS_PHN server="2.3" client="2.3" description="Nova Scotia MSI"/>
+            <NF_PHN server="2.4" client="2.4" description="Newfoundland PIN"/>
+            <QB_PHN server="2.5" client="2.5" description="Quebec PIN"/>
+            <ON_PHN server="2.6" client="2.6" description="Ontario PIN"/>
+            <MB_PHN server="2.16.840.1.113883.4.12" client="2.16.840.1.113883.4.12" description="Manitoba PHIN"/>
+            <SK_PHN server="2.8" client="2.8" description="Sask. PIN"/>
+            <AB_PHN server="2.16.840.1.113883.4.20" client="2.16.840.1.113883.4.20" description="Alberta ULI"/>
+            <BC_PHN server="2.10" client="2.10" description="British Columbia PHN"/>
+            <NU_PHN server="2.11" client="2.11" description="Nunavut Health Number"/>
+            <NT_PHN server="2.12" client="2.12" description="North West Territory PIN"/>
+            <YT_PHN server="2.13" client="2.13" description="Yukon PIN"/>
+            <DEPT_HEALTH_BILLING_NUMBER server="2.16.840.1.113883.4.16" client="2.16.840.1.113883.4.16" description="PEI Dept of Health Prescriber Billing Number Identifier"/>
+            <DEPT_HEALTH_PHARMACIST_ID server="2.16.840.1.113883.4.17" client="2.16.840.1.113883.4.17" description="PEI Dept of Health Pharmacist Identification Number"/>
+            <DEPT_HEALTH_HOSPITAL_ID server="2.16.840.1.113883.4.18" client="2.16.840.1.113883.4.18" description="PEI Dept of Health Health Care Facility Identifier"/>
+            <DEPT_HEALTH_PHARMACY_ID server="2.16.840.1.113883.4.19" client="2.16.840.1.113883.4.19" description="PEI Dept of Health Pharmacy Identifier"/>
+            <DEPT_HEALTH_PHYSICIANS_OFFICE_ID server="2.16.840.1.113883.4.68" client="2.16.840.1.113883.4.68" description="PEI Dept of Health Physician Office Id"/>
+            <DEPT_HEALTH_LONG_TERM_CARE_FACILITY_ID server="2.16.840.1.113883.4.69" client="2.16.840.1.113883.4.69" description="PEI Dept of Health Long Term Care Facility Id"/>
+            <DEPT_HEALTH_MENTAL_HEALTH_CARE_FACILITY_ID server="2.16.840.1.113883.4.70" client="2.16.840.1.113883.4.70" description="PEI Dept of Health Mental Health Care Facility Id"/>
+            <DEPT_HEALTH_ADDICTION_CENTER_FACILITY_ID server="2.16.840.1.113883.4.71" client="2.16.840.1.113883.4.71" description="PEI Dept of Health Addiction Center Facility Id"/>
+            <DEPT_HEALTH_DENTAL_FACILITY_ID server="2.16.840.1.113883.4.72" client="2.16.840.1.113883.4.72" description="PEI Dept of Health Dental Facility Id"/>
+            <DEPT_HEALTH_VETERINARY_FACILITY_ID server="2.16.840.1.113883.4.73" client="2.16.840.1.113883.4.73" description="PEI Dept of Health Veterinary Facility Id"/>
+            <DEPT_HEALTH_VETERINARIAN_LICENSE_ID server="2.16.840.1.113883.4.74" client="2.16.840.1.113883.4.74" description="PEI Dept of Health Veterinarian License Id"/>
+            <DEPT_HEALTH_EMPLOYEE_NUMBER_ID server="2.16.840.1.113883.4.75" client="2.16.840.1.113883.4.75" description="PEI Dept of Health Employee Number Id"/>
+            <DEPT_HEALTH_PHARMACY_TECHNICIAN_ID server="2.16.840.1.113883.4.76" client="2.16.840.1.113883.4.76" description="PEI Dept of Health Pharmacy Tech Id"/>
+
+            <PEI_MED_SOCIETY server="2.16.840.1.113883.4.14" client="2.16.840.1.113883.4.14" description="PEI Medical Society License Number"/>
+            <PEI_PHARMACIST_BOARD_ID server="2.16.840.1.113883.4.15" client="2.16.840.1.113883.4.15" description="Prince Edward Island Pharmacy Board Pharmacist License Number"/>
+            <DEPT_HEALTH server="2.16.124.9.101.1" client="2.16.124.9.101.1" description="PEI Dept of Health"/>
+            <DIS_APPLICATION server="2.16.124.9.101.1.1" client="2.16.124.9.101.1.1" description="PEI Dept of Health Drug Information System Application Identifier"/>
+            <DEPT_HEALTH_PROGRAM_ID server="2.16.124.9.101.1.2" client="2.16.124.9.101.1.2" description="PEI Dept of Health Provincial Drug Program Identifier"/>
+            <PORTAL_APPLICATION server="2.16.124.9.101.1.8" client="2.16.124.9.101.1.8" description="PEI Dept of Health Portal System Application Identifier"/>
+            <DIS_ALLERGY_TEST_ID server="2.1.1.1" client="2.1.1.1" description="Allergy tests"/>
+            <DIS_INTERACTION_ID server="2.16.840.1.113883.1.6" client="2.16.840.1.113883.1.6"/>
+            <HIC server="2.16.840.1.113883.3.84" client="2.16.840.1.113883.3.84" description="HIC Canadian Drug Identification Number"/>
+            <DIS_PROF_SERVICE_ID server="2.16.124.9.101.1.1.18" client="2.16.124.9.101.1.1.18" description="Professional Service"/>
+
+            <DIS_MONDDI_DIN_DOCUMENT_ID server="2.16.124.9.101.1.1.16.1" client="2.16.124.9.101.1.1.16.1" description="FDB DIN DDI Monograph Document Identifier" fr=""/>
+            <DIS_MONEDS_DIN_DOCUMENT_ID server="2.16.124.9.101.1.1.16.2" client="2.16.124.9.101.1.1.16.2" description="FDB DIN Education Short Document Identifier" fr=""/>
+            <DIS_MONEDL_DIN_DOCUMENT_ID server="2.16.124.9.101.1.1.16.3" client="2.16.124.9.101.1.1.16.3" description="FDB DIN Education Long Document Identifier" fr=""/>
+            <DIS_MONEDA_DIN_DOCUMENT_ID server="2.16.124.9.101.1.1.16.4" client="2.16.124.9.101.1.1.16.4" description="FDB DIN Education AHSP Document Identifier" fr=""/>
+            <DIS_MONCPR_DIN_DOCUMENT_ID server="2.16.124.9.101.1.1.16.5" client="2.16.124.9.101.1.1.16.5" description="FDB DIN Counseling Professional Document Identifier" fr=""/>
+            <DIS_MONCPA_DIN_DOCUMENT_ID server="2.16.124.9.101.1.1.16.6" client="2.16.124.9.101.1.1.16.6" description="FDB DIN Counseling Patient Document Identifier" fr=""/>
+            <DIS_PROTIND_DIN_DOCUMENT_ID server="2.16.124.9.101.1.1.16.7" client="2.16.124.9.101.1.1.16.7" description="FDB DIN Indication Protocol Document Identifier" fr=""/>
+            <DIS_MONDDI_ATC_DOCUMENT_ID server="2.16.124.9.101.1.1.16.8" client="2.16.124.9.101.1.1.16.8" description="FDB ATC DDI Monograph Document Identifier" fr=""/>
+            <DIS_MONEDS_ATC_DOCUMENT_ID server="2.16.124.9.101.1.1.16.9" client="2.16.124.9.101.1.1.16.9" description="FDB ATC Education Short Document Identifier" fr=""/>
+            <DIS_MONEDL_ATC_DOCUMENT_ID server="2.16.124.9.101.1.1.16.10" client="2.16.124.9.101.1.1.16.10" description="FDB ATC Education Long Document Identifier" fr=""/>
+            <DIS_MONEDA_ATC_DOCUMENT_ID server="2.16.124.9.101.1.1.16.11" client="2.16.124.9.101.1.1.16.11" description="FDB ATC Education AHSP Document Identifier" fr=""/>
+            <DIS_MONCPR_ATC_DOCUMENT_ID server="2.16.124.9.101.1.1.16.12" client="2.16.124.9.101.1.1.16.12" description="FDB ATC Counseling Professional Document Identifier" fr=""/>
+            <DIS_MONCPA_ATC_DOCUMENT_ID server="2.16.124.9.101.1.1.16.13" client="2.16.124.9.101.1.1.16.13" description="FDB ATC Counseling Patient Document Identifier" fr=""/>
+            <DIS_PROTIND_ATC_DOCUMENT_ID server="2.16.124.9.101.1.1.16.14" client="2.16.124.9.101.1.1.16.14" description="FDB ATC Indication Protocol Document Identifier" fr=""/>
+
+        </OIDs>        
+    </system>
+</configuration>

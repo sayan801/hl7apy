@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Module Header
+
+  $Header: /cvsroot/hl7-testharness/Source\040Code/xsd/testdata.xsd,v 1.1.1.1 2006/11/24 18:16:50 deltaware Exp $
+
+  Copyright © 1996-2006 by DeltaWare Systems Inc. 
+
+  Company:          DeltaWare Systems Inc.
+                    90 University Avenue, Suite 300
+                    Charlottetown
+                    Prince Edward Island
+                    C1A 4K9
+                    Phone   (902) 368-8122
+                    FAX     (902) 628-4660
+                    E-Mail  dsi@deltaware.com
+
+  Development:      DeltaWare Systems Inc.
+                    90 University Avenue, Suite 300
+                    Charlottetown
+                    Prince Edward Island
+                    C1A 4K9
+                    Phone   (902) 368-8122
+                    FAX     (902) 628-4660
+                    E-Mail  dsi@deltaware.com
+
+The GNU General Public License (GPL)
+
+This program is free software; you can redistribute it and/or modify it 
+under the terms of the GNU General Public License as published by the 
+Free Software Foundation; either version 2 of the License, or (at your
+option) any later version.
+This program is distributed in the hope that it will be useful, but 
+WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+Public License for more details.
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc., 
+59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+  Project:          HL7 Test Harness
+  Programmer:       Matthew Wicks
+  Created:          March 17, 2006
+
+  History:
+  Action      Who     Date            Comments
+  <<Action>>  xxx     yyyy-mm-dd      <<Comments here>>
+
+
+  Application notes:
+  <<Place notes on usages, known problems, etc>>
+
+  $Log: testdata.xsd,v $
+  Revision 1.1.1.1  2006/11/24 18:16:50  deltaware
+  Init check in of HL7 Test Harness, version 2.0.3.9. For releases before this version please contact deltaware systems.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="configuration">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="testData"/>
+                <xs:element ref="system"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="testData">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+                <xs:any processContents="skip"/>
+            </xs:choice>
+            <xs:attribute name="BaseDateTime" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="medicalProfiles">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="medicalProfile" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:any/>
+                        </xs:choice>
+                        <xs:attribute name="description" use="required"/>
+                        <xs:attribute name="sequence" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="patients">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="patient"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="patient">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="client"/>
+                <xs:element ref="server"/>
+            </xs:sequence>
+            <xs:attribute name="OID" use="required" type="xs:NCName"/>
+            <xs:attribute name="age" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="providers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="provider"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="provider">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="client"/>
+                <xs:element ref="server"/>
+            </xs:sequence>
+            <xs:attribute name="OID" use="required" type="xs:NCName"/>
+            <xs:attribute name="description" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="serviceDeliveryLocations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="location"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="location">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="client"/>
+                <xs:element ref="server"/>
+            </xs:sequence>
+            <xs:attribute name="OID" use="required" type="xs:NCName"/>
+            <xs:attribute name="description" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="system">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="soap" minOccurs="0"/>
+                <xs:element ref="client"/>
+                <xs:element ref="server"/>
+                <xs:element ref="OIDs"/>
+                <xs:any minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="OIDs">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+                <xs:any processContents="skip"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ICD9CM">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AHFS">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="OPINION">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AIC">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AIGC">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="NPN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SNOMED">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AIGN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ICD10CA">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="LOINC">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ATC">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ENCODEFM">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required" type="xs:NCName"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ACTCODE">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ENTITYCODE">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_MESSAGE_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_ADJUDICATED_INVOICE_GROUP_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_DISPENSE_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_PRESCRIPTION_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_PATIENT_CONSENT_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_OBSERVATION_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_SPECIAL_AUTH_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_OTHER_ACTIVE_MED_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_IMMUNIZATION_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_ALLERGY_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_MEDICAL_CONDITION_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_PATIENT_NOTE_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_REACTION_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_MONOGRAPH_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_CONTROL_ACT_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_MEDICATION_DOCUMENT_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PORTAL_MESSAGE_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PORTAL_INVOICE_REQUEST_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PORTAL_QUERY_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PORTAL_PARAMETER_LIST_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PORTAL_CONTROL_ACT_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PORTAL_DISPENSE_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PE_PHN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="NB_PHN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="NS_PHN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="NF_PHN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="QB_PHN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ON_PHN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="MB_PHN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SK_PHN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AB_PHN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="BC_PHN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="NU_PHN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="NT_PHN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="YT_PHN">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DEPT_HEALTH_PHARMACY_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DEPT_HEALTH_BILLING_NUMBER">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DEPT_HEALTH_PHARMACIST_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DEPT_HEALTH_FACILITY_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PEI_MED_SOCIETY">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PEI_PHARMACIST_BOARD_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:decimal"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:decimal"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DEPT_HEALTH">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DIS_APPLICATION">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="DEPT_HEALTH_PROGRAM_ID">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="PORTAL_APPLICATION">
+        <xs:complexType>
+            <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="description" use="required"/>
+            <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="client">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id" minOccurs="0"/>
+                <xs:element minOccurs="0" ref="uri"/>
+                <xs:element minOccurs="0" ref="name"/>
+                <xs:choice minOccurs="0">
+                    <xs:element ref="phn"/>
+                    <xs:element ref="role"/>
+                </xs:choice>
+                <xs:sequence minOccurs="0">
+                    <xs:element ref="given"/>
+                    <xs:element ref="family"/>
+                </xs:sequence>
+                <xs:sequence minOccurs="0">
+                    <xs:element ref="gender"/>
+                    <xs:element ref="dob"/>
+                </xs:sequence>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="addr"/>
+                    <xs:element ref="telecom"/>
+                </xs:choice>
+                <xs:element minOccurs="0" ref="keyword"/>
+            </xs:sequence>
+            <xs:attribute name="OID" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="server">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="id" minOccurs="0"/>
+                <xs:choice minOccurs="0">
+                    <xs:element ref="phn"/>
+                    <xs:element ref="role"/>
+                </xs:choice>
+                <xs:sequence minOccurs="0">
+                    <xs:element ref="given"/>
+                    <xs:element ref="family"/>
+                </xs:sequence>
+                <xs:sequence minOccurs="0">
+                    <xs:element ref="gender"/>
+                    <xs:element ref="dob"/>
+                </xs:sequence>
+                <xs:element minOccurs="0" ref="uri"/>
+                <xs:element minOccurs="0" ref="name"/>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="addr"/>
+                    <xs:element ref="telecom"/>
+                </xs:choice>
+                <xs:element minOccurs="0" ref="keyword"/>
+            </xs:sequence>
+            <xs:attribute name="OID" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="id">
+        <xs:complexType>
+            <xs:attribute name="extension"/>
+            <xs:attribute name="root" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="uri" type="xs:NMTOKEN"/>
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="phn" type="xs:integer"/>
+    <xs:element name="role" type="xs:NCName"/>
+    <xs:element name="given" type="xs:string"/>
+    <xs:element name="family" type="xs:NCName"/>
+    <xs:element name="gender" type="xs:NCName"/>
+    <xs:element name="dob" type="xs:integer"/>
+    <xs:element name="telecom" type="xs:integer"/>
+    <xs:element name="addr">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="line1"/>
+                <xs:element ref="line2"/>
+                <xs:element ref="city"/>
+                <xs:element ref="state"/>
+                <xs:element ref="postalCode"/>
+                <xs:element ref="country"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="line1" type="xs:string"/>
+    <xs:element name="line2" type="xs:string"/>
+    <xs:element name="city" type="xs:NCName"/>
+    <xs:element name="state" type="xs:NCName"/>
+    <xs:element name="postalCode" type="xs:NCName"/>
+    <xs:element name="country" type="xs:string"/>
+    <xs:element name="keyword" type="xs:NCName"/>
+</xs:schema>

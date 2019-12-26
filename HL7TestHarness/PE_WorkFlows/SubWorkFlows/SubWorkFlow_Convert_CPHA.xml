@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  
+    Copyright © 1996-2006 by DeltaWare Systems Inc. 
+
+    The GNU General Public License (GPL)
+    This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the 
+    Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 
+    59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+
+<workflows testDataFile="TestData.xml">
+    <workflow id="w_TESTNAME" description="Request Payment">
+        <message description="Pharmacist Requests Payment" root-element-name ="FICR_IN600102">
+            <request description="Invoice Request (CPHA Convert)">
+                <Simulator RemoteServerAddr="http://DIS_Server/">
+                    <construction>
+                        <rule type="transform" description="Invoice message (CPHA Convert)" filename="..\WorkFlow_Lib\Invoice\InvoiceRequest(CPHA Convert).xsl">
+                            <paramList name="CPHA_DATA">
+                                <param name="BIN" value="610528"/>
+                                <param name="Version" value="03"/>
+                                <param name="TransactionCode" value="01"/>
+                                <param name="ProviderSoftwareID" value="PR"/>
+                                <param name="ProviderSoftwareVersion" value="01"/>
+                                <param name="ActiveDeviceID" value=""/>
+                                <param name="PharmacyIDCode" value="0000441287"/>
+                                <param name="ProviderTransactionDate" value="030517"/>
+                                <param name="TraceNumber" value="000001"/>
+                                <param name="CarrierID" value="88"/>
+                                <param name="Group" value="CC"/>
+                                <param name="ClientID" value="01299155"/>
+                                <param name="PatientCode" value="001"/>
+                                <param name="PatientDOB" value="19680323"/>
+                                <param name="CardholderIdentity" value=""/>
+                                <param name="Relationship" value="0"/>
+                                <param name="PatientFirstName" value="MURPHY"/>
+                                <param name="PatientLastName" value="CROMWELL"/>
+                                <param name="ProvincialHealthIdentifier" value="01299155"/>
+                                <param name="PatientGender" value="F"/>
+                                <param name="MedicalReasonReference" value=""/>
+                                <param name="ReasonforUse" value=""/>
+                                <param name="RefillCode" value="N"/>
+                                <param name="OriginalPrescription" value="000000001"/>
+                                <param name="RefillAuthorizations" value="00"/>
+                                <param name="CurrentRx" value="000000001"/>
+                                <param name="DIN" value="02027887"/>
+                                <param name="SSC" value=""/>
+                                <param name="Quantity" value="000300"/>
+                                <param name="DaysSupply" value="030"/>
+                                <param name="PrescriberIDReference" value="21"/>
+                                <param name="PrescriberID" value="1"/>
+                                <param name="ProductSelection" value=""/>
+                                <param name="UnlistedCompound" value=""/>
+                                <param name="SpecialAuthorization" value=""/>
+                                <param name="ExceptionCodes" value="UA"/>
+                                <param name="DrugCost" value="004604"/>
+                                <param name="Upcharge" value="01533"/>
+                                <param name="ProfessionalFee" value="00700"/>
+                                <param name="CompoundingCharge" value="00000"/>
+                                <param name="CompoundingTime" value="00"/>
+                                <param name="SpecialServicesFee" value="00000"/>
+                                <param name="PreviouslyPaid" value="000000"/>
+                                <param name="PharmacistID" value="9555"/>
+                                <param name="AdjudicationDate" value="000000"/>
+                            </paramList>
+                        </rule>
+                        <rule type="putVariable" description="Client Claim ID" name="ClientClaimID" xpath="descendant-or-self::ns:controlActProcess/ns:subject/ns:invoiceElementGroup/ns:id/@extension" ns="urn:hl7-org:v3"/>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Invoice Request Schema Validate" root-element-name="FICR_IN600102">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\FICR_IN600102.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Invoice Reversal Request Schema Validate" root-element-name="FICR_IN620102">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\FICR_IN620102.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                     
+<!--                    <validation description="Format Validate">
+                        <rule type="transform" description="Transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\Invoice_Payload_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Invoice to Dispense Mapping Validation" filename="..\WorkFlow_Lib\Common\Validation\Invoice_to_Dispense_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+-->                    <construction>
+                        <rule type="transform" description="Generic Request Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl"/>
+                        <!-- Control Act ID for undos (We need the request ControlAct extension for undos).-->
+                        <!--<rule type="setVariable" description="Last Request Control Act ID extension" name="LastRequestContorlActID" xpath="descendant-or-self::ns:controlActEvent/ns:id/@extension" ns="urn:hl7-org:v3"/>-->
+
+                    </construction>
+                </messageProxy>
+            </request>
+            <response description="Invoice  Response">
+                <Simulator RemoteServerAddr="">
+                    <construction>
+                        <rule type="transform" description="Invoice Response Message" filename="..\WorkFlow_Lib\invoice/InvoiceResponse(CPHA Convert).xsl">
+                            <paramList name="CPHA_DATA">
+                                <param name="BIN" value="610528"/>
+                                <param name="Version" value="03"/>
+                                <param name="TransactionCode" value="01"/>
+                                <param name="ProviderSoftwareID" value="PR"/>
+                                <param name="ProviderSoftwareVersion" value="01"/>
+                                <param name="ActiveDeviceID" value=""/>
+                                <param name="PharmacyIDCode" value="0000441287"/>
+                                <param name="ProviderTransactionDate" value="030517"/>
+                                <param name="TraceNumber" value="000001"/>
+                                <param name="CarrierID" value="88"/>
+                                <param name="Group" value="CC"/>
+                                <param name="ClientID" value="01299155"/>
+                                <param name="PatientCode" value="001"/>
+                                <param name="PatientDOB" value="19680323"/>
+                                <param name="CardholderIdentity" value=""/>
+                                <param name="Relationship" value="0"/>
+                                <param name="PatientFirstName" value="MURPHY"/>
+                                <param name="PatientLastName" value="CROMWELL"/>
+                                <param name="ProvincialHealthIdentifier" value="01299155"/>
+                                <param name="PatientGender" value="F"/>
+                                <param name="MedicalReasonReference" value=""/>
+                                <param name="ReasonforUse" value=""/>
+                                <param name="RefillCode" value="N"/>
+                                <param name="OriginalPrescription" value="000000001"/>
+                                <param name="RefillAuthorizations" value="00"/>
+                                <param name="CurrentRx" value="000000001"/>
+                                <param name="DIN" value="02027887"/>
+                                <param name="SSC" value=""/>
+                                <param name="Quantity" value="000300"/>
+                                <param name="DaysSupply" value="030"/>
+                                <param name="PrescriberIDReference" value="21"/>
+                                <param name="PrescriberID" value="1"/>
+                                <param name="ProductSelection" value=""/>
+                                <param name="UnlistedCompound" value=""/>
+                                <param name="SpecialAuthorization" value=""/>
+                                <param name="ExceptionCodes" value="UA"/>
+                                <param name="DrugCost" value="004604"/>
+                                <param name="Upcharge" value="01533"/>
+                                <param name="ProfessionalFee" value="00700"/>
+                                <param name="CompoundingCharge" value="00000"/>
+                                <param name="CompoundingTime" value="00"/>
+                                <param name="SpecialServicesFee" value="00000"/>
+                                <param name="PreviouslyPaid" value="000000"/>
+                                <param name="PharmacistID" value="9555"/>
+                                <param name="AdjudicationDate" value="000000"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Invoice Response Schema Validate" root-element-name="FICR_IN610102">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\FICR_IN610102.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Invoice Reversal ResponseSchema Validate" root-element-name="FICR_IN630102">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\FICR_IN630102.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+<!--                    <validation description="Format Validate">
+                        <rule type="transform" description="Transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\Invoice_Payload_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>-->
+                    <validation description="System Error Response Check" root-element-name="MCCI_IN000002UV01">
+                        <rule type="transform" description="Issue Content Validation" filename="..\WorkFlow_Lib\Common\validation\SystemError_Text.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt">
+                            <paramList name="CPHA_DATA">
+                                <param name="SystemErrorsExpected"/>
+                                <param name="SystemErrorText"/>
+                            </paramList>
+                        </rule>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Request Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl"/>
+                         <rule type="setVariable" description="Last Claim ID" name="LastClaimID" xpath="descendant-or-self::ns:controlActProcess/ns:subject/ns:paymentIntent/ns:reasonOf/ns:adjudicatedInvoiceElementGroup/ns:id[1]/@extension" ns="urn:hl7-org:v3"/>
+                    </construction>
+                </messageProxy>
+            </response>
+        </message>
+
+
+    </workflow>
+</workflows>

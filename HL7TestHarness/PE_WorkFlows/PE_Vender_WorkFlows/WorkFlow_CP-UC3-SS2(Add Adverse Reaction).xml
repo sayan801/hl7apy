@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--  
+    Copyright © 1996-2006 by DeltaWare Systems Inc. 
+
+    The GNU General Public License (GPL)
+    This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the 
+    Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 
+    59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+
+
+<workflows testDataFile="TestData.xml">
+    <workflow id="w_CP-UC3-SS2-NEW" description="Workflow CP-UC3-SS2(Add Adverse Reaction)">
+        <reference filename="..\SubWorkFlows\SubWorkFlow_Find_Candidate.xml">
+            <paramList name="FindCandidate">
+                <param name="patient-description" value="Patient 1"/>
+                <param name="by-family-name" value="true"/>
+            </paramList>
+            <replace from="TESTNAME" to="CP-UC3-SS2(Add Adverse Reaction) Find Candidate"/>
+        </reference>
+
+        <reference filename="..\SubWorkFlows\SubWorkFlow_Patient_Profile.xml">
+            <paramList name="QueryList">
+                <param name="profile-description" value="Staged Profile"/>
+                <param name="profile-sequence" value="(Generated)"/>
+                <param name="author-description" value="Pharmacist 1"/>
+                <param name="location-description" value="Pharmacy 1"/>
+                <param name="patient-description" value="Patient 1"/>
+            </paramList>
+            <replace from="TESTNAME" to="CP-UC3-SS2(Add Adverse Reaction) Patient Profile"/>
+        </reference>
+
+         <reference filename="..\SubWorkFlows\SubWorkFlow_Add_Adverse_Reaction.xml">
+            <paramList name="ProfileData">  
+                <param name="ResponseType" value="accept"/>
+                <param name="profile-description" value="Staged Profile"/>
+                <param name="profile-sequence" value="Add Adverse Reaction v2"/>
+                <param name="patient-description" value="Patient 1"/>               
+                <param name="reaction-description" value="Reaction 1 - Nausea"/>
+            </paramList>
+        </reference>
+
+<!--        <message description="Pharmacist Records New Adverse Reaction">
+            <request description="Add Adverse Reaction Request">
+                <Simulator RemoteServerAddr="http://dis_Server/">
+                    <construction>
+                        <rule type="transform" description="Add Adverse Reaction Request message" filename="..\WorkFlow_Lib\Reaction/ReactionAddRequest.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC3-SS2(Add Adverse Reaction)"/>
+                                <param name="profile-sequence" value="v2"/>
+                                <param name="reaction-description" value="Reaction 1 - Nausea"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\REPC_IN000004CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Format Validate">
+                        <rule type="transform" description="Transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\Reaction_Payload_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="testDataLoad" description="update test data with new data" filename="..\WorkFlow_Lib\Common\Construction\TestDataLoader.xsl">
+                            <paramList>
+                                <param name="messageType" value="client"/>
+                                <param name="profile-description" value="CP-UC3-SS2(Add Adverse Reaction)"/>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                        
+                        <rule type="transform" description="Generic Request Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC3-SS2(Add Adverse Reaction)"/>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </messageProxy>
+            </request>
+            <response description="Add Adverse Reaction Response">
+                <Simulator RemoteServerAddr="">
+                    <construction>
+                        <rule type="transform" description="Add Adverse Reaction Response Message" filename="..\WorkFlow_Lib\Reaction/ReactionAddAcceptedResponse.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC3-SS2(Add Adverse Reaction)"/>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\REPC_IN000005CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Validate Format">
+                        <rule type="transform" description="CR transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CeRx_transmission_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="CeRx control wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CeRx_controlAct_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Response Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\AddOrUpdate_Response_AcceptOrReject_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="testDataLoad" description="update test data with new data (ex ID's)" filename="..\WorkFlow_Lib\Common\Construction\TestDataIDLoader.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC3-SS2(Add Adverse Reaction)"/>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                        
+                        <rule type="transform" description="Generic Response Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC3-SS2(Add Adverse Reaction)"/>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </messageProxy>
+            </response>
+        </message>
+-->
+    </workflow>
+</workflows>

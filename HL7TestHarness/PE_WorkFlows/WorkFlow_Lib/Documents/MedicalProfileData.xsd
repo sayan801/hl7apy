@@ -1,0 +1,2030 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+
+    <xs:element name="drugs">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="drug" type="drug"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="allergies">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="allergy" type="allergy"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="reactions">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="reaction" type="reaction"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="immunizations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="immunization" type="immunization"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="observations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="observation" type="observation"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="conditions">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="condition" type="condition"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="refusalToFills">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="refusalToFill" type="refusalToFill"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="otherMedications">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="otherMedication" type="otherMedication"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="dispenses">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="dispense" type="dispense"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="dosageInstructions">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="dosageInstruction" type="dosageInstruction"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="coverages">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="coverage" type="coverage"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="issues">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="issue" type="issue"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="issueLists">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="issueList" type="issueList"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="prescriptions">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="prescription" type="prescription"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SOFA">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="payee" type="invoiceTotals"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="drug">
+        <xs:annotation>
+            <xs:documentation><template-name>Drug</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="code" type="codeSystem" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:player/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:player/hl7:name</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="desc" minOccurs="0" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:player/hl7:desc</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="formCode" minOccurs="0" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:player/hl7:formCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="manufacturer" minOccurs="0" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:player/hl7:asManufacturedProduct/hl7:manufacturer/hl7:name</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="quantity" type="unitsOfMeasure">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:player/hl7:asContent/hl7:quantity</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="packageformCode" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:player/hl7:asContent/hl7:containerPackagedMedicine/hl7:formCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="cost" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>cost element is used to discribe the cost of drugs and the amount of drug cost that is covered by a given coverage plan.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ingredient" type="ingredient" minOccurs="0" maxOccurs="10">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:player/hl7:ingredient</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="ingredient">
+        <xs:sequence>
+            <xs:element name="quantity" type="unitsOfMeasure" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:ingredient/hl7:quantity</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:ingredient/hl7:ingredient/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="name" >
+                <xs:annotation>
+                    <xs:documentation><map>hl7:ingredient/hl7:ingredient/hl7:name</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="negation" use="optional"/>
+    </xs:complexType>
+    
+    
+    <xs:complexType name="allergy">
+        <xs:annotation>
+            <xs:documentation><template-name>Allergy</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:intoleranceCondition/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="value" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:intoleranceCondition/hl7:value</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+        <xs:attribute name="negation" use="optional" fixed="true">
+            <xs:annotation>
+                <xs:documentation><map>hl7:intoleranceCondition/@negationInd</map></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="reaction">
+        <xs:annotation>
+            <xs:documentation><template-name>Reaction</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="text" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:reactionObservationEvent/hl7:text</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="value" type="codeSystem" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:reactionObservationEvent/hl7:value</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="immunization">
+        <xs:annotation>
+            <xs:documentation><template-name>Immunization</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="reasonCode" type="codeSystem" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:immunization/hl7:reasonCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="routeCode" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:immunization/hl7:routeCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="approachSiteCode" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:immunization/hl7:approachSiteCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="doseQuantity" type="unitsOfMeasure">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:immunization/hl7:doseQuantity</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="drug" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:immunization/hl7:consumable/hl7:medication</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="observation">
+        <xs:annotation>
+            <xs:documentation><template-name>Observation</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:commonObservationEvent/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="effectiveTime" type="effectiveTime">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:commonObservationEvent/hl7:effectiveTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="value" type="unitsOfMeasure">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:commonObservationEvent/hl7:value</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" maxOccurs="2" name="subObservation" type="subObservation">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:commonObservationEvent/hl7:component</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="condition">
+        <xs:annotation>
+            <xs:documentation><template-name>MedicalCondition</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="value" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:medicalCondition/hl7:value</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="text" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation><map></map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="chronic">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:medicalCondition/../hl7:chronicIndicator/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="refusalToFill">
+        <xs:annotation>
+            <xs:documentation><template-name>refusalToFill</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:refusalToFill/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="reasonCode" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:refusalToFill/hl7:reasonCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:choice minOccurs="0" maxOccurs="5">
+                <xs:element name="IssueList" type="itemIdentifier" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation><map>hl7:refusalToFill/hl7:reason</map></xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Issue" type="itemIdentifier" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation><map>hl7:refusalToFill/hl7:reason</map></xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="otherMedication">
+        <xs:annotation>
+            <xs:documentation><template-name>otherMedication</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="routeCode" type="codeSystem" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:otherMedication/hl7:routeCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="drug" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:otherMedication/hl7:consumable/hl7:medication</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="dosageInstruction" type="itemIdentifier" minOccurs="1" maxOccurs="10">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:otherMedication/hl7:component</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="dispense">
+        <xs:annotation>
+            <xs:documentation><template-name>Dispense</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="statusCode" type="code">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:medicationDispense/hl7:statusCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="dosageInstruction" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:medicationDispense/hl7:component2</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supplyEvent" type="supplyEvent">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:medicationDispense/hl7:component1</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="dosageInstruction">
+        <xs:annotation>
+            <xs:documentation><template-name>dosageInstruction</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="text" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:dosageInstruction/hl7:text</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="effectiveTime" type="effectiveTime">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:dosageInstruction/hl7:effectiveTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="routeCode" type="codeSystem" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:dosageInstruction/hl7:routeCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" maxOccurs="5" name="approachSiteCode" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:dosageInstruction/hl7:approachSiteCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="maxDoseQuantity" type="Dosage" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:dosageInstruction/hl7:maxDoseQuantity</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="administrationUnitCode" type="codeSystem" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:dosageInstruction/hl7:administrationUnitCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="drug" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:dosageInstruction/hl7:consumable/hl7:medication3</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="instruction" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:dosageInstruction/hl7:component1/hl7:supplementalInstruction/hl7:text</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="dosageLine" type="dosageLine" maxOccurs="20">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:dosageInstruction/hl7:component2</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="coverage">
+        <xs:annotation>
+            <xs:documentation><template-name>coverage</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:coverage/hl7:id</map></xs:documentation>
+                    <xs:documentation>The coverage id should hold the actual Program code such as "FA"</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="underwriter" type="underwriter">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:coverage/hl7:author/hl7:carrierRole</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="issue">
+        <xs:annotation>
+            <xs:documentation><template-name>Issue</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedIssueEvent/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="text" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedIssueEvent/hl7:text</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="priorityCode" type="code">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedIssueEvent/hl7:priorityCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="detectedIssueDefinition" type="detectedIssueDefinition" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedIssueEvent/hl7:instantiation/hl7:detectedIssueDefinition</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="severity" type="code">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedIssueEvent/hl7:subjectOf1/hl7:severityObservation/hl7:value</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="casues" type="IssueItems" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedIssueEvent/hl7:subject</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="managment" type="managment" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedIssueEvent/hl7:mitigatedBy</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="issueList">
+        <xs:annotation>
+            <xs:documentation><template-name>IssueList</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="issue" type="IssueListItem"/>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="prescription">
+        <xs:annotation>
+            <xs:documentation><template-name>Prescription</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="statusCode" type="code">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:statusCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="confidentialityCode" type="codeSystem" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:confidentialityCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="drug" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:directTarget/hl7:medication</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="dosageInstruction" type="itemIdentifier" minOccurs="1" maxOccurs="10">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:component1</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="trialSupplycode" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:component2</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="effectiveTime" type="effectiveTime" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:component3/hl7:supplyRequest/hl7:effectiveTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supplyRequestItem" type="supplyRequestItem" minOccurs="1" maxOccurs="5">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:component3/hl7:supplyRequest/hl7:component</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="coverage" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:coverage</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="observation" type="itemIdentifier" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:pertinentInformation</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="non-authoritative" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:precondition/hl7:verificationEventCriterion/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="substanceAdministrationDefinition" type="substanceAdministrationDefinition" minOccurs="0" maxOccurs="5">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:definition/hl7:substanceAdministrationDefinition</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="reason" type="prescriptionReason" minOccurs="1" maxOccurs="5">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:reason</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="category" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:subjectOf1/hl7:substitutionPermission</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="substitutionPermission" type="substitutionPermission" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/../hl7:substitutionPermission</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="invoiceTotals">
+        <xs:annotation>
+            <xs:documentation><template-name>invoiceSOFAResponse</template-name></xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Daily-totals" type="Daily-totals" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"> 
+            <xs:annotation>
+            <xs:documentation>description of payee, must be a location or provider</xs:documentation>
+        </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="program" use="optional">
+            <xs:annotation>
+                <xs:documentation>program code, example 'FA'</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="Daily-totals">
+        <xs:sequence>
+            <xs:element name="payment-total" type="payment-total">
+                <xs:annotation>
+                    <xs:documentation>
+                        <map>hl7:QUCR_IN810102/hl7:controlActProcess/hl7:subject/hl7:adjudResultsGroup/hl7:netAmt</map>
+                        <map>hl7:QUCR_IN810102/hl7:controlActProcess/hl7:subject/hl7:adjudResultsGroup/hl7:component/hl7:adjudResultsGroup/hl7:netAmt</map>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="sub-total" type="sub-total" maxOccurs="unbounded" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <map>hl7:QUCR_IN810102/hl7:controlActProcess/hl7:subject/hl7:adjudResultsGroup/hl7:component/hl7:adjudResultsGroup/hl7:component/hl7:adjudResultsGroup</map>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Date" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    <map>hl7:QUCR_IN810102/hl7:controlActProcess/hl7:subject/hl7:adjudResultsGroup/hl7:component/hl7:adjudResultsGroup/hl7:effectiveTime</map>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="payment-total">
+        <xs:attribute name="value" type="xs:decimal" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="sub-total">
+        <xs:attribute name="value" type="xs:decimal" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    <map>hl7:adjudResultsGroup/hl7:netAmt</map>
+                    <map>hl7:adjudResultsGroup/hl7:summary/hl7:adjudResultsGroupSummaryData[2]/hl7:value</map>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="count" type="xs:integer" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    <map>hl7:adjudResultsGroup/hl7:summary/hl7:adjudResultsGroupSummaryData[1]/hl7:value</map>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="code" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation>
+                    <map>hl7:adjudResultsGroup/hl7:summary/hl7:adjudResultsGroupSummaryData[1]/hl7:code + "CT"</map>
+                    <map>hl7:adjudResultsGroup/hl7:summary/hl7:adjudResultsGroupSummaryData[2]/hl7:code + "AT"</map>
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="drugCoverage">
+        <xs:sequence>
+            <xs:element name="cost" type="drugCost"/>
+            <xs:element name="copayment" type="costValue"/>
+            <xs:element name="deductible" type="costValue"/>
+            <xs:element name="patientcost" type="costValue"/>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="immunizationPlan">
+        <xs:sequence>
+            <xs:element name="sequenceNumber" type="sequenceNumber">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:immunization/hl7:inFulfillmentOf/hl7:sequenceNumber</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="effectiveTime" type="effectiveTime">
+                <xs:annotation>
+                    <xs:documentation>
+                        <map condition="@type = 'fulfillment'">hl7:immunization/hl7:inFulfillmentOf/hl7:immunizationPlan/hl7:fulfillment/hl7:nextPlannedImmunization/hl7:effectiveTime</map>
+                        <map condition="not(@type = 'fulfillment')">hl7:immunization/hl7:inFulfillmentOf/hl7:immunizationPlan/hl7:successor/hl7:nextImmunizationPlan/hl7:effectiveTime</map>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+    <xs:complexType name="subObservation">
+        <xs:sequence>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:commonObservationEvent/hl7:component/hl7:subObservationEvent/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="value" type="unitsOfMeasure">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:commonObservationEvent/hl7:component/hl7:subObservationEvent/hl7:value</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="supplyEvent">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="statusCode" type="code"></xs:element>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:supplyEvent/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="effectiveTime" type="effectiveTime">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:supplyEvent/hl7:effectiveTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="quantity" type="unitsOfMeasure">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:supplyEvent/hl7:quantity</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="expectedUseTime" type="expectedUseTime">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:supplyEvent/hl7:expectedUseTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="drug" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:supplyEvent/hl7:product/hl7:medication</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="dosageLine">
+        <xs:sequence>
+            <xs:element name="text" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:component2/hl7:dosageLine/hl7:text</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="sequenceNumber" use="required" type="xs:integer">
+            <xs:annotation>
+                <xs:documentation><map>hl7:component2/hl7:sequenceNumber</map></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="underwriter">
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:carrierRole/hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="name" type="xs:NCName">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:carrierRole/hl7:underwritingCarrierOrganization/hl7:name</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="detectedIssueDefinition">
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedIssueDefinition/hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="name" type="xs:NCName">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedIssueDefinition/hl7:author/hl7:assignedEntity/hl7:assignedOrganization/hl7:name</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="IssueItems">
+        <xs:choice maxOccurs="20">
+            <xs:element name="prescription" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation>(TBD)<map>hl7:substanceAdministration</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="otherMedication" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation>(TBD)<map>hl7:substanceAdministration</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="dispense" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:supplyEvent</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="allergy" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation>(TBD)<map>hl7:observationCodedEvent</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="condition" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation>(TBD)<map>hl7:observationCodedEvent</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="observation" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation>(TBD)<map>hl7:observationMeasurableEvent</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+    <xs:complexType name="managment">
+        <xs:sequence>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedIssueManagement/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="text" minOccurs="0" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedIssueManagement/hl7:text</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="time" minOccurs="0" type="Time">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedIssueManagement/hl7:author/hl7:time</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="author" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedIssueManagement/hl7:author/hl7:assignedPerson</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="substanceAdministrationDefinition">
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:substanceAdministrationDefinition/hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>            
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:substanceAdministrationDefinition/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="supplyRequestItem">
+        <xs:sequence>
+            <xs:element name="quantity" type="unitsOfMeasure" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:component3/hl7:supplyRequest/hl7:component/hl7:supplyRequestItem/hl7:quantity</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="expectedUseTime" type="expectedUseTime">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:component3/hl7:supplyRequest/hl7:component/hl7:supplyRequestItem/hl7:expectedUseTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="drug" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:component3/hl7:supplyRequest/hl7:component/hl7:supplyRequestItem/hl7:product/hl7:medication</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="subsequentSupplyRequest" type="supplyEventSummary" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:component3/hl7:supplyRequest/hl7:component/hl7:supplyRequestItem/../hl7:subsequentSupplyRequest</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="initialSupplyRequest" type="supplyEventSummary" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:component3/hl7:supplyRequest/hl7:component/hl7:supplyRequestItem/../hl7:initialSupplyRequest</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supplyEventFutureSummary" type="supplyEventSummary" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:component3/hl7:supplyRequest/hl7:component/hl7:supplyRequestItem/hl7:fulfillment1/hl7:supplyEventFutureSummary</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supplyEventFirstSummary" type="supplyEventSummary" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:component3/hl7:supplyRequest/hl7:component/hl7:supplyRequestItem/hl7:fulfillment2/hl7:supplyEventFirstSummary</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supplyEventLastSummary" type="supplyEventSummary" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:component3/hl7:supplyRequest/hl7:component/hl7:supplyRequestItem/hl7:fulfillment3/hl7:supplyEventLastSummary</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supplyEventPastSummary" type="supplyEventSummary" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:component3/hl7:supplyRequest/hl7:component/hl7:supplyRequestItem/hl7:fulfillment4/hl7:supplyEventPastSummary</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="supplyEventSummary">
+        <xs:sequence>
+            <xs:element name="effectiveTime" type="effectiveTime" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:effectiveTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="repeatNumber" type="repeatNumber" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:repeatNumber</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="quantity" type="unitsOfMeasure" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:quantity</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="expectedUseTime" type="expectedUseTime" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:expectedUseTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="prescriptionReason">
+        <xs:sequence>
+            <xs:element name="priorityNumber" type="priorityNumber">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:reason/hl7:priorityNumber</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="text" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map condition="@type='observationDiagnosis'">hl7:reason//hl7:observationDiagnosis/hl7:text</map></xs:documentation>
+                    <xs:documentation><map condition="@type='observationSymptom'">hl7:reason//hl7:observationSymptom/hl7:text</map></xs:documentation>
+                    <xs:documentation><map condition="@type='otherIndication'">hl7:reason//hl7:otherIndication/hl7:text</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="statusCode" type="code">
+                <xs:annotation>
+                    <xs:documentation><map condition="@type='observationDiagnosis'">hl7:reason/hl7:observationDiagnosis/hl7:statusCode</map></xs:documentation>
+                    <xs:documentation><map condition="@type='observationSymptom'">hl7:reason/hl7:observationSymptom/hl7:statusCode</map></xs:documentation>
+                    <xs:documentation><map condition="@type='otherIndication'">hl7:reason/hl7:otherIndication/hl7:statusCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="value" type="codeSystem" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map condition="@type='observationDiagnosis'">hl7:reason/hl7:observationDiagnosis/hl7:value</map></xs:documentation>
+                    <xs:documentation><map condition="@type='observationSymptom'">hl7:reason/hl7:observationSymptom/hl7:value</map></xs:documentation>
+                    <xs:documentation><map condition="@type='otherIndication'">hl7:reason/hl7:otherIndication/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="type" use="required" type="xs:NCName"/>
+    </xs:complexType>
+    <xs:complexType name="substitutionPermission">
+        <xs:sequence>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:substitutionPermission//hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>            
+            <xs:element name="reasonCode" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:substitutionPermission//hl7:reasonCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+    
+    <xs:complexType name="codeSystem">
+        <xs:annotation>
+            <xs:documentation>Coded value.
+                Each Message code element has a set of codes that can be provided in the given code attribte. 
+                This value must be listed in the correct code system section of the codeSystem.xml file for validation to be successful.
+            </xs:documentation>
+            <xs:documentation>CodeSystem value.
+                The codeSystem attribute must contain the name of the code system that the coded value belongs too. The names for
+                each code system are held within the test data file and translated to an actual code system OID value by the Client or
+                Server Simulators.
+                Not all codes require a codeSystem. 
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="code" use="required" type="xs:string"/>        
+        <xs:attribute name="codeSystem" use="optional" type="xs:string"/>        
+    </xs:complexType>
+    <xs:complexType name="code">
+        <xs:annotation>
+            <xs:documentation>Coded value. 
+                (This is the same element as the codeSystem element just with out the need for the codeSystem attribute)
+                Each Message code element has a set of codes that can be provided in the given code attribte. 
+                This value must be listed in the correct code system section of the codeSystem.xml file for validation to be successful.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="code" use="required" type="xs:string">
+        </xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="effectiveTime">
+        <xs:annotation>
+            <xs:documentation>effective Time.
+                Time elements are based on the BaseDateTime attribute of the testdata file.
+                The Client and Server simulators will place the BaseDateTime as the message creation time and the values
+                held with in the time elements of the test data file directly into the message.
+                The message proxy will then adjust the message creation time so that it equal to the present date and time 
+                and will also adjust any Time elements to be similarly related to the new message created time as they 
+                were related to the BaseDateTime value.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element minOccurs="0" name="low" type="Time"/>
+            <xs:element minOccurs="0" name="high" type="Time"/>
+            <xs:element minOccurs="0" name="width" type="unitsOfMeasure"/>
+        </xs:sequence>
+        <xs:attribute name="value" type="xs:integer" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="expectedUseTime">
+        <xs:annotation>
+            <xs:documentation>expectedUseTime.
+                Expected Use width time are not changed by the message proxy.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="width" type="unitsOfMeasure"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Time">
+        <xs:annotation>
+            <xs:documentation>Time.
+                (Same as effective Time)
+                Time elements are based on the BaseDateTime attribute of the testdata file.
+                The Client and Server simulators will place the BaseDateTime as the message creation time and the values
+                held with in the time elements of the test data file directly into the message.
+                The message proxy will then adjust the message creation time so that it equal to the present date and time 
+                and will also adjust any Time elements to be similarly related to the new message created time as they 
+                were related to the BaseDateTime value.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="value" use="optional" type="xs:integer"/>
+        <xs:attribute name="nullFlavor" use="optional" fixed="NI"/>
+    </xs:complexType>
+    <xs:complexType name="unitsOfMeasure">
+        <xs:attribute name="unit" use="optional" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>unit
+                    The unit should appear in the codeSystem.xml file so that validation will be succesfull.
+                    units mapped to the values held with-in the code attribute within the codeSystem.xml.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="value" use="required" type="xs:decimal"/>
+    </xs:complexType>
+    <xs:complexType name="drugCost">
+        <xs:annotation>
+            <xs:documentation>value / per
+                The value and per attributes are used to by the invoice elements to determin the over all cost of a
+                drug when requesting drug payment.
+            </xs:documentation>
+            <xs:documentation>coverage
+                The coverage elements are used by the invoice messages to determin how much of a drug cost 
+                 is covered by a given plan.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="coverage" type="drugCoverage"/>
+        </xs:sequence>
+        <xs:attribute name="per" use="required" type="xs:integer"/>
+        <xs:attribute name="value" use="required" type="xs:decimal"/>
+    </xs:complexType>
+    <xs:complexType name="costValue">
+        <xs:attribute name="value" use="required" type="xs:decimal"/>
+    </xs:complexType>
+    <xs:complexType name="sequenceNumber">
+        <xs:attribute name="value" use="required" type="xs:integer"/>
+    </xs:complexType>
+    <xs:complexType name="Dosage">
+        <xs:annotation>
+        <xs:documentation>Dosage
+            The dosage attributes numerator and denominator are used to indicate how much of a drug or
+            service is being chared for. Drugs should always have the same number in the numerator and 
+            denominator while services (such as Markup, profession fee, etc) should have a value in the
+            numerator and the denominator should alwasy be equial to "1".
+        </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="numerator" type="unitsOfMeasure"/>
+            <xs:element name="denominator" type="unitsOfMeasure"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="record-id">
+        <xs:annotation>
+            <xs:documentation>record-id 
+                The record-id element is used by the Simulators and the message proxy to control the mapping
+                of ID's between the client and server systems. (This can also be done with the use of variables in
+                the workflow files when ID's are not known before a test run)
+            </xs:documentation>
+            <xs:documentation>root-OID
+                The root-OID value must be the name of an OID from the Testdata file. The value is used by the
+                simulators for generating data and used by the message proxy for looking up records to be 
+                mapped.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="client" use="required" type="xs:NMTOKEN"/>
+        <xs:attribute name="server" use="required" type="xs:NMTOKEN"/>
+        <xs:attribute name="root_OID" use="optional" type="xs:NCName"/>
+    </xs:complexType>
+    <xs:complexType name="IssueListItem">
+        <xs:annotation>
+            <xs:documentation>Issue List Items
+                Issue List Items contain the causes and management for a given Issue. The Issue that these
+                causes and managements are related too are defined by the description attribute.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="causes" type="IssueItems"/>
+            <xs:element name="managment" type="managment"/>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="itemIdentifier">
+        <xs:annotation>
+            <xs:documentation>Item Identifiers
+                Item Identifiers are used in may places were a link between a instance of an item needs to be
+                related to the larger definition of that item. Example: a profile may contain an allergy element that
+                will have an identifier of "Allergy 1", with in the profile allergy element specific items such as 
+                date of allergy, status, etc are defined, but the identifier of "Allergy 1" links this allergy to the
+                definition of what type of Allergy it is.  This "Allergy 1" definition can be used by multiple profiles
+                to describe a common allergy, only the data that changes between instances (ex. date of allergy)
+                are defined with in the profile allergy element.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="priorityNumber">
+        <xs:attribute name="value" use="required" type="xs:integer"/>
+    </xs:complexType>
+    <xs:complexType name="repeatNumber">
+        <xs:attribute name="value" use="required" type="xs:integer"/>
+    </xs:complexType>
+
+
+    <!-- MEDICAL PROFILE SECTION -->
+    <xs:element name="medicalProfiles">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="medicalProfile" type="medicalProfile"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="medicalProfile">
+        <xs:annotation>
+            <xs:documentation>Medical Profile 
+                The medical contains data for a given patient at a given point in time.  The items element contians
+                the data for each item that is held with in the profile at this point in time.              
+            </xs:documentation>
+            <xs:documentation>description and sequence  
+                The description and sequence attributes are used by the workflows to select the profile that is currently
+                being used by the test.  Normally for a given test the description of the profile would stay that same
+                and as data is added to the profile via messaging the sequence attribute would be changed.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="patient" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map>/../hl7:subject//hl7:patient</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="consent" type="consent" minOccurs="0"/>
+            <xs:element name="items" type="profileItems"/>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+        <xs:attribute name="sequence" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="consent">
+        <xs:annotation>
+            <xs:documentation>Consent Event 
+                The consent element will cause the Client simulator to include the consent information in request messages.
+                Element requires either the OverRideCode or keyword elements but not both.
+                The author of the given message is used in the consent as the OverRide author if OverRideCode is provided.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="effectiveTime" type="effectiveTime" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>/hl7:consentEvent/hl7:effectiveTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="OverRideCode" type="code" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>/hl7:consentEvent/hl7:reasonCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="modeCode" type="code" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>/hl7:consentEvent/hl7:author2/hl7:modeCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="keyword" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>/hl7:consentEvent/hl7:author2/hl7:signatureText</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ProvidedBy" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>ProvidedBy is the persons name that provided consent, if the consent was provided by the patient this element should be omited.</xs:documentation>
+                    <xs:documentation><map>/hl7:consentEvent/hl7:author2/hl7:responsibleParty/hl7:agentPerson/hl7:name</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="AccessLevel" type="code" minOccurs="0" maxOccurs="10">
+                <xs:annotation>
+                    <xs:documentation>AccessLevel determins what types of information the author may view, update or add.</xs:documentation>
+                    <xs:documentation><map>/hl7:consentEvent/hl7:subject2/hl7:informDefinition/hl7:subject/hl7:actDefinition/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="profileItems">
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="note" type="Item-patient-note"/>
+                <xs:element name="allergy" type="Item-allergy"/>
+                <xs:element name="otherMedication" type="Item-otherMedication"/>
+                <xs:element name="reaction" type="Item-reaction"/>
+                <xs:element name="prescription" type="Item-prescription"/>
+                <xs:element name="dispense" type="Item-dispense"/>
+                <xs:element name="invoice" type="Item-invoice"/>
+                <xs:element name="immunization" type="Item-immunization"/>
+                <xs:element name="condition" type="Item-condition"/>
+                <xs:element name="profService" type="Item-professionalService"/>
+                <xs:element name="observation" type="Item-observation"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Item-professionalService">
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:procedureEvent//hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="author" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:procedureEvent/hl7:author</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:author</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supervisor" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:procedureEvent/hl7:responsibleParty</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:responsibleParty</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="location" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:procedureEvent/hl7:location</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:location</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:procedureEvent/hl7:code</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:location</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="statusCode" type="code">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:procedureEvent/hl7:satusCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="effectiveTime" type="effectiveTime" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:procedureEvent/hl7:effectiveTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="requestedBy" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:procedureEvent/hl7:inFulfillmentOf/hl7:actRequest/hl7:author</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="note" type="Item-record-note" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:procedureEvent/hl7:subjectOf1</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="Item-allergy">
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:intoleranceCondition//hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="author" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:intoleranceCondition/hl7:author</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:author</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supervisor" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:intoleranceCondition/hl7:responsibleParty</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:responsibleParty</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="informant" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:intoleranceCondition/hl7:informant</map></xs:documentation>
+                </xs:annotation>
+             </xs:element>
+            <xs:element name="location" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:intoleranceCondition/hl7:location</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:location</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="statusCode" type="code" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:intoleranceCondition/hl7:satusCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="effectiveTime" type="effectiveTime" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:intoleranceCondition/hl7:effectiveTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="uncertaintyCode" type="code">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:intoleranceCondition/hl7:uncertaintyCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="severity" type="code">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:intoleranceCondition/../hl7:severityObservation/hl7:value</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="exposure" type="Item-allergyExposure" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:intoleranceCondition/hl7:support</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="allergytest" type="Item-allergytest" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:intoleranceCondition/hl7:support</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="note" type="Item-record-note" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:intoleranceCondition/hl7:subjectOf1</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+
+        <xs:complexType name="Item-observation">
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:commonObservationEvent//hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="author" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:commonObservationEvent/hl7:author</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:author</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supervisor" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:commonObservationEvent/hl7:responsibleParty</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:responsibleParty</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="location" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:commonObservationEvent/hl7:location</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:location</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="code" type="codeSystem" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:commonObservationEvent/hl7:code</map></xs:documentation>
+                    <xs:documentation>This value can be defined with-in the profile item or with in the observation object, but it must be defined in one location.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="effectiveTime" type="effectiveTime" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:commonObservationEvent/hl7:effectiveTime</map></xs:documentation>
+                    <xs:documentation>This value can be defined with-in the profile item or with in the observation object, but it must be defined in one location.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="value" type="unitsOfMeasure">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:commonObservationEvent/hl7:value</map></xs:documentation>
+                    <xs:documentation>This value can be defined with-in the profile item or with in the observation object, but it must be defined in one location.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="subObservation" type="subObservation" minOccurs="0" maxOccurs="2">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:commonObservationEvent/../hl7:subObservationEvent</map></xs:documentation>
+                    <xs:documentation>SubObservations can be defined in both the profile and/or observation object. Message creator will take only 2 subObservations and will take them from the profiel first.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="note" type="Item-record-note" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:commonObservationEvent/hl7:subjectOf1</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="Item-allergytest">
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:allergyTestEvent/hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:allergyTestEvent/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="statusCode" type="code">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:allergyTestEvent/hl7:statusCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="effectiveTime" type="effectiveTime">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:allergyTestEvent/hl7:effectiveTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="value" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:allergyTestEvent/hl7:value</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="Item-allergyExposure">
+        <xs:sequence>
+            <xs:element name="cause" type="itemIdentifier"> 
+                <xs:annotation>
+                    <xs:documentation><map>hl7:causalityAssessment/hl7:startsAfterStartOf/hl7:exposureEvent/hl7:id</map></xs:documentation>
+            </xs:annotation>
+            </xs:element>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:causalityAssessment/hl7:startsAfterStartOf/hl7:exposureEvent/hl7:consumable/hl7:administerableMaterial/hl7:administerableMaterialKind/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="routeCode" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:causalityAssessment/hl7:startsAfterStartOf/hl7:exposureEvent/hl7:routeCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="Item-otherMedication">
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:otherMedication//hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="author" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:otherMedication/hl7:author</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:author</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supervisor" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:otherMedication/hl7:responsibleParty</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:responsibleParty</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="informant" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:otherMedication/hl7:informant</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="location" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:otherMedication/hl7:location</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:location</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="statusCode" type="code">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:otherMedication/hl7:statusCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="effectiveTime" type="effectiveTime">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:otherMedication/hl7:effectiveTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="note" type="Item-record-note" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:otherMedication/hl7:subjectOf1</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="Item-reaction">
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:reactionObservationEvent//hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="author" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:reactionObservationEvent/hl7:author</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:author</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supervisor" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:reactionObservationEvent/hl7:responsibleParty</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:responsibleParty</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="informant" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:reactionObservationEvent/hl7:informant</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="location" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:reactionObservationEvent/hl7:location</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:location</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="effectiveTime" type="effectiveTime" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:reactionObservationEvent/hl7:effectiveTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="severity" type="code">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:reactionObservationEvent/../hl7:severityObservation/hl7:value</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="note" type="Item-record-note" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:reactionObservationEvent/hl7:subjectOf1</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="Item-condition">
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:medicalCondition//hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="author" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:medicalCondition/hl7:author</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:author</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supervisor" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:medicalCondition/hl7:responsibleParty</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:responsibleParty</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="informant" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:medicalCondition/hl7:informant</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="location" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:medicalCondition/hl7:location</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:location</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="statusCode" type="code">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:medicalCondition/hl7:statusCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="effectiveTime" type="effectiveTime">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:medicalCondition/hl7:effectiveTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="note" type="Item-record-note" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:medicalCondition/hl7:subjectOf1</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="Item-immunization">
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:immunization//hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="author" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:immunization/hl7:author</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:author</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supervisor" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:immunization/hl7:responsibleParty</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:responsibleParty</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="informant" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:immunization/hl7:informant</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="location" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:immunization/hl7:location</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:location</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="effectiveTime" type="effectiveTime">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:immunization/hl7:effectiveTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="immunizationPlan" type="immunizationPlan" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:immunization/hl7:inFulfillmentOf</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="note" type="Item-record-note" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:immunization/hl7:subjectOf1</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="Item-invoice">
+        <xs:sequence>
+            <xs:element name="author" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:{Message Root}/hl7:controlActEvent/hl7:authorOrPerformer</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="dispense" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation>Identifies the Dispense Item with-in this profile that the invoice is associated with.</xs:documentation>
+                    <xs:documentation><map>hl7:paymentRequest/hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="payee" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation>Identifies the payee the invoice is to be paid too. valid payee's are service locations or providers.</xs:documentation>
+                    <xs:documentation><map>hl7:paymentRequest/hl7:credit/hl7:account/hl7:holder/hl7:payeeRole/hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="override" type="codeSystem" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Over ride codes to hand issues that are returned by an invoice request.</xs:documentation>
+                    <xs:documentation><map>hl7:paymentRequest/hl7:reasonOf/hl7:invoiceElementGroup/hl7:triggerFor[hl7:invoiceElementOverride/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="request" type="InvoiceRequestDetails"/>
+            <xs:element name="payment" type="InvoicePaymentDetails"/>
+        </xs:sequence>
+        <xs:attribute name="currency" use="required" type="xs:NCName"/>
+        <xs:attribute name="description" use="required"/>
+        <xs:attribute name="predetermin" type="xs:boolean"/>
+    </xs:complexType>
+
+    <xs:complexType name="InvoiceRequestDetails">
+        <xs:sequence>
+            <xs:element name="coverage" type="itemIdentifier"/>
+            <xs:element name="professionalfee" type="costValue">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:paymentRequest/hl7:reasonOf/hl7:invoiceElementGroup/hl7:component/hl7:invoiceElementDetail</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="markupfee" type="costValue">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:paymentRequest/hl7:reasonOf/hl7:invoiceElementGroup/hl7:component/hl7:invoiceElementGroup/hl7:component/hl7:invoiceElementDetail</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="upstreampayor" type="costValue">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:paymentRequest/hl7:reasonOf/hl7:invoiceElementGroup/hl7:reference/hl7:adjudicatedInvoiceElementGroup/hl7:netAmt</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="issue" type="InvoiceIssue">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:paymentRequest/hl7:reasonOf/hl7:invoiceElementGroup/hl7:component/hl7:invoiceElementGroup/hl7:reasonOf/hl7:supplyEvent1/hl7:reasonOf/hl7:substanceAdministrationIntent/hl7:subjectOf/hl7:detectedMedicationIssue</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="InvoiceIssue">
+        <xs:sequence>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedMedicationIssue/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="value" type="codeSystem" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedMedicationIssue/hl7:value</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="severity" type="code">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedMedicationIssue/hl7:subjectOf/hl7:severityObservation/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="management" type="InvoiceManagement" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedMedicationIssue/hl7:mitigatedBy</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="InvoiceManagement">
+        <xs:sequence>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:detectedMedicationIssue/hl7:mitigatedBy/hl7:management/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="InvoicePaymentDetails">
+        <xs:sequence>
+            <xs:element name="paymentTime" type="Time">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:paymentIntent/hl7:effectiveTime</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="coverage" type="itemIdentifier"/>
+            <xs:element name="professionalfee" type="costAdjustmentValue">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:paymentIntent/hl7:reasonOf/hl7:adjudicatedInvoiceElementGroup/hl7:component/hl7:adjudicatedInvoiceElementGroup/hl7:component</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="markupfee" type="costAdjustmentValue">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:paymentIntent/hl7:reasonOf/hl7:adjudicatedInvoiceElementGroup/hl7:component/hl7:adjudicatedInvoiceElementGroup/hl7:component</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="patientcost" type="costValue">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:paymentIntent/hl7:reasonOf/hl7:adjudicatedInvoiceElementGroup/hl7:component/hl7:adjudicatedInvoiceElementGroup/hl7:component</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="copayment" type="costValue">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:paymentIntent/hl7:reasonOf/hl7:adjudicatedInvoiceElementGroup/hl7:component/hl7:adjudicatedInvoiceElementGroup/hl7:component</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="deductible" type="costValue">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:paymentIntent/hl7:reasonOf/hl7:adjudicatedInvoiceElementGroup/hl7:component/hl7:adjudicatedInvoiceElementGroup/hl7:component</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="Item-patient-note">
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:annotation//hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="author" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:annotation/hl7:author</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:author</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supervisor" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:annotation/hl7:responsibleParty</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:responsibleParty</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="location" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:annotation/hl7:location</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:location</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="type" type="code">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:annotation/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="text" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:annotation/hl7:text</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description"/>
+    </xs:complexType>
+
+    <xs:complexType name="Item-record-note">
+        <xs:sequence>
+            <xs:element name="author" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:annotation/hl7:author</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:author</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supervisor" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:annotation/hl7:responsibleParty</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:responsibleParty</map></xs:documentation>
+                </xs:annotation>            
+            </xs:element>
+            <xs:element name="location" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:annotation/hl7:location</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:location</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="text" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:annotation//hl7:text</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description"/>
+    </xs:complexType>
+    
+    <xs:complexType name="Item-prescription">
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest//hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="author" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:combinedMedicationRequest/hl7:author</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:author</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supervisor" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:combinedMedicationRequest/hl7:responsibleParty</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:responsibleParty</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="informant" type="itemIdentifier" minOccurs="0"/>
+            <xs:element name="location" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:combinedMedicationRequest/hl7:location</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:location</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="effectiveTime" type="effectiveTime">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest//hl7:component3/hl7:supplyRequest/hl7:effectiveTime</map></xs:documentation>
+                    <xs:documentation>This effective time overides the effective time defined by the prescription object effective time.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="priorPrescription" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/hl7:predecessor/hl7:priorCombinedMedicationRequest/hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="note" type="Item-record-note" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:combinedMedicationRequest/../hl7:annotation</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+        <xs:attribute name="infered" type="xs:boolean">
+            <xs:annotation>
+                <xs:documentation>The Infered attribute is used to tell the system that the perscription should be used as an infered prescription from a dispense.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="Item-dispense">
+        <xs:sequence>
+            <xs:element name="record-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:medicationDispense//hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="local-id" type="record-id">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:medicationDispense/hl7:id</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="prescription" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:medicationDispense/hl7:inFulfillmentOf/hl7:substanceAdministrationRequest</map></xs:documentation>
+                    <xs:documentation>identifies the that this dispense is dispensing against. Prescription must be present within the current profile.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="author" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:medicationDispense/hl7:author</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:author</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="supervisor" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:medicationDispense/hl7:responsibleParty</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:responsibleParty</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="informant" type="itemIdentifier" minOccurs="0"/>
+            <xs:element name="location" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map choose="query Message">hl7:medicationDispense/hl7:location</map></xs:documentation>
+                    <xs:documentation><map choose="add/update Message">hl7:{Message Root}/hl7:controlActEvent/hl7:location</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="substitutionMade" type="substitutionMade">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:medicationDispense/../hl7:substitutionMade</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element minOccurs="0" name="pickup" type="pickup">
+                <xs:annotation>
+                    <xs:documentation>pickup element is used for the Dispense Pickup message.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="description" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="substitutionMade">
+        <xs:sequence>
+            <xs:element name="code" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:substitutionMade/hl7:code</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="reasonCode" type="codeSystem">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:substitutionMade/hl7:reasonCode</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="pickup">
+        <xs:sequence>
+            <xs:element name="author" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:{Message Root}/hl7:controlActEvent/hl7:author</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="location" type="itemIdentifier">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:{Message Root}/hl7:controlActEvent/hl7:location</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="receiver" type="itemIdentifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:supplyEvent/hl7:responsibleParty</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="costAdjustmentValue">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="reason" type="costAdjReason">
+                <xs:annotation>
+                    <xs:documentation><map>hl7:adjudicatedInvoiceElementDetail/hl7:outcomeOf</map></xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="value" use="required" type="xs:decimal"/>
+    </xs:complexType>
+
+    <xs:complexType name="costAdjReason">
+        <xs:attribute name="code" use="required" type="xs:NCName">
+            <xs:annotation>
+                <xs:documentation><map>hl7:outcomeOf/hl7:adjudicationResult/hl7:code</map></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="error" type="xs:NCName" use="optional">
+            <xs:annotation>
+                <xs:documentation><map>hl7:outcomeOf/hl7:adjudicationResult/hl7:pertinentInformation/hl7:adjudicationResultReason/hl7:value</map></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="warning" type="xs:NCName" use="optional">
+            <xs:annotation>
+                <xs:documentation><map>hl7:outcomeOf/hl7:adjudicationResult/hl7:pertinentInformation/hl7:adjudicationResultInformation/hl7:value</map></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  
+    Copyright © 1996-2006 by DeltaWare Systems Inc. 
+
+    The GNU General Public License (GPL)
+    This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the 
+    Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 
+    59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+
+
+<workflows testDataFile="TestData.xml">
+    <workflow id="w_TESTNAME" description="Add Dispense">
+        <message description="Pharmacist Dispenses Prescription" root-element-name="PORX_IN020190CA">
+            <request description="Dispense Prescription">
+                <Simulator RemoteServerAddr="http://DIS_Server/">
+                    <construction>
+                        <rule type="transform" description="Dispense message" filename="..\WorkFlow_Lib\Dispense/DispenseRequest.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC1-PS1(New Prescription)"/>
+                                <param name="profile-sequence" value="v1"/>
+                                <param name="patient-description"/>
+                                <param name="msg-effective-time"/>
+                                <param name="dispense-description" value="Dispense 1 of Prescription 1"/>
+                                <param name="supervisor-description" value=""/>
+                                <param name="author-description" value=""/>
+                                <param name="location-description" value=""/>
+                                <param name="fill-code" value=""/>
+                                <param name="useOverRide"/>
+                            </paramList>
+                        </rule>
+                        <rule type="putVariable" description="Client Prescription ID" name="ClientPrescriptionID"
+                            xpath="descendant-or-self::ns:controlActEvent/ns:subject/ns:medicationDispense/ns:inFulfillmentOf/ns:substanceAdministrationRequest/ns:id[1]/@extension" ns="urn:hl7-org:v3"/>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\PORX_IN020190CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Format Validate">
+                        <rule type="transform" description="Transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\Dispense_Payload_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="testDataLoad" description="update test data with new data" filename="..\WorkFlow_Lib\Common\Construction\TestDataLoader.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC1-PS1(New Prescription)"/>
+                            </paramList>
+                            <paramList>
+                                <param name="messageType" value="client"/>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+
+                        <rule type="transform" description="Generic Request Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC1-PS1(New Prescription)"/>
+                            </paramList>
+                            <paramList>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                        <!-- Control Act ID for undos (We need the request ControlAct extension for undos).-->
+                        <rule type="setVariable" description="Last Request Control Act ID extension" name="LastRequestContorlActID" xpath="descendant-or-self::ns:controlActEvent/ns:id/@extension" ns="urn:hl7-org:v3"/>
+
+                    </construction>
+                </messageProxy>
+            </request>
+            <response description="Dispense  Response">
+                <Simulator RemoteServerAddr="">
+                    <construction>
+                        <rule type="transform" description="Dispense Response Message" filename="..\WorkFlow_Lib\Dispense/DispenseAcceptedResponse.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC1-PS1(New Prescription)"/>
+                            </paramList>
+                            <paramList>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate"                      root-element-name ="PORX_IN020130CA">
+                        <rule type="schema" description="Accepted Response - Schema Validation" filename="..\WorkFlow_Lib\schemas\PORX_IN020130CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Schema Validate"                      root-element-name ="PORX_IN020140CA">
+                        <rule type="schema" description="Rejected Response - Schema Validation" filename="..\WorkFlow_Lib\schemas\PORX_IN020140CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                     <validation description="System Error Response Check" root-element-name ="MCCI_IN000002UV01">
+                        <rule type="transform" description="Issue Content Validation" filename="..\WorkFlow_Lib\Common\validation\SystemError_Text.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt">
+                            <paramList name="ProfileData">
+                                <param name="SystemErrorsExpected"/>
+                                <param name="SystemErrorText"/>
+                            </paramList>
+                        </rule>
+                    </validation>
+                   <validation description="Validate Format">
+                        <rule type="transform" description="CR transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CeRx_transmission_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="CeRx control wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CeRx_controlAct_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Response Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\AddOrUpdate_Response_AcceptOrReject_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt">
+                            <paramList name="ProfileData">
+                                <param name="ResponseType"/>
+                            </paramList>
+                        </rule>
+                    </validation>
+                    <validation description="Issue Validation">
+                        <rule type="transform" description="Issue Content Validation" filename="..\WorkFlow_Lib\Common\validation\Issue_Text_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt">
+                            <paramList name="ProfileData">
+                                                                <param name="maxIssueCount"/>                                 <param name="minIssueCount"/>                                 <param name="IssueText"/> 
+                                <param name="IssueCode"/>
+                                <param name="IssuePriority"/>
+                                <param name="IssueSeverity"/>                                 <param name="StrickIssueValidation"/>
+                            </paramList>
+                        </rule>
+                    </validation>
+                    <construction>
+                        <rule type="testDataLoad" description="update test data with new data (ex ID's)" filename="..\WorkFlow_Lib\Common\Construction\TestDataIDLoader.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC1-PS1(New Prescription)"/>
+                            </paramList>
+                            <paramList>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+
+                        <rule type="transform" description="Generic Response Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC1-PS1(New Prescription)"/>
+                            </paramList>
+                            <paramList>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                        <rule type="setVariable" description="Client Dispense ID" name="ClientDispenseID" xpath="descendant-or-self::ns:controlActEvent/ns:subject/ns:supplyEvent/ns:id[1]/@extension" ns="urn:hl7-org:v3"/>
+                        <!-- <rule type="setVariable" description="Client Prescription ID" name="ClientPrescriptionID" xpath="descendant-or-self::ns:controlActEvent/ns:subject/ns:supplyEvent/ns:inFulfillmentOf/ns:actRequest/ns:id[1]/@extension" ns="urn:hl7-org:v3"/> -->
+                    </construction>
+                </messageProxy>
+            </response>
+        </message>
+    </workflow>
+</workflows>

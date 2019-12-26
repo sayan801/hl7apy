@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--  
+    Copyright © 1996-2006 by DeltaWare Systems Inc. 
+
+    The GNU General Public License (GPL)
+    This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the 
+    Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 
+    59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+
+<workflows testDataFile="TestData.xml">
+    <workflow id="w_TESTNAME" description="Clients Demographics">
+        <message description="Pharmacist gets Clients Demographics" optional="true" root-element-name="QUPA_IN101101CA">
+            <request description="Get Client Demographics Request">
+                <Simulator RemoteServerAddr="http://DIS_Server/">
+                    <construction>
+                        <rule type="transform" description="Get Client Demographics Request Message" filename="..\WorkFlow_Lib\PatientSearch\GetClientDemographicsRequest.xsl">
+                            <paramList name="FindCandidate">
+                                <param name="patient-description"/>
+                                <param name="msg-effective-time"/>
+                                <param name="query-id"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\QUPA_IN101101CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="DIS Restriction Validate">
+                        <rule type="transform" description="CR transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CR_transmission_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="CR control wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CR_controlAct_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="CR query parameter validation - restrictions required by DIS" filename="..\WorkFlow_Lib\Common\Validation\CR_queryByParameterPayload_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Request Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList name="FindCandidate">
+                                <param name="profile-description"/>
+                                <param name="profile-sequence"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </messageProxy>
+            </request>
+            <response description="Get Client Demographics Response ">
+                <Simulator RemoteServerAddr="">
+                    <construction>
+                        <rule type="transform" description="Get Client Demographics Response Message" filename="..\WorkFlow_Lib\PatientSearch\GetClientDemographicsResponse.xsl">
+                            <paramList name="FindCandidate">
+                                <param name="patient-description"/>
+                                <param name="msg-effective-time"/>
+                                <param name="query-id"/>
+                                <param name="query-status"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate" root-element-name="QUPA_IN101102CA">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\QUPA_IN101102CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="System Error Response Check" root-element-name="MCCI_IN000002UV01">
+                        <rule type="transform" description="Issue Content Validation" filename="..\WorkFlow_Lib\Common\validation\SystemError_Text.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt">
+                            <paramList name="FindCandidate">
+                                <param name="SystemErrorsExpected"/>
+                                <param name="SystemErrorText"/>
+                            </paramList>
+                        </rule>
+                    </validation>
+                    <validation description="DIS Restriction Validate">
+                        <rule type="transform" description="CR transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CR_transmission_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="CR control wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CR_controlAct_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="CR query parameter validation - restrictions required by DIS" filename="..\WorkFlow_Lib\Common\Validation\CR_queryByParameterPayload_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="CR client payload validation" filename="..\WorkFlow_Lib\Common\Validation\CR_Client_Payload_Validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt">
+                        </rule>
+                        <rule type="transform" description="Client count validation" filename="..\WorkFlow_Lib\Common\Validation\Query_Response_Count_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt">
+                            <paramList name="FindCandidate">
+                                <param name="minCount"/>
+                                <param name="maxCount"/>
+                            </paramList>
+                        </rule>
+                    </validation>
+                    <validation description="Issue Validation">
+                        <rule type="transform" description="Issue Content Validation" filename="..\WorkFlow_Lib\Common\validation\Issue_Text_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt">
+                            <paramList name="FindCandidate">
+                                <param name="maxIssueCount"/>
+                                <param name="minIssueCount"/>
+                                <param name="IssueText"/>
+                                <param name="IssueCode"/>
+                                <param name="IssuePriority"/>
+                                <param name="IssueSeverity"/>
+                                <param name="StrickIssueValidation"/>
+                            </paramList>
+                        </rule>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Request Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList name="FindCandidate">
+                                <param name="profile-description"/>
+                                <param name="profile-sequence"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </messageProxy>
+            </response>
+        </message>
+    </workflow>
+</workflows>

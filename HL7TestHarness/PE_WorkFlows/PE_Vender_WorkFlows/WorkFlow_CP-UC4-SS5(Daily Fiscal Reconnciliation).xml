@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--  
+    Copyright © 1996-2006 by DeltaWare Systems Inc. 
+
+    The GNU General Public License (GPL)
+    This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the 
+    Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 
+    59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+
+
+<workflows testDataFile="TestData.xml">
+    <workflow id="w_CP-UC4-SS5" description="Workflow CP-UC4-SS5(Daily Fiscal Reconnciliation)">
+        <message description="Request for SOFA Daily Totals">
+            <request description="SOFA Daily Totals Request">
+                <Simulator RemoteServerAddr="http://dis_Server/">
+                    <construction>
+                        <rule type="transform" description="SOFA Daily Totals Request message" filename="..\WorkFlow_Lib\invoice/InvoiceSOFARequest.xsl">
+                            <paramList>
+                                <param name="author-description" value="Pharmacist 1"/>
+                                <param name="payee-description" value="Pharmacy 1"/>
+                                <!-- <param name="program-description" value="FA"/> -->
+                                <param name="adjudicationStartDate" value="20051201"/>
+                                <param name="adjudicationEndDate" value="20060101"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\QUCR_IN800102.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Format Validate">
+                        <rule type="transform" description="Transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Request Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl"/>
+                    </construction>
+                </messageProxy>
+            </request>
+            <response description="SOFA Daily Totals Response">
+                <Simulator RemoteServerAddr="">
+                    <construction>
+                        <rule type="transform" description="SOFA Daily Totals Response Message" filename="..\WorkFlow_Lib\invoice/invoiceSOFAResponse.xsl"/>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\QUCR_IN810102.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Validate Format">
+                        <rule type="transform" description="CR transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CeRx_transmission_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="CeRx control wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CeRx_controlAct_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Response Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl"/>
+                    </construction>
+                </messageProxy>
+            </response>
+        </message>
+
+    </workflow>
+</workflows>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--  
+    Copyright © 1996-2006 by DeltaWare Systems Inc. 
+
+    The GNU General Public License (GPL)
+    This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the 
+    Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 
+    59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+
+
+<workflows testDataFile="TestData.xml">
+    <workflow id="w_CP-UC4-SS8-PREDETERMIN" description="Workflow CP-UC4-SS8(Pre-Determin Invoice)">
+        
+        <reference filename="..\SubWorkFlows\SubWorkFlow_Find_Candidate.xml">
+            <paramList name="FindCandidate">
+                <param name="by-family-name" value="true"/>
+                <param name="patient-description" value="Patient 2"/>
+            </paramList>
+            <replace from="TESTNAME" to="CP-UC4-SS8(Pre-Determin Invoice) Find Candidate"/>
+        </reference>
+        
+        <reference filename="..\SubWorkFlows\SubWorkFlow_Patient_Profile.xml">
+            <paramList name="QueryList">
+                <param name="profile-description" value="Staged Profile"/>
+                <param name="profile-sequence" value="(Generated)"/>
+                <param name="author-description" value="Pharmacist 1"/>
+                <param name="location-description" value="Pharmacy 1"/>
+                <param name="patient-description" value="Patient 2"/>
+            </paramList>
+            <replace from="TESTNAME" to="CP-UC4-SS8(Pre-Determin Invoice) Patient Profile"/>
+        </reference>
+
+        <reference filename="..\SubWorkFlows\SubWorkFlow_Request_Payment.xml">
+            <paramList name="ProfileData">
+                <param name="ResponseType" value="accept"/>                
+                <param name="profile-description" value="Staged Profile"/>
+                <param name="profile-sequence" value="Pre-Determin Invoice v1"/>
+                <param name="invoice-description" value="predetermin Invoice for Dispense 1"/>
+            </paramList>
+        </reference>
+        
+        <reference filename="..\SubWorkFlows\SubWorkFlow_Reverse_Payment.xml">
+            <paramList name="ProfileData">
+                <param name="ResponseType" value="accept"/>                
+                <param name="profile-description" value="Staged Profile"/>
+                <param name="profile-sequence" value="Pre-Determin Invoice v1"/>
+                <param name="invoice-description" value="predetermin Invoice for Dispense 1"/>
+            </paramList>
+        </reference>
+        
+
+<!--        <message description="Pharmacist Requests Payment" >
+            <request description="Invoice Request">
+                <Simulator RemoteServerAddr="http://dis_Server/">
+                    <construction>
+                        <rule type="transform" description="Invoice message" filename="..\WorkFlow_Lib\Invoice/InvoiceRequest.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC4-SS8(Pre-Determin Invoice)"/>
+                                <param name="profile-sequence" value="v1"/>
+                                <param name="invoice-description" value="predetermin Invoice for Dispense 1"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\FICR_IN600102.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Format Validate">
+                        <rule type="transform" description="Transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\Invoice_Payload_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Request Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC4-SS8(Pre-Determin Invoice)"/>
+                                <param name="profile-sequence" value="v1"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </messageProxy>
+            </request>
+            <response description="Invoice  Response">
+                <Simulator RemoteServerAddr="">
+                    <construction>
+                        <rule type="transform" description="Invoice Response Message" filename="..\WorkFlow_Lib\Invoice/InvoiceAcceptedResponse.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC4-SS8(Pre-Determin Invoice)"/>
+                                <param name="profile-sequence" value="v1"/>
+                                <param name="invoice-description" value="predetermin Invoice for Dispense 1"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\FICR_IN610102.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Format Validate">
+                        <rule type="transform" description="Transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\Invoice_Payload_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Response Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC4-SS8(Pre-Determin Invoice)"/>
+                                <param name="profile-sequence" value="v1"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </messageProxy>
+            </response>
+        </message>
+-->        
+<!--        <message description="Pharmacist Requests Reversal of Payment" >
+            <request description="Invoice Reversal Request">
+                <Simulator RemoteServerAddr="http://dis_Server/">
+                    <construction>
+                        <rule type="transform" description="Invoice Reversal message" filename="..\WorkFlow_Lib\Invoice/InvoiceReversalRequest.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC4-SS8(Pre-Determin Invoice)"/>
+                                <param name="profile-sequence" value="v1"/>
+                                <param name="invoice-description" value="predetermin Invoice for Dispense 1"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\FICR_IN620102.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Format Validate">
+                        <rule type="transform" description="Transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Request Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC4-SS8(Pre-Determin Invoice)"/>
+                                <param name="profile-sequence" value="v1"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </messageProxy>
+            </request>
+            <response description="Invoice Reversal Response">
+                <Simulator RemoteServerAddr="">
+                    <construction>
+                        <rule type="transform" description="Invoice Reversal Response Message" filename="..\WorkFlow_Lib\Invoice/InvoiceReversalResponse.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC4-SS8(Pre-Determin Invoice)"/>
+                                <param name="profile-sequence" value="v1"/>
+                                <param name="invoice-description" value="predetermin Invoice for Dispense 1"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\FICR_IN630102.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Format Validate">
+                        <rule type="transform" description="Transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\Nullify_Invoice_Payload_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="transform" description="Generic Response Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC4-SS8(Pre-Determin Invoice)"/>
+                                <param name="profile-sequence" value="v1"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </messageProxy>
+            </response>
+        </message>
+-->        
+    </workflow>
+</workflows>

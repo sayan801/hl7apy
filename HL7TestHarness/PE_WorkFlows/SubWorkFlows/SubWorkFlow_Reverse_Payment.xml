@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  
+    Copyright © 1996-2006 by DeltaWare Systems Inc. 
+
+    The GNU General Public License (GPL)
+    This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the 
+    Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 
+    59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+
+<workflows testDataFile="TestData.xml">
+    <workflow id="w_TESTNAME" description="Request Payment">
+        <message description="Pharmacist Requests Reversal of Payment" optional="true" root-element-name="FICR_IN620102">
+            <request description="Invoice Reversal Request">
+                <Simulator RemoteServerAddr="http://dis_Server/">
+                    <construction>
+                        <rule type="transform" description="Invoice Reversal message" filename="..\WorkFlow_Lib\Invoice/InvoiceReversalRequest.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC1-SS6(Reversal of Transaction)"/>
+                                <param name="profile-sequence" value="v1"/>
+                                <param name="invoice-description" value="Invoice 1 for Dispense 1"/>
+                            </paramList>
+                        </rule>
+                        <rule type="putVariable" description="Client Invoice ID" name="ClientInvoiceID" xpath="descendant-or-self::ns:controlActProcess/ns:subject/ns:invoiceElementGroup/ns:id/@extension" ns="urn:hl7-org:v3"/>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\FICR_IN620102.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Format Validate">
+                        <rule type="transform" description="Transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="testDataLoad" description="update test data with new data" filename="..\WorkFlow_Lib\Common\Construction\TestDataLoader.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC1-SS6(Reversal of Transaction)"/>
+                            </paramList>
+                            <paramList>
+                                <param name="messageType" value="client"/>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                        <rule type="transform" description="Generic Request Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList>
+                                <param name="profile-description" value="CP-UC1-SS6(Reversal of Transaction)"/>
+                                <param name="profile-sequence" value="v1"/>
+                            </paramList>
+                        </rule>
+                        <!-- Control Act ID for undos (We need the request ControlAct extension for undos).-->
+                        <rule type="setVariable" description="Last Request Control Act ID extension" name="LastRequestContorlActID" xpath="descendant-or-self::ns:controlActProcess/ns:id/@extension" ns="urn:hl7-org:v3"/>
+                    </construction>
+                </messageProxy>
+            </request>
+            <response description="Invoice Reversal Response">
+                <Simulator RemoteServerAddr="">
+                    <construction>
+                        <rule type="transform" description="Invoice Reversal Response Message" filename="..\WorkFlow_Lib\Invoice/InvoiceReversalResponse.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC1-SS6(Reversal of Transaction)"/>
+                            </paramList>
+                            <paramList>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                        
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\FICR_IN630102.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Format Validate">
+                        <rule type="transform" description="Transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <!-- <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/> -->
+                        <rule type="transform" description="Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\Nullify_Invoice_Payload_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="testDataLoad" description="update test data with new data (ex ID's)" filename="..\WorkFlow_Lib\Common\Construction\TestDataIDLoader.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC1-SS6(Reversal of Transaction)"/>
+                            </paramList>
+                            <paramList>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                        <rule type="transform" description="Generic Response Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl"/>
+                    </construction>
+                </messageProxy>
+            </response>
+        </message>
+        
+    
+    </workflow>
+</workflows>

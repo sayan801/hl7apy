@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  
+    Copyright © 1996-2006 by DeltaWare Systems Inc. 
+
+    The GNU General Public License (GPL)
+    This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the 
+    Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of 
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 
+    59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+
+
+<workflows testDataFile="TestData.xml">
+    <workflow id="w_AddMedicalCondition" description="Workflow (Add Medical Condition)">
+        <message description="Pharmacist Add Medical Condition"  root-element-name ="REPC_IN000028CA">
+            <request description="Add Medical Condition Request">
+                <Simulator RemoteServerAddr="http://DIS_Server/">
+                    <construction>
+                        <rule type="transform" description="Add Medical Condition Request message" filename="..\WorkFlow_Lib\MedicalCondition\MedicalConditionAddRequest.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC4-SS4(Correct Clinical Data)"/>
+                                <param name="profile-sequence" value="v2"/>
+                                <param name="patient-description"/>
+                                <param name="msg-effective-time"/>
+                                <param name="condition-description" value="Condition 2"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate">
+                        <rule type="schema" description="Schema Message Validation" filename="..\WorkFlow_Lib\schemas\REPC_IN000028CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Format Validate">
+                        <rule type="transform" description="Transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_transmission_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="ControlAct wrapper format Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_controlAct_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\Medical_Condition_Payload_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <construction>
+                        <rule type="testDataLoad" description="update test data with new data" filename="..\WorkFlow_Lib\Common\Construction\TestDataLoader.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC4-SS4(Correct Clinical Data)"/>
+                            </paramList>
+                            <paramList>
+                                <param name="messageType" value="client"/>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                        <rule type="transform" description="Generic Response Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC4-SS4(Correct Clinical Data)"/>
+                            </paramList>
+                            <paramList>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                        <!-- Control Act ID for undos (We need the request ControlAct extension for undos).-->
+                        <rule type="setVariable" description="Last Request Control Act ID extension" name="LastRequestContorlActID" xpath="descendant-or-self::ns:controlActEvent/ns:id/@extension" ns="urn:hl7-org:v3"/>
+
+                    </construction>
+                </messageProxy>
+            </request>
+            <response description="Add Medical Condition Response">
+                <Simulator RemoteServerAddr="">
+                    <construction>
+                        <rule type="transform" description="Add  Medical Condition Response Message" filename="..\WorkFlow_Lib\MedicalCondition\MedicalConditionAddAcceptedResponse.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC4-SS4(Correct Clinical Data)"/>
+                            </paramList>
+                            <paramList>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                    </construction>
+                </Simulator>
+                <messageProxy>
+                    <validation description="Schema Validate (Accepted)"                     root-element-name ="REPC_IN000029CA">
+                        <rule type="schema" description="Accepted Response - Schema Validation" filename="..\WorkFlow_Lib\schemas\REPC_IN000029CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                    <validation description="Schema Validate (Rejected)"                     root-element-name ="REPC_IN000030CA">
+                        <rule type="schema" description="Rejected Response - Schema Validation" filename="..\WorkFlow_Lib\schemas\REPC_IN000030CA.xsd" expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                    </validation>
+                   <validation description="System Error Response Check" root-element-name ="MCCI_IN000002UV01">
+                        <rule type="transform" description="Issue Content Validation" filename="..\WorkFlow_Lib\Common\validation\SystemError_Text.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt">
+                            <paramList name="ProfileData">
+                                <param name="SystemErrorsExpected"/>
+                                <param name="SystemErrorText"/>
+                            </paramList>
+                        </rule>
+                    </validation>
+                    <validation description="Validate Format">
+                        <rule type="transform" description="CR transmission wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CeRx_transmission_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="CeRx control wrapper format Validation" filename="..\WorkFlow_Lib\Common\validation\CeRx_controlAct_wrapper.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Common Element Validation" filename="..\WorkFlow_Lib\Common\Validation\CeRx_Common_Element_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt"/>
+                        <rule type="transform" description="Response Payload Validation" filename="..\WorkFlow_Lib\Common\Validation\AddOrUpdate_Response_AcceptOrReject_validation.xsl"
+                            expectedfile="..\WorkFlow_Lib\Common\Validation\expectedResults\EmptyOutputExpected.txt">
+                            <paramList name="ProfileData">
+                                <param name="ResponseType"/>
+                            </paramList>
+                        </rule>
+                    </validation>
+                    <validation description="Issue Validation">
+                        <rule type="transform" description="Issue Content Validation" filename="..\WorkFlow_Lib\Common\validation\Issue_Text_validation.xsl" expectedfile="..\WorkFlow_Lib\Common\validation\expectedResults\EmptyOutputExpected.txt">
+                            <paramList name="ProfileData">
+                                                                <param name="maxIssueCount"/>                                 <param name="minIssueCount"/>                                 <param name="IssueText"/> 
+                                <param name="IssueCode"/>
+                                <param name="IssuePriority"/>
+                                <param name="IssueSeverity"/>                                 <param name="StrickIssueValidation"/>
+                            </paramList>
+                        </rule>
+                    </validation>
+                    <construction>
+                        <rule type="testDataLoad" description="update test data with new data (ex ID's)" filename="..\WorkFlow_Lib\Common\Construction\TestDataIDLoader.xsl">
+                            <paramList name="ProfileData">
+                                <!-- <param name="recordName" value=""/> -->
+                                <param name="profile-description" value="CP-UC4-SS4(Correct Clinical Data)"/>
+                            </paramList>
+                            <paramList>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                        <rule type="transform" description="Generic Response Transform Message" filename="..\WorkFlow_Lib\Common\Construction\MessageProxy.xsl">
+                            <paramList name="ProfileData">
+                                <param name="profile-description" value="CP-UC4-SS4(Correct Clinical Data)"/>
+                            </paramList>
+                            <paramList>
+                                <param name="messageType" value="client"/>
+                                <param name="profile-sequence" value="(Generated)"/>
+                            </paramList>
+                        </rule>
+                        <rule type="setVariable" description="Client Medical Condition ID" name="ClientConditionID" xpath="descendant-or-self::ns:controlActEvent/ns:subject/ns:actEvent/ns:id[1]/@extension" ns="urn:hl7-org:v3"/>
+                        <!-- Last Record ID's are used by client simulator messages "Add reord Note" to referance the last message sent-->
+                        <rule type="setVariable" description="Last Record ID" name="LastRecordID" xpath="descendant-or-self::ns:controlActEvent/ns:subject/ns:actEvent/ns:id[1]/@extension" ns="urn:hl7-org:v3"/>
+                        <rule type="setVariable" description="Last Record ID Root" name="LastRecordRoot" xpath="descendant-or-self::ns:controlActEvent/ns:subject/ns:actEvent/ns:id[1]/@root" ns="urn:hl7-org:v3"/>
+
+                    </construction>
+                </messageProxy>
+            </response>
+        </message>
+    </workflow>
+</workflows>

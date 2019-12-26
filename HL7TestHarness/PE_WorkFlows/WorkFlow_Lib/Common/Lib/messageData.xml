@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages>
+    <!-- contained element is event trigger for outer message -->
+    <COMT_IN600001CA>
+        <triggerEvent value="COMT_TE600003UV"/>
+        <recordType type="request" value="undoMessage" action="undo"/>
+    </COMT_IN600001CA>
+    <COMT_IN600002CA>
+        <triggerEvent value="COMT_TE600001UV"/>
+        <recordType type="accept" value="undoMessage" action="undo"/>
+    </COMT_IN600002CA>
+    <COMT_IN600003CA>
+        <triggerEvent value="COMT_TE600002UV"/>
+        <recordType type="reject" value="undoMessage" action="undo"/>
+    </COMT_IN600003CA>
+    <!--    
+    <COMT_IN400001CA>
+        <triggerEvent value="COMT_TE400001UV"/>
+    </COMT_IN400001CA>
+    <COMT_IN400002CA>
+        <triggerEvent value="COMT_TE400002UV"/>
+    </COMT_IN400002CA>
+    <COMT_IN400003CA>
+        <triggerEvent value="COMT_TE400003UV"/>
+    </COMT_IN400003CA>
+-->
+    <COMT_IN301001CA>
+        <triggerEvent value="COMT_TE301001UV"/>
+        <recordType type="request" value="noteRecordType" action="add"/>
+    </COMT_IN301001CA>
+    <COMT_IN301002CA>
+        <triggerEvent value="COMT_TE301002UV"/>
+        <recordType type="accept" value="noteRecordType" action="add"/>
+    </COMT_IN301002CA>
+    <COMT_IN301003CA>
+        <triggerEvent value="COMT_TE301003UV"/>
+        <recordType type="reject" value="noteRecordType" action="add"/>
+    </COMT_IN301003CA>
+    <COMT_IN300001CA>
+        <triggerEvent value="COMT_TE300001UV"/>
+        <recordType type="request" value="patientNoteRecordType" action="add"/>
+    </COMT_IN300001CA>
+    <COMT_IN300002CA>
+        <triggerEvent value="COMT_TE300002UV"/>
+        <recordType type="accept" value="patientNoteRecordType" action="add"/>
+    </COMT_IN300002CA>
+    <COMT_IN300003CA>
+        <triggerEvent value="COMT_TE300003UV"/>
+        <recordType type="reject" value="patientNoteRecordType" action="add"/>
+    </COMT_IN300003CA>
+    <COMT_IN300101CA>
+        <triggerEvent value="COMT_TE300101UV"/>
+        <recordType type="request" value="patientNoteRecordType" action="update"/>
+    </COMT_IN300101CA>
+    <COMT_IN300102CA>
+        <triggerEvent value="COMT_TE300102UV"/>
+        <recordType type="accept" value="patientNoteRecordType" action="update"/>
+    </COMT_IN300102CA>
+    <COMT_IN300103CA>
+        <triggerEvent value="COMT_TE300103UV"/>
+        <recordType type="reject" value="patientNoteRecordType" action="update"/>
+    </COMT_IN300103CA>
+    <COMT_IN300201CA>
+        <triggerEvent value="COMT_TE300201UV"/>
+        <recordType type="request" value="patientNoteRecordType" action="query"/>
+    </COMT_IN300201CA>
+    <COMT_IN300202CA>
+        <triggerEvent value="COMT_TE300202UV"/>
+        <recordType type="accept" value="patientNoteRecordType" action="query"/>
+    </COMT_IN300202CA>
+<!--
+    <MFMT_IN000001CA>
+        <recordType type="accept" value="immunizationRecordType" action="update"/>
+    </MFMT_IN000001CA>
+    <MFMT_IN000002CA>
+        <recordType type="reject" value="immunizationRecordType" action="update"/>
+    </MFMT_IN000002CA>
+    <MFMT_IN000003CA>
+        <recordType type="request" value="immunizationRecordType" action="update"/>
+    </MFMT_IN000003CA>
+-->
+    <POIZ_IN010020CA>
+        <triggerEvent value="POIZ_TE010080UV"/>
+        <recordType type="request" value="immunizationRecordType" action="add"/>
+    </POIZ_IN010020CA>
+    <POIZ_IN010030CA>
+        <triggerEvent value="POIZ_TE010040UV"/>
+        <recordType type="accept" value="immunizationRecordType" action="add"/>
+    </POIZ_IN010030CA>
+    <POIZ_IN010040CA>
+        <triggerEvent value="POIZ_TE010010UV"/>
+        <recordType type="reject" value="immunizationRecordType" action="add"/>
+    </POIZ_IN010040CA>
+    <POIZ_IN010070CA>
+        <triggerEvent value="POIZ_TE010090UV"/>
+        <recordType type="request" value="immunizationRecordType" action="update"/>
+    </POIZ_IN010070CA>
+    <POIZ_IN010080CA>
+        <triggerEvent value="POIZ_TE010050UV"/>
+        <recordType type="accept" value="immunizationRecordType" action="update"/>
+    </POIZ_IN010080CA>
+    <POIZ_IN010090CA>
+        <triggerEvent value="POIZ_TE010020UV"/>
+        <recordType type="reject" value="immunizationRecordType" action="update"/>
+    </POIZ_IN010090CA>
+    <POIZ_IN020010CA>
+        <triggerEvent value="POIZ_TE010060UV"/>
+        <recordType type="request" value="immunizationRecordType" action="query"/>
+    </POIZ_IN020010CA>
+    <POIZ_IN020020CA>
+        <triggerEvent value="POIZ_TE010070UV"/>
+        <recordType type="accept" value="immunizationRecordType" action="query"/>
+    </POIZ_IN020020CA>
+    <POME_IN010010CA>
+        <triggerEvent value="POME_TE010090UV"/>
+        <recordType type="request" value="drugDocumentRecordType" action="query"/>
+    </POME_IN010010CA>
+    <POME_IN010020CA>
+        <triggerEvent value="POME_TE010040UV"/>
+        <recordType type="accept" value="drugDocumentRecordType" action="query"/>
+    </POME_IN010020CA>
+    <POME_IN010050CA>
+        <triggerEvent value="POME_TE010070UV"/>
+        <recordType type="request" value="drugProductDetailRecordType" action="query"/>
+    </POME_IN010050CA>
+    <POME_IN010060CA>
+        <triggerEvent value="POME_TE010020UV"/>
+        <recordType type="accept" value="drugProductDetailRecordType" action="query"/>
+    </POME_IN010060CA>
+    <POME_IN010070CA>
+        <triggerEvent value="POME_TE010100UV"/>
+        <recordType type="request" value="drugSearchRecordType" action="query"/>
+    </POME_IN010070CA>
+    <POME_IN010080CA>
+        <triggerEvent value="POME_TE010050UV"/>
+        <recordType type="accept" value="drugSearchRecordType" action="query"/>
+    </POME_IN010080CA>
+    <PORX_IN010060CA>
+        <triggerEvent value="PORX_TE010460UV"/>
+        <recordType type="request" value="refusalToFillRecordType" action="update"/>
+    </PORX_IN010060CA>
+    <PORX_IN010070CA>
+        <triggerEvent value="PORX_TE010340UV"/>
+        <recordType type="accept" value="refusalToFillRecordType" action="update"/>
+    </PORX_IN010070CA>
+    <PORX_IN010080CA>
+        <triggerEvent value="PORX_TE010020UV"/>
+        <recordType type="reject" value="refusalToFillRecordType" action="update"/>
+    </PORX_IN010080CA>
+<!--
+    <PORX_IN010090CA>
+        <triggerEvent value="PORX_TE010330UV"/>
+    </PORX_IN010090CA>
+-->    
+    <PORX_IN010100CA>
+        <triggerEvent value="PORX_TE010510UV"/>
+        <recordType type="request" value="transferRecordType" action="update"/>
+    </PORX_IN010100CA>
+    <PORX_IN010110CA>
+        <triggerEvent value="PORX_TE010330UV"/>
+        <recordType type="accept" value="transferRecordType" action="update"/>
+    </PORX_IN010110CA>
+    <PORX_IN010120CA>
+        <triggerEvent value="PORX_TE010150UV"/>
+        <recordType type="reject" value="transferRecordType" action="update"/>
+    </PORX_IN010120CA>
+    <!--
+    <PORX_IN010290CA>
+        <triggerEvent value="PORX_TE010180UV"/>
+    </PORX_IN010290CA>
+-->
+    <!--
+    <PORX_IN010300CA>
+        <triggerEvent value="PORX_TE010450UV"/>
+    </PORX_IN010300CA>
+ -->
+    <PORX_IN010380CA>
+        <triggerEvent value="PORX_TE010730UV"/>
+        <recordType type="request" value="prescriptionRecordType" action="add"/>
+    </PORX_IN010380CA>
+    <PORX_IN010390CA>
+        <triggerEvent value="PORX_TE010660UV"/>
+        <recordType type="accept" value="prescriptionRecordType" action="add"/>
+    </PORX_IN010390CA>
+    <PORX_IN010400CA>
+        <triggerEvent value="PORX_TE010700UV"/>
+        <recordType type="reject" value="prescriptionRecordType" action="add"/>
+    </PORX_IN010400CA>
+
+    <PORX_IN010420CA>
+        <triggerEvent value="PORX_TE010720UV"/>
+        <recordType type="request" value="preDeterminationRecordType" action="add"/>
+    </PORX_IN010420CA>
+    <PORX_IN010630CA>
+        <triggerEvent value="PORX_TE010690UV"/>
+        <recordType type="reject" value="preDeterminationRecordType" action="add"/>
+    </PORX_IN010630CA>
+    <PORX_IN010640CA>
+        <triggerEvent value="PORX_TE010670UV"/>
+        <recordType type="accept" value="preDeterminationRecordType" action="add"/>
+    </PORX_IN010640CA>
+
+    <PORX_IN010440CA>
+        <triggerEvent value="PORX_TE010420UV"/>
+        <recordType type="request" value="prescriptionRecordType" action="update"/>
+    </PORX_IN010440CA>
+    <PORX_IN010450CA>
+        <triggerEvent value="PORX_TE010240UV"/>
+        <recordType type="accept" value="prescriptionRecordType" action="update"/>
+    </PORX_IN010450CA>
+    <PORX_IN010460CA>
+        <triggerEvent value="PORX_TE010010UV"/>
+        <recordType type="reject" value="prescriptionRecordType" action="update"/>
+    </PORX_IN010460CA>
+    <PORX_IN010520CA>
+        <triggerEvent value="PORX_TE010480UV"/>
+        <recordType type="request" value="prescriptionRecordType" action="update"/>
+    </PORX_IN010520CA>
+    <PORX_IN010530CA>
+        <triggerEvent value="PORX_TE010250UV"/>
+        <recordType type="accept" value="prescriptionRecordType" action="update"/>
+    </PORX_IN010530CA>
+    <PORX_IN010540CA>
+        <triggerEvent value="PORX_TE010030UV"/>
+        <recordType type="reject" value="prescriptionRecordType" action="update"/>
+    </PORX_IN010540CA>
+    <PORX_IN010560CA>
+        <triggerEvent value="PORX_TE010490UV"/>
+        <recordType type="request" value="prescriptionRecordType" action="update"/>
+    </PORX_IN010560CA>
+    <PORX_IN010570CA>
+        <triggerEvent value="PORX_TE010600UV"/>
+        <recordType type="accept" value="prescriptionRecordType" action="update"/>
+    </PORX_IN010570CA>
+    <PORX_IN010580CA>
+        <triggerEvent value="PORX_TE010160UV"/>
+        <recordType type="reject" value="prescriptionRecordType" action="update"/>
+    </PORX_IN010580CA>
+    <!--
+    <PORX_IN010650CA>
+        <triggerEvent value="PORX_TE010770UV"/>
+    </PORX_IN010650CA>
+-->
+    <!--
+    <PORX_IN010720CA>
+        <triggerEvent value="PORX_TE010400UV"/>
+    </PORX_IN010720CA>
+    <PORX_IN010730CA>
+        <triggerEvent value="PORX_TE010220UV"/>
+    </PORX_IN010730CA>
+    <PORX_IN010740CA>
+        <triggerEvent value="PORX_TE010140UV"/>
+    </PORX_IN010740CA>
+-->
+    <PORX_IN010840CA>
+        <triggerEvent value="PORX_TE010500UV"/>
+        <recordType type="request" value="prescriptionRecordType" action="update"/>
+    </PORX_IN010840CA>
+    <PORX_IN010850CA>
+        <triggerEvent value="PORX_TE010260UV"/>
+        <recordType type="accept" value="prescriptionRecordType" action="update"/>
+    </PORX_IN010850CA>
+    <PORX_IN010860CA>
+        <triggerEvent value="PORX_TE010040UV"/>
+        <recordType type="reject" value="prescriptionRecordType" action="update"/>
+    </PORX_IN010860CA>
+
+    <!--
+    <PORX_IN020060CA>
+        <triggerEvent value="PORX_TE020150UV"/>
+        <recordType type="request" value="dispenseRecordType" action="add"/>
+    </PORX_IN020060CA>
+-->
+    <PORX_IN020190CA>
+        <triggerEvent value="PORX_TE020220UV"/>
+        <recordType type="request" value="dispenseRecordType" action="add"/>
+    </PORX_IN020190CA>
+    <PORX_IN020130CA>
+        <triggerEvent value="PORX_TE020190UV"/>
+        <recordType type="accept" value="dispenseRecordType" action="add"/>
+    </PORX_IN020130CA>
+    <PORX_IN020140CA>
+        <triggerEvent value="PORX_TE020270UV"/>
+        <recordType type="reject" value="dispenseRecordType" action="add"/>
+    </PORX_IN020140CA>
+    <!--
+    <PORX_IN020070CA>
+        <triggerEvent value="PORX_TE020100UV"/>
+    </PORX_IN020070CA>
+-->
+    <PORX_IN020080CA>
+        <triggerEvent value="PORX_TE020170UV"/>
+        <recordType type="request" value="PickupRecordType" action="add"/>
+    </PORX_IN020080CA>
+    <PORX_IN020090CA>
+        <triggerEvent value="PORX_TE020100UV"/>
+        <recordType type="accept" value="PickupRecordType" action="add"/>
+    </PORX_IN020090CA>
+    <PORX_IN020100CA>
+        <triggerEvent value="PORX_TE020140UV"/>
+        <recordType type="reject" value="PickupRecordType" action="add"/>
+    </PORX_IN020100CA>
+    <!--
+    <PORX_IN020210CA>
+        <triggerEvent value="PORX_TE020130UV"/>
+    </PORX_IN020210CA>
+    <PORX_IN020220CA>
+        <triggerEvent value="PORX_TE020010UV"/>
+    </PORX_IN020220CA>
+    <PORX_IN020230CA>
+        <triggerEvent value="PORX_TE020020UV"/>
+    </PORX_IN020230CA>
+-->
+    <PORX_IN020370CA>
+        <triggerEvent value="PORX_TE020280UV"/>
+        <recordType type="request" value="dispenseRecordType" action="update"/>
+    </PORX_IN020370CA>
+    <PORX_IN020380CA>
+        <triggerEvent value="PORX_TE020090UV"/>
+        <recordType type="accept" value="dispenseRecordType" action="update"/>
+    </PORX_IN020380CA>
+    <PORX_IN020390CA>
+        <triggerEvent value="PORX_TE020290UV"/>
+        <recordType type="reject" value="dispenseRecordType" action="update"/>
+    </PORX_IN020390CA>
+    <PORX_IN040020CA>
+        <triggerEvent value="PORX_TE040060UV"/>
+        <recordType type="request" value="otherMedRecordType" action="add"/>
+    </PORX_IN040020CA>
+    <PORX_IN040030CA>
+        <triggerEvent value="PORX_TE040030UV"/>
+        <recordType type="accept" value="otherMedRecordType" action="add"/>
+    </PORX_IN040030CA>
+    <PORX_IN040040CA>
+        <triggerEvent value="PORX_TE040010UV"/>
+        <recordType type="reject" value="otherMedRecordType" action="add"/>
+    </PORX_IN040040CA>
+    <PORX_IN040070CA>
+        <triggerEvent value="PORX_TE040070UV"/>
+        <recordType type="request" value="otherMedRecordType" action="update"/>
+    </PORX_IN040070CA>
+    <PORX_IN040080CA>
+        <triggerEvent value="PORX_TE040040UV"/>
+        <recordType type="accept" value="otherMedRecordType" action="update"/>
+    </PORX_IN040080CA>
+    <PORX_IN040090CA>
+        <triggerEvent value="PORX_TE040020UV"/>
+        <recordType type="reject" value="otherMedRecordType" action="update"/>
+    </PORX_IN040090CA>
+    <PORX_IN050010CA>
+        <triggerEvent value="PORX_TE050080UV"/>
+        <recordType type="request" value="contraindicationRecordType" action="query"/>
+    </PORX_IN050010CA>
+    <PORX_IN050020CA>
+        <triggerEvent value="PORX_TE050070UV"/>
+        <recordType type="accept" value="contraindicationRecordType" action="query"/>
+    </PORX_IN050020CA>
+    <PORX_IN050030CA>
+        <triggerEvent value="PORX_TE050040UV"/>
+        <recordType type="request" value="contraindicationRecordType" action="query"/>
+    </PORX_IN050030CA>
+    <PORX_IN050040CA>
+        <triggerEvent value="PORX_TE050030UV"/>
+        <recordType type="accept" value="contraindicationRecordType" action="query"/>
+    </PORX_IN050040CA>
+    <!--
+    <PORX_IN060010CA>
+        <triggerEvent value="PORX_TE060190UV"/>
+    </PORX_IN060010CA>
+    <PORX_IN060020CA>
+        <triggerEvent value="PORX_TE060250UV"/>
+    </PORX_IN060020CA>
+    <PORX_IN060050CA>
+        <triggerEvent value="PORX_TE060020UV"/>
+    </PORX_IN060050CA>
+    <PORX_IN060060CA>
+        <triggerEvent value="PORX_TE060040UV"/>
+    </PORX_IN060060CA>
+    <PORX_IN060070CA>
+        <triggerEvent value="PORX_TE060060UV"/>
+    </PORX_IN060070CA>
+    <PORX_IN060080CA>
+        <triggerEvent value="PORX_TE060080UV"/>
+    </PORX_IN060080CA>
+    <PORX_IN060090CA>
+        <triggerEvent value="PORX_TE060210UV"/>
+    </PORX_IN060090CA>
+    <PORX_IN060100CA>
+        <triggerEvent value="PORX_TE060230UV"/>
+    </PORX_IN060100CA>
+    <PORX_IN060110CA>
+        <triggerEvent value="PORX_TE060330UV"/>
+    </PORX_IN060110CA>
+    <PORX_IN060120CA>
+        <triggerEvent value="PORX_TE060350UV"/>
+    </PORX_IN060120CA>
+    <PORX_IN060130CA>
+        <triggerEvent value="PORX_TE060470UV"/>
+    </PORX_IN060130CA>
+    <PORX_IN060140CA>
+        <triggerEvent value="PORX_TE060490UV"/>
+    </PORX_IN060140CA>
+-->
+    <!--
+    <PORX_IN020330CA>
+        <triggerEvent value="PORX_TE020030UV"/>
+    </PORX_IN020330CA>
+    <PORX_IN020340CA>
+        <triggerEvent value="PORX_TE020070UV"/>
+    </PORX_IN020340CA>
+-->
+    <PORX_IN060170CA>
+        <triggerEvent value="PORX_TE060180UV"/>
+        <recordType type="request" action="query"/>
+    </PORX_IN060170CA>
+    <PORX_IN060180CA>
+        <triggerEvent value="PORX_TE060240UV"/>
+        <recordType type="accept" action="query"/>
+    </PORX_IN060180CA>
+    <PORX_IN060210CA>
+        <triggerEvent value="PORX_TE060010UV"/>
+        <recordType type="request" action="query"/>
+    </PORX_IN060210CA>
+    <PORX_IN060220CA>
+        <triggerEvent value="PORX_TE060030UV"/>
+        <recordType type="accept" action="query"/>
+    </PORX_IN060220CA>
+    <PORX_IN060230CA>
+        <triggerEvent value="PORX_TE060050UV"/>
+        <recordType type="request" action="query"/>
+    </PORX_IN060230CA>
+    <PORX_IN060240CA>
+        <triggerEvent value="PORX_TE060070UV"/>
+        <recordType type="accept" action="query"/>
+    </PORX_IN060240CA>
+    <PORX_IN060250CA>
+        <triggerEvent value="PORX_TE060200UV"/>
+        <recordType type="request" action="query"/>
+    </PORX_IN060250CA>
+    <PORX_IN060260CA>
+        <triggerEvent value="PORX_TE060220UV"/>
+        <recordType type="accept" action="query"/>
+    </PORX_IN060260CA>
+    <PORX_IN060270CA>
+        <triggerEvent value="PORX_TE060320UV"/>
+        <recordType type="request" action="query"/>
+    </PORX_IN060270CA>
+    <PORX_IN060280CA>
+        <triggerEvent value="PORX_TE060340UV"/>
+        <recordType type="accept" action="query"/>
+    </PORX_IN060280CA>
+    <PORX_IN060290CA>
+        <triggerEvent value="PORX_TE060460UV"/>
+        <recordType type="request" action="query"/>
+    </PORX_IN060290CA>
+    <PORX_IN060300CA>
+        <triggerEvent value="PORX_TE060480UV"/>
+        <recordType type="accept" action="query"/>
+    </PORX_IN060300CA>
+    <PORX_IN060350CA>
+        <triggerEvent value="PORX_TE060260UV"/>
+        <recordType type="request" action="query"/>
+    </PORX_IN060350CA>
+    <PORX_IN060360CA>
+        <triggerEvent value="PORX_TE060270UV"/>
+        <recordType type="accept" action="query"/>
+    </PORX_IN060360CA>
+    <PORX_IN060370CA>
+        <triggerEvent value="PORX_TE060280UV"/>
+        <recordType type="request" action="query"/>
+    </PORX_IN060370CA>
+    <PORX_IN060380CA>
+        <triggerEvent value="PORX_TE060290UV"/>
+        <recordType type="accept" action="query"/>
+    </PORX_IN060380CA>
+    <PORX_IN060390CA>
+        <triggerEvent value="PORX_TE060300UV"/>
+        <recordType type="request" action="query"/>
+    </PORX_IN060390CA>
+    <PORX_IN060400CA>
+        <triggerEvent value="PORX_TE060310UV"/>
+        <recordType type="accept" action="query"/>
+    </PORX_IN060400CA>
+    <PORX_IN060450CA>
+        <triggerEvent value="PORX_TE060440UV"/>
+        <recordType type="request" action="query"/>
+    </PORX_IN060450CA>
+    <PORX_IN060460CA>
+        <triggerEvent value="PORX_TE060450UV"/>
+        <recordType type="accept" action="query"/>
+    </PORX_IN060460CA>
+    <PORX_IN060470CA>
+        <triggerEvent value="PORX_TE060510UV"/>
+        <recordType type="request" action="query"/>
+    </PORX_IN060470CA>
+    <PORX_IN060480CA>
+        <triggerEvent value="PORX_TE060500UV"/>
+        <recordType type="accept" action="query"/>
+    </PORX_IN060480CA>
+    <PORX_IN060490CA>
+        <triggerEvent value="PORX_TE060520UV"/>
+        <recordType type="request" action="query"/>
+    </PORX_IN060490CA>
+    <PORX_IN060500CA>
+        <triggerEvent value="PORX_TE060530UV"/>
+        <recordType type="accept" action="query"/>
+    </PORX_IN060500CA>
+    <!--
+    <RCMR_IN010001CA>
+        <triggerEvent value="RCMR_TE010001UV"/>
+        <recordType type="request" value="" action="add"/>
+    </RCMR_IN010001CA>
+    <RCMR_IN010002CA>
+        <triggerEvent value="RCMR_TE010002UV"/>
+        <recordType type="accept" value="" action="add"/>
+    </RCMR_IN010002CA>
+    <RCMR_IN010003CA>
+        <triggerEvent value="RCMR_TE010003UV"/>
+        <recordType type="reject" value="" action="add"/>
+    </RCMR_IN010003CA>
+-->
+    <!--
+    <RCMR_IN010004CA>
+        <triggerEvent value="RCMR_TE010004UV"/>
+    </RCMR_IN010004CA>
+    <RCMR_IN010005CA>
+        <triggerEvent value="RCMR_TE010005UV"/>
+    </RCMR_IN010005CA>
+    <RCMR_IN010006CA>
+        <triggerEvent value="RCMR_TE010006UV"/>
+    </RCMR_IN010006CA>
+-->
+    <REPC_IN000001CA>
+        <triggerEvent value="REPC_TE000004UV"/>
+        <recordType type="request" value="reactionRecordType" action="query"/>
+    </REPC_IN000001CA>
+    <REPC_IN000002CA>
+        <triggerEvent value="REPC_TE000005UV"/>
+        <recordType type="accept" value="reactionRecordType" action="query"/>
+    </REPC_IN000002CA>
+    <REPC_IN000004CA>
+        <triggerEvent value="REPC_TE000014UV"/>
+        <recordType type="request" value="reactionRecordType" action="add"/>
+    </REPC_IN000004CA>
+    <REPC_IN000005CA>
+        <triggerEvent value="REPC_TE000015UV"/>
+        <recordType type="accept" value="reactionRecordType" action="add"/>
+    </REPC_IN000005CA>
+    <REPC_IN000006CA>
+        <triggerEvent value="REPC_TE000016UV"/>
+        <recordType type="reject" value="reactionRecordType" action="add"/>
+    </REPC_IN000006CA>
+    <REPC_IN000008CA>
+        <triggerEvent value="REPC_TE000020UV"/>
+        <recordType type="request" value="reactionRecordType" action="update"/>
+    </REPC_IN000008CA>
+    <REPC_IN000009CA>
+        <triggerEvent value="REPC_TE000021UV"/>
+        <recordType type="accept" value="reactionRecordType" action="update"/>
+    </REPC_IN000009CA>
+    <REPC_IN000010CA>
+        <triggerEvent value="REPC_TE000022UV"/>
+        <recordType type="reject" value="reactionRecordType" action="update"/>
+    </REPC_IN000010CA>
+    <REPC_IN000012CA>
+        <triggerEvent value="REPC_TE000001UV"/>
+        <recordType type="request" value="allergyRecordType" action="add"/>
+    </REPC_IN000012CA>
+    <REPC_IN000013CA>
+        <triggerEvent value="REPC_TE000002UV"/>
+        <recordType type="accept" value="allergyRecordType" action="add"/>
+    </REPC_IN000013CA>
+    <REPC_IN000014CA>
+        <triggerEvent value="REPC_TE000003UV"/>
+        <recordType type="reject" value="allergyRecordType" action="add"/>
+    </REPC_IN000014CA>
+    <REPC_IN000015CA>
+        <triggerEvent value="REPC_TE000006UV"/>
+        <recordType type="request" value="allergyRecordType" action="query"/>
+    </REPC_IN000015CA>
+    <REPC_IN000016CA>
+        <triggerEvent value="REPC_TE000007UV"/>
+        <recordType type="accept" value="allergyRecordType" action="query"/>
+    </REPC_IN000016CA>
+    <REPC_IN000017CA>
+        <triggerEvent value="REPC_TE000008UV"/>
+        <recordType type="request" value="allergyRecordType" action="query"/>
+    </REPC_IN000017CA>
+    <REPC_IN000018CA>
+        <triggerEvent value="REPC_TE000009UV"/>
+        <recordType type="accept" value="allergyRecordType" action="query"/>
+    </REPC_IN000018CA>
+    <REPC_IN000020CA>
+        <triggerEvent value="REPC_TE000023UV"/>
+        <recordType type="request" value="allergyRecordType" action="update"/>
+    </REPC_IN000020CA>
+    <REPC_IN000021CA>
+        <triggerEvent value="REPC_TE000024UV"/>
+        <recordType type="accept" value="allergyRecordType" action="update"/>
+    </REPC_IN000021CA>
+    <REPC_IN000022CA>
+        <triggerEvent value="REPC_TE000025UV"/>
+        <recordType type="reject" value="allergyRecordType" action="update"/>
+    </REPC_IN000022CA>
+    <REPC_IN000023CA>
+        <triggerEvent value="REPC_TE000012UV"/>
+        <recordType type="request" value="conditionRecordType" action="query"/>
+    </REPC_IN000023CA>
+    <REPC_IN000024CA>
+        <triggerEvent value="REPC_TE000013UV"/>
+        <recordType type="accept" value="conditionRecordType" action="query"/>
+    </REPC_IN000024CA>
+    <REPC_IN000025CA>
+        <triggerEvent value="REPC_TE000010UV"/>
+        <recordType type="request" value="conditionRecordType" action="query"/>
+    </REPC_IN000025CA>
+    <REPC_IN000026CA>
+        <triggerEvent value="REPC_TE000011UV"/>
+        <recordType type="accept" value="conditionRecordType" action="query"/>
+    </REPC_IN000026CA>
+    <REPC_IN000028CA>
+        <triggerEvent value="REPC_TE000017UV"/>
+        <recordType type="request" value="conditionRecordType" action="add"/>
+    </REPC_IN000028CA>
+    <REPC_IN000029CA>
+        <triggerEvent value="REPC_TE000018UV"/>
+        <recordType type="accept" value="conditionRecordType" action="add"/>
+    </REPC_IN000029CA>
+    <REPC_IN000030CA>
+        <triggerEvent value="REPC_TE000019UV"/>
+        <recordType type="reject" value="conditionRecordType" action="add"/>
+    </REPC_IN000030CA>
+    <REPC_IN000032CA>
+        <triggerEvent value="REPC_TE000026UV"/>
+        <recordType type="request" value="conditionRecordType" action="update"/>
+    </REPC_IN000032CA>
+    <REPC_IN000033CA>
+        <triggerEvent value="REPC_TE000027UV"/>
+        <recordType type="accept" value="conditionRecordType" action="update"/>
+    </REPC_IN000033CA>
+    <REPC_IN000034CA>
+        <triggerEvent value="REPC_TE000028UV"/>
+        <recordType type="reject" value="conditionRecordType" action="update"/>
+    </REPC_IN000034CA>
+    <REPC_IN000041CA>
+        <triggerEvent value="REPC_TE000041UV"/>
+        <recordType type="request" value="professionalServerRecordType" action="query"/>
+    </REPC_IN000041CA>
+    <REPC_IN000042CA>
+        <triggerEvent value="REPC_TE000042UV"/>
+        <recordType type="accept" value="professionalServerRecordType" action="query"/>
+    </REPC_IN000042CA>
+    <REPC_IN000044CA>
+        <triggerEvent value="REPC_TE000043UV"/>
+        <recordType type="request" value="professionalServerRecordType" action="add"/>
+    </REPC_IN000044CA>
+    <REPC_IN000045CA>
+        <triggerEvent value="REPC_TE000044UV"/>
+        <recordType type="accept" value="professionalServerRecordType" action="add"/>
+    </REPC_IN000045CA>
+    <REPC_IN000046CA>
+        <triggerEvent value="REPC_TE000045UV"/>
+        <recordType type="reject" value="professionalServerRecordType" action="add"/>
+    </REPC_IN000046CA>
+    <REPC_IN000051CA>
+        <triggerEvent value="REPC_TE000051UV"/>
+        <recordType type="request" value="observationRecordType" action="add"/>
+    </REPC_IN000051CA>
+    <REPC_IN000052CA>
+        <triggerEvent value="REPC_TE000052UV"/>
+        <recordType type="accept" value="observationRecordType" action="add"/>
+    </REPC_IN000052CA>
+    <REPC_IN000053CA>
+        <triggerEvent value="REPC_TE000053UV"/>
+        <recordType type="reject" value="observationRecordType" action="add"/>
+    </REPC_IN000053CA>
+    <REPC_IN000054CA>
+        <triggerEvent value="REPC_TE000054UV"/>
+        <recordType type="request" value="observationRecordType" action="query"/>
+    </REPC_IN000054CA>
+    <REPC_IN000055CA>
+        <triggerEvent value="REPC_TE000055UV"/>
+        <recordType type="accept" value="observationRecordType" action="query"/>
+    </REPC_IN000055CA>
+    <!--        
+    <PORX_IN010940CA>
+        <triggerEvent value="PORX_TE010580UV"/>
+    </PORX_IN010940CA>
+    <POIZ_IN010100CA>
+        <triggerEvent value="POIZ_TE010100UV"/>
+    </POIZ_IN010100CA>
+    <POIZ_IN010110CA>
+        <triggerEvent value="POIZ_TE010030UV"/>
+    </POIZ_IN010110CA>
+    <POIZ_IN010120CA>
+        <triggerEvent value="POIZ_TE010110UV"/>
+    </POIZ_IN010120CA>
+    <PORX_IN011040CA>
+        <triggerEvent value="PORX_TE010180UV"/>
+    </PORX_IN011040CA>
+    <PORX_IN011050CA>
+        <triggerEvent value="PORX_TE010320UV"/>
+     </PORX_IN011050CA>
+-->
+    <MCCI_IN102001CA>
+        <triggerEvent value="MCCI_TE102001UV"/>
+    </MCCI_IN102001CA>
+    <MCCI_IN102002CA>
+        <triggerEvent value="MCCI_TE102002UV"/>
+    </MCCI_IN102002CA>
+    <MCCI_IN102003CA>
+        <triggerEvent value="MCCI_TE102003UV"/>
+    </MCCI_IN102003CA>
+<!--        
+    <PORX_IN020370CA>
+        <triggerEvent value="PORX_TE020280UV"/>
+    </PORX_IN020370CA>
+    <PORX_IN20380CA>
+        <triggerEvent value="PORX_TE020090UV"/>
+    </PORX_IN20380CA>
+    <PORX_IN020390CA>
+        <triggerEvent value="PORX_TE020290UV"/>
+    </PORX_IN020390CA>
+-->
+    <COMT_IN700001CA>
+        <triggerEvent value="COMT_TE700001UV"/>
+        <recordType type="request" value="issueManagementRecordType" action="add"/>
+    </COMT_IN700001CA>
+    <COMT_IN700002CA>
+        <triggerEvent value="COMT_TE700002UV"/>
+        <recordType type="accept" value="issueManagementRecordType" action="add"/>
+    </COMT_IN700002CA>
+    <COMT_IN700003CA>
+        <triggerEvent value="COMT_TE700003UV"/>
+        <recordType type="reject" value="issueManagementRecordType" action="add"/>
+        </COMT_IN700003CA>
+    <MCCI_IN000002UV01>
+        <recordType type="system error" action="error"/>
+    </MCCI_IN000002UV01>
+</messages>
